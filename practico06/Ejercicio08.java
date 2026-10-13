@@ -1,6 +1,6 @@
 /*
 Prompt inicial utilizado:
-Implement MergeSort algorithm. The program should display: how the array is divided into subarrays, when the base case is reached (subarray of size 1), and how subarrays are merged back together. Use the array {38, 27, 43, 3, 9, 82, 10} as input. Include comments explaining the divide-and-conquer strategy and the merge process. Show the recursion tree with indentation to visualize the division and merging phases. Verify the result by confirming the array is sorted in ascending order.
+Implementar el algoritmo MergeSort. El programa debe mostrar: cómo se divide el arreglo en subarreglos, cuándo se alcanza el caso base (subarreglo de tamaño 1) y cómo los subarreglos se vuelven a fusionar. Usar el arreglo {38, 27, 43, 3, 9, 82, 10} como entrada. Incluir comentarios que expliquen la estrategia de dividir y conquistar y el proceso de fusión. Mostrar el árbol de recursión con sangría para visualizar las fases de división y fusión. Verificar el resultado confirmando que el arreglo está ordenado en orden ascendente.
 
 Ajustes realizados:
 Ninguno
@@ -12,41 +12,41 @@ public class Ejercicio08 {
     public static void main(String[] args) {
         int[] array = {38, 27, 43, 3, 9, 82, 10};
 
-        System.out.println("=== MergeSort Step by Step ===");
-        System.out.println("Original array: " + Arrays.toString(array));
+        System.out.println("=== MergeSort Paso a Paso ===");
+        System.out.println("Arreglo original: " + Arrays.toString(array));
         System.out.println();
 
         mergeSort(array, 0, array.length - 1, 0);
 
         System.out.println();
-        System.out.println("Sorted array: " + Arrays.toString(array));
+        System.out.println("Arreglo ordenado: " + Arrays.toString(array));
     }
 
     static void mergeSort(int[] array, int left, int right, int depth) {
         String indent = "  ".repeat(depth);
 
         if (left == right) {
-            System.out.println(indent + "Base case reached: [" + array[left] + "]");
+            System.out.println(indent + "Caso base alcanzado: [" + array[left] + "]");
             return;
         }
 
         int mid = left + (right - left) / 2;
 
-        System.out.println(indent + "Divide: " + Arrays.toString(Arrays.copyOfRange(array, left, right + 1)));
-        System.out.println(indent + "  Left half: " + Arrays.toString(Arrays.copyOfRange(array, left, mid + 1)));
-        System.out.println(indent + "  Right half: " + Arrays.toString(Arrays.copyOfRange(array, mid + 1, right + 1)));
+        System.out.println(indent + "Dividir: " + Arrays.toString(Arrays.copyOfRange(array, left, right + 1)));
+        System.out.println(indent + "  Mitad izquierda: " + Arrays.toString(Arrays.copyOfRange(array, left, mid + 1)));
+        System.out.println(indent + "  Mitad derecha: " + Arrays.toString(Arrays.copyOfRange(array, mid + 1, right + 1)));
         System.out.println();
 
-        // Recursively sort left half
+        // Ordenar recursivamente la mitad izquierda
         mergeSort(array, left, mid, depth + 1);
 
-        // Recursively sort right half
+        // Ordenar recursivamente la mitad derecha
         mergeSort(array, mid + 1, right, depth + 1);
 
-        // Merge the sorted halves
+        // Fusionar las mitades ordenadas
         merge(array, left, mid, right);
 
-        System.out.println(indent + "Merged: " + Arrays.toString(Arrays.copyOfRange(array, left, right + 1)));
+        System.out.println(indent + "Fusionado: " + Arrays.toString(Arrays.copyOfRange(array, left, right + 1)));
         System.out.println();
     }
 

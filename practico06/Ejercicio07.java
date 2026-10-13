@@ -1,6 +1,6 @@
 /*
 Prompt inicial utilizado:
-Implement Quicksort on an already sorted array: {1, 2, 3, 4, 5, 6, 7}. The program should count and display the total number of recursive calls made. Use the first element as the pivot. Include comments explaining why this is the worst-case scenario for Quicksort (O(n^2) time complexity) and how it leads to unbalanced partitions. Display the recursion depth and the state of partitioning at each step. Verify the count by tracing through the recursion manually.
+Implementar Quicksort sobre un arreglo ya ordenado: {1, 2, 3, 4, 5, 6, 7}. El programa debe contar y mostrar el total de llamadas recursivas realizadas. Usar el primer elemento como pivote. Incluir comentarios que expliquen por qué este es el peor caso de Quicksort (complejidad de tiempo O(n^2)) y cómo conduce a particiones desbalanceadas. Mostrar la profundidad de la recursión y el estado de la partición en cada paso. Verificar el conteo siguiendo la recursión manualmente.
 
 Ajustes realizados:
 Ninguno
@@ -15,20 +15,20 @@ public class Ejercicio07 {
     public static void main(String[] args) {
         int[] array = {1, 2, 3, 4, 5, 6, 7};
 
-        System.out.println("=== Quicksort Worst Case (Sorted Array) ===");
-        System.out.println("Original array: " + Arrays.toString(array));
+        System.out.println("=== Peor Caso de Quicksort (Arreglo Ordenado) ===");
+        System.out.println("Arreglo original: " + Arrays.toString(array));
         System.out.println();
 
         quickSort(array, 0, array.length - 1, 0);
 
         System.out.println();
-        System.out.println("Sorted array: " + Arrays.toString(array));
-        System.out.println("Total recursive calls: " + recursiveCalls);
-        System.out.println("Maximum recursion depth: " + maxDepth);
+        System.out.println("Arreglo ordenado: " + Arrays.toString(array));
+        System.out.println("Total de llamadas recursivas: " + recursiveCalls);
+        System.out.println("Profundidad máxima de recursión: " + maxDepth);
         System.out.println();
-        System.out.println("Explanation: With first element as pivot on a sorted array,");
-        System.out.println("each partition creates one empty subarray and one subarray of size n-1.");
-        System.out.println("This results in O(n^2) time complexity - the worst case for Quicksort.");
+        System.out.println("Explicación: Con el primer elemento como pivote en un arreglo ordenado,");
+        System.out.println("cada partición crea un subarreglo vacío y un subarreglo de tamaño n-1.");
+        System.out.println("Esto resulta en una complejidad de tiempo O(n^2) - el peor caso de Quicksort.");
     }
 
     static void quickSort(int[] array, int low, int high, int depth) {
@@ -42,12 +42,12 @@ public class Ejercicio07 {
         }
 
         String indent = "  ".repeat(depth);
-        System.out.println(indent + "Call " + recursiveCalls + " (depth " + depth + "): " + Arrays.toString(Arrays.copyOfRange(array, low, high + 1)));
+        System.out.println(indent + "Llamada " + recursiveCalls + " (profundidad " + depth + "): " + Arrays.toString(Arrays.copyOfRange(array, low, high + 1)));
 
-        // Choose first element as pivot
+        // Elegir el primer elemento como pivote
         int pivot = array[low];
 
-        // Partition using Lomuto scheme (swap pivot to end first)
+        // Particionar usando el esquema de Lomuto (primero intercambiar el pivote al final)
         int temp = array[low];
         array[low] = array[high];
         array[high] = temp;
@@ -70,12 +70,12 @@ public class Ejercicio07 {
 
         int pivotIndex = i + 1;
 
-        System.out.println(indent + "  Pivot: " + pivot);
-        System.out.println(indent + "  Left: " + Arrays.toString(Arrays.copyOfRange(array, low, pivotIndex)));
-        System.out.println(indent + "  Right: " + Arrays.toString(Arrays.copyOfRange(array, pivotIndex + 1, high + 1)));
+        System.out.println(indent + "  Pivote: " + pivot);
+        System.out.println(indent + "  Izquierda: " + Arrays.toString(Arrays.copyOfRange(array, low, pivotIndex)));
+        System.out.println(indent + "  Derecha: " + Arrays.toString(Arrays.copyOfRange(array, pivotIndex + 1, high + 1)));
         System.out.println();
 
-        // Recursively sort left and right subarrays
+        // Ordenar recursivamente los subarreglos izquierdo y derecho
         quickSort(array, low, pivotIndex - 1, depth + 1);
         quickSort(array, pivotIndex + 1, high, depth + 1);
     }

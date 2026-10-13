@@ -1,6 +1,6 @@
 /*
 Prompt inicial utilizado:
-Implement two sorting algorithms: bubbleSort(int[] array) and selectionSort(int[] array). Both must sort the same array. The program should count and display the number of comparisons and swaps for each algorithm. Use the array {64, 34, 25, 12, 22, 11, 90} as input. Print the original array, the sorted array from each algorithm, and a comparison table showing which algorithm performed better. Include comments explaining the difference in comparison and swap counts.
+Implementar dos algoritmos de ordenamiento: bubbleSort(int[] array) y selectionSort(int[] array). Ambos deben ordenar el mismo arreglo. El programa debe contar y mostrar el número de comparaciones e intercambios de cada algoritmo. Usar el arreglo {64, 34, 25, 12, 22, 11, 90} como entrada. Imprimir el arreglo original, el arreglo ordenado de cada algoritmo y una tabla de comparación que muestre qué algoritmo tuvo mejor desempeño. Incluir comentarios que expliquen la diferencia en la cantidad de comparaciones e intercambios.
 
 Ajustes realizados:
 Ninguno
@@ -26,41 +26,41 @@ public class Ejercicio02 {
         int[] original = {64, 34, 25, 12, 22, 11, 90};
 
         System.out.println("=== Bubble Sort vs Selection Sort ===");
-        System.out.println("Original array: " + Arrays.toString(original));
+        System.out.println("Arreglo original: " + Arrays.toString(original));
         System.out.println();
 
-        // Test Bubble Sort
+        // Probar Bubble Sort
         int[] bubbleArray = original.clone();
         SortResult bubbleResult = bubbleSort(bubbleArray);
 
-        // Test Selection Sort
+        // Probar Selection Sort
         int[] selectionArray = original.clone();
         SortResult selectionResult = selectionSort(selectionArray);
 
-        // Display results
+        // Mostrar resultados
         System.out.println("Bubble Sort:");
-        System.out.println("  Sorted array: " + Arrays.toString(bubbleResult.sortedArray));
-        System.out.println("  Comparisons: " + bubbleResult.comparisons);
-        System.out.println("  Swaps: " + bubbleResult.swaps);
+        System.out.println("  Arreglo ordenado: " + Arrays.toString(bubbleResult.sortedArray));
+        System.out.println("  Comparaciones: " + bubbleResult.comparisons);
+        System.out.println("  Intercambios: " + bubbleResult.swaps);
         System.out.println();
 
         System.out.println("Selection Sort:");
-        System.out.println("  Sorted array: " + Arrays.toString(selectionResult.sortedArray));
-        System.out.println("  Comparisons: " + selectionResult.comparisons);
-        System.out.println("  Swaps: " + selectionResult.swaps);
+        System.out.println("  Arreglo ordenado: " + Arrays.toString(selectionResult.sortedArray));
+        System.out.println("  Comparaciones: " + selectionResult.comparisons);
+        System.out.println("  Intercambios: " + selectionResult.swaps);
         System.out.println();
 
-        // Comparison
-        System.out.println("=== Comparison ===");
-        System.out.println("Bubble Sort made " + bubbleResult.comparisons + " comparisons and " + bubbleResult.swaps + " swaps.");
-        System.out.println("Selection Sort made " + selectionResult.comparisons + " comparisons and " + selectionResult.swaps + " swaps.");
+        // Comparación
+        System.out.println("=== Comparación ===");
+        System.out.println("Bubble Sort realizó " + bubbleResult.comparisons + " comparaciones y " + bubbleResult.swaps + " intercambios.");
+        System.out.println("Selection Sort realizó " + selectionResult.comparisons + " comparaciones y " + selectionResult.swaps + " intercambios.");
 
         if (bubbleResult.comparisons > selectionResult.comparisons) {
-            System.out.println("Selection Sort required fewer comparisons.");
+            System.out.println("Selection Sort requirió menos comparaciones.");
         } else if (bubbleResult.comparisons < selectionResult.comparisons) {
-            System.out.println("Bubble Sort required fewer comparisons.");
+            System.out.println("Bubble Sort requirió menos comparaciones.");
         } else {
-            System.out.println("Both algorithms required the same number of comparisons.");
+            System.out.println("Ambos algoritmos requirieron la misma cantidad de comparaciones.");
         }
     }
 

@@ -1,6 +1,6 @@
 /*
 Prompt inicial utilizado:
-Implement three sorting algorithms: Bubble Sort, Selection Sort, and Insertion Sort. All three must sort the same array. The program should display: the original array, the sorted array from each algorithm, the number of comparisons, and the number of swaps/shifts for each algorithm. Use the array {64, 34, 25, 12, 22, 11, 90} as input. Include a comparison table showing which algorithm performed best. Add comments explaining the differences in performance between the three algorithms. Verify that all three produce the same sorted result.
+Implementar tres algoritmos de ordenamiento: Bubble Sort, Selection Sort e Insertion Sort. Los tres deben ordenar el mismo arreglo. El programa debe mostrar: el arreglo original, el arreglo ordenado de cada algoritmo, el número de comparaciones y el número de intercambios/corrimientos de cada algoritmo. Usar el arreglo {64, 34, 25, 12, 22, 11, 90} como entrada. Incluir una tabla de comparación que muestre qué algoritmo tuvo el mejor desempeño. Agregar comentarios que expliquen las diferencias de rendimiento entre los tres algoritmos. Verificar que los tres produzcan el mismo resultado ordenado.
 
 Ajustes realizados:
 Ninguno
@@ -27,37 +27,37 @@ public class Ejercicio09 {
     public static void main(String[] args) {
         int[] original = {64, 34, 25, 12, 22, 11, 90};
 
-        System.out.println("=== Comparison of Simple Sorting Algorithms ===");
-        System.out.println("Original array: " + Arrays.toString(original));
+        System.out.println("=== Comparación de Algoritmos de Ordenamiento Simples ===");
+        System.out.println("Arreglo original: " + Arrays.toString(original));
         System.out.println();
 
-        // Test all three algorithms
+        // Probar los tres algoritmos
         SortResult bubble = bubbleSort(original.clone());
         SortResult selection = selectionSort(original.clone());
         SortResult insertion = insertionSort(original.clone());
 
-        // Display results
+        // Mostrar resultados
         System.out.println("Bubble Sort:");
-        System.out.println("  Sorted: " + Arrays.toString(bubble.sortedArray));
-        System.out.println("  Comparisons: " + bubble.comparisons);
-        System.out.println("  Swaps: " + bubble.swaps);
+        System.out.println("  Ordenado: " + Arrays.toString(bubble.sortedArray));
+        System.out.println("  Comparaciones: " + bubble.comparisons);
+        System.out.println("  Intercambios: " + bubble.swaps);
         System.out.println();
 
         System.out.println("Selection Sort:");
-        System.out.println("  Sorted: " + Arrays.toString(selection.sortedArray));
-        System.out.println("  Comparisons: " + selection.comparisons);
-        System.out.println("  Swaps: " + selection.swaps);
+        System.out.println("  Ordenado: " + Arrays.toString(selection.sortedArray));
+        System.out.println("  Comparaciones: " + selection.comparisons);
+        System.out.println("  Intercambios: " + selection.swaps);
         System.out.println();
 
         System.out.println("Insertion Sort:");
-        System.out.println("  Sorted: " + Arrays.toString(insertion.sortedArray));
-        System.out.println("  Comparisons: " + insertion.comparisons);
-        System.out.println("  Shifts: " + insertion.swaps);
+        System.out.println("  Ordenado: " + Arrays.toString(insertion.sortedArray));
+        System.out.println("  Comparaciones: " + insertion.comparisons);
+        System.out.println("  Corrimientos: " + insertion.swaps);
         System.out.println();
 
-        // Comparison table
-        System.out.println("=== Summary Table ===");
-        System.out.printf("%-15s %-12s %-12s%n", "Algorithm", "Comparisons", "Swaps/Shifts");
+        // Tabla de comparación
+        System.out.println("=== Tabla Resumen ===");
+        System.out.printf("%-15s %-12s %-12s%n", "Algoritmo", "Comparaciones", "Intercambios/Corrimientos");
         System.out.println("-".repeat(40));
         System.out.printf("%-15s %-12d %-12d%n", "Bubble Sort", bubble.comparisons, bubble.swaps);
         System.out.printf("%-15s %-12d %-12d%n", "Selection Sort", selection.comparisons, selection.swaps);

@@ -1,6 +1,6 @@
 /*
 Prompt inicial utilizado:
-Implement ShellSort algorithm. The program should display the original array, show the gap value used in each stage, and display the state of the array after each pass. Use the gap sequence: start with gap = n/2 and halve it each time until gap = 0. Use the array {64, 34, 25, 12, 22, 11, 90, 45} as input. Include comments explaining how ShellSort improves upon Insertion Sort by sorting elements far apart first. Verify the result by confirming the array is sorted in ascending order.
+Implementar el algoritmo ShellSort. El programa debe mostrar el arreglo original, mostrar el valor de la brecha (gap) utilizado en cada etapa y mostrar el estado del arreglo después de cada pasada. Usar la secuencia de brechas: empezar con gap = n/2 y dividirla a la mitad cada vez hasta que gap = 0. Usar el arreglo {64, 34, 25, 12, 22, 11, 90, 45} como entrada. Incluir comentarios que expliquen cómo ShellSort mejora Insertion Sort al ordenar primero elementos separados por grandes distancias. Verificar el resultado confirmando que el arreglo está ordenado en orden ascendente.
 
 Ajustes realizados:
 Ninguno
@@ -12,14 +12,14 @@ public class Ejercicio05 {
     public static void main(String[] args) {
         int[] array = {64, 34, 25, 12, 22, 11, 90, 45};
 
-        System.out.println("=== ShellSort with Gap Explanation ===");
-        System.out.println("Original array: " + Arrays.toString(array));
+        System.out.println("=== ShellSort con Explicación de la Brecha ===");
+        System.out.println("Arreglo original: " + Arrays.toString(array));
         System.out.println();
 
         shellSort(array);
 
         System.out.println();
-        System.out.println("Sorted array: " + Arrays.toString(array));
+        System.out.println("Arreglo ordenado: " + Arrays.toString(array));
     }
 
     static void shellSort(int[] array) {
@@ -29,7 +29,7 @@ public class Ejercicio05 {
         while (gap > 0) {
             System.out.println("--- Gap = " + gap + " ---");
 
-            // Perform gapped insertion sort
+            // Realizar insertion sort con brecha
             for (int i = gap; i < n; i++) {
                 int temp = array[i];
                 int j = i;
@@ -42,7 +42,7 @@ public class Ejercicio05 {
                 array[j] = temp;
             }
 
-            System.out.println("After gap " + gap + ": " + Arrays.toString(array));
+            System.out.println("Después del gap " + gap + ": " + Arrays.toString(array));
             System.out.println();
 
             gap /= 2;

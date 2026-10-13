@@ -1,6 +1,6 @@
 /*
 Prompt inicial utilizado:
-Implement a ranking system that receives an array of players with name and score. Sort the players from highest to lowest score using the most appropriate sorting algorithm. Example input: Player("Ana", 1200), Player("Pedro", 900), Player("Lucia", 1500). The program should display the original list, the sorted ranking, and explain why the chosen algorithm is appropriate. Include a Player class with name and score fields. Use Selection Sort for simplicity with small datasets. Verify the result by confirming scores are in descending order.
+Implementar un sistema de ranking que reciba un arreglo de jugadores con nombre y puntaje. Ordenar los jugadores de mayor a menor puntaje usando el algoritmo más adecuado. Entrada de ejemplo: Player("Ana", 1200), Player("Pedro", 900), Player("Lucia", 1500). El programa debe mostrar la lista original, el ranking ordenado y explicar por qué el algoritmo elegido es apropiado. Incluir una clase Player con los campos nombre y puntaje. Usar Selection Sort por simplicidad con conjuntos de datos pequeños. Verificar el resultado confirmando que los puntajes están en orden descendente.
 
 Ajustes realizados:
 Ninguno
@@ -34,23 +34,23 @@ public class Ejercicio10 {
             new Player("Maria", 1350)
         };
 
-        System.out.println("=== Player Ranking System ===");
-        System.out.println("Original list:");
+        System.out.println("=== Sistema de Ranking de Jugadores ===");
+        System.out.println("Lista original:");
         printRanking(players);
         System.out.println();
 
-        // Sort by score descending using Selection Sort
+        // Ordenar por puntaje de mayor a menor usando Selection Sort
         selectionSortDescending(players);
 
-        System.out.println("Sorted ranking (highest to lowest):");
+        System.out.println("Ranking ordenado (de mayor a menor):");
         printRanking(players);
         System.out.println();
 
-        System.out.println("Algorithm choice: Selection Sort");
-        System.out.println("Reason: For small datasets, Selection Sort is simple and performs");
-        System.out.println("at most n-1 swaps, making it efficient for ranking systems where");
-        System.out.println("the number of players is limited. For larger datasets, Quicksort");
-        System.out.println("or MergeSort would be more appropriate.");
+        System.out.println("Algoritmo elegido: Selection Sort");
+        System.out.println("Motivo: Para conjuntos de datos pequeños, Selection Sort es simple y realiza");
+        System.out.println("como máximo n-1 intercambios, lo que lo eficientiza en sistemas de ranking donde");
+        System.out.println("el número de jugadores es limitado. Para conjuntos de datos más grandes,");
+        System.out.println("Quicksort o MergeSort serían más apropiados.");
     }
 
     static void selectionSortDescending(Player[] array) {
