@@ -12,31 +12,31 @@ public class Ejercicio03 {
 
     public static void main(String[] args) {
 
-        // Create a Scanner object that reads input from the console (System.in).
+        // Crea un objeto Scanner que lee la entrada desde la consola (System.in).
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("=== User Registration ===");
+        System.out.println("=== Registro de usuario ===");
 
-        // Prompt the user to enter their name and read the input as a String.
-        System.out.print("Enter your name: ");
+        // Pide al usuario que ingrese su nombre y lee la entrada como String.
+        System.out.print("Ingrese su nombre: ");
         String name = scanner.nextLine();
 
-        // Prompt the user to enter their age and read the input as an integer.
-        System.out.print("Enter your age: ");
+        // Pide al usuario que ingrese su edad y lee la entrada como un entero.
+        System.out.print("Ingrese su edad: ");
         int age = scanner.nextInt();
 
-        // Display a personalized message using the data entered by the user.
+        // Muestra un mensaje personalizado con los datos ingresados por el usuario.
         System.out.println();
-        System.out.println("Hello, " + name + "! You are " + age + " years old.");
+        System.out.println("¡Hola, " + name + "! Tienes " + age + " años.");
 
-        // Conditional message based on age.
+        // Mensaje condicional según la edad.
         if (age >= 18) {
-            System.out.println("You are an adult.");
+            System.out.println("Eres mayor de edad.");
         } else {
-            System.out.println("You are a minor.");
+            System.out.println("Eres menor de edad.");
         }
 
-        // Always close the Scanner to release system resources.
+        // Cierra siempre el Scanner para liberar los recursos del sistema.
         scanner.close();
     }
 }

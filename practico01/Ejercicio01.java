@@ -6,18 +6,18 @@ Ajustes realizados:
 Ninguno
 */
 
-// Every Java program needs a public class whose name matches the file name.
+// Cada programa Java necesita una clase pública cuyo nombre coincida con el nombre del archivo.
 public class Ejercicio01 {
 
-    // The main method is the entry point of any Java application.
-    // public: accessible from anywhere.
-    // static: belongs to the class, not to an instance.
-    // void: does not return any value.
-    // String[] args: command-line arguments.
+    // El método main es el punto de entrada de cualquier aplicación Java.
+    // public: accesible desde cualquier lugar.
+    // static: pertenece a la clase, no a una instancia.
+    // void: no devuelve ningún valor.
+    // String[] args: argumentos de la línea de comandos.
     public static void main(String[] args) {
 
-        // System.out.println prints a line of text to the console
-        // followed by a newline character.
-        System.out.println("Hello, World! This is my first Java program.");
+        // System.out.println imprime una línea de texto en la consola
+        // seguida de un carácter de salto de línea.
+        System.out.println("¡Hola, Mundo! Este es mi primer programa en Java.");
     }
 }

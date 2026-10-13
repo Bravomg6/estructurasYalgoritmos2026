@@ -10,81 +10,81 @@ public class Ejercicio12 {
 
     public static void main(String[] args) {
 
-        System.out.println("=== Student (Alumno) Management ===");
+        System.out.println("=== Gestión de alumnos ===");
         System.out.println();
 
-        // Create three Alumno objects using the constructor.
-        // Each object is an independent instance with its own attribute values.
+        // Crea tres objetos Alumno usando el constructor.
+        // Cada objeto es una instancia independiente con sus propios valores de atributo.
         Alumno student1 = new Alumno("Alice Johnson", 20);
         Alumno student2 = new Alumno("Bob Smith", 22);
         Alumno student3 = new Alumno("Carol Davis", 19);
 
-        // Display the data of each student using the showInfo() method.
-        System.out.println("--- Student 1 ---");
+        // Muestra los datos de cada alumno usando el método showInfo().
+        System.out.println("--- Alumno 1 ---");
         student1.showInfo();
 
-        System.out.println("--- Student 2 ---");
+        System.out.println("--- Alumno 2 ---");
         student2.showInfo();
 
-        System.out.println("--- Student 3 ---");
+        System.out.println("--- Alumno 3 ---");
         student3.showInfo();
 
-        // Demonstrate the use of individual getter methods.
-        System.out.println("=== Accessing individual attributes ===");
-        System.out.println("Name of student 1: " + student1.getName());
-        System.out.println("Age of student 2:  " + student2.getAge());
+        // Demuestra el uso de los métodos getter individuales.
+        System.out.println("=== Acceso a atributos individuales ===");
+        System.out.println("Nombre del alumno 1: " + student1.getName());
+        System.out.println("Edad del alumno 2:   " + student2.getAge());
 
-        // Demonstrate the use of setter methods to modify attributes.
+        // Demuestra el uso de los métodos setter para modificar atributos.
         System.out.println();
-        System.out.println("=== Modifying student 3 ===");
+        System.out.println("=== Modificación del alumno 3 ===");
         student3.setAge(20);
-        System.out.println("Updated age of " + student3.getName() + ": " + student3.getAge());
+        System.out.println("Edad actualizada de " + student3.getName() + ": " + student3.getAge());
     }
 }
 
-// The Alumno class encapsulates the data and behavior of a student.
+// La clase Alumno encapsula los datos y el comportamiento de un alumno.
 class Alumno {
 
-    // Private attributes: they can only be accessed from within this class.
-    // This is the basic principle of encapsulation.
+    // Atributos privados: solo pueden accederse desde dentro de esta clase.
+    // Este es el principio básico de la encapsulación.
     private String name;
     private int age;
 
-    // Constructor: called automatically when a new object is created.
-    // It initializes the attributes with the provided values.
+    // Constructor: se llama automáticamente cuando se crea un nuevo objeto.
+    // Inicializa los atributos con los valores proporcionados.
     public Alumno(String name, int age) {
-        this.name = name;   // 'this' refers to the current object's attribute
+        this.name = name;   // 'this' hace referencia al atributo del objeto actual
         this.age = age;
     }
 
-    // Getter for name: allows external code to read the name safely.
+    // Getter de name: permite leer el nombre desde código externo de forma segura.
     public String getName() {
         return this.name;
     }
 
-    // Setter for name: allows external code to modify the name safely.
+    // Setter de name: permite modificar el nombre desde código externo de forma segura.
     public void setName(String name) {
         this.name = name;
     }
 
-    // Getter for age: allows external code to read the age safely.
+    // Getter de age: permite leer la edad desde código externo de forma segura.
     public int getAge() {
         return this.age;
     }
 
-    // Setter for age: allows external code to modify the age with validation.
+    // Setter de age: permite modificar la edad desde código externo con validación.
     public void setAge(int age) {
         if (age > 0 && age < 150) {
             this.age = age;
         } else {
-            System.out.println("Error: invalid age (" + age + "). Age must be between 1 and 149.");
+            System.out.println("Error: edad no válida (" + age + "). La edad debe estar entre 1 y 149.");
         }
     }
 
-    // Method that displays all the student's information.
+    // Método que muestra toda la información del alumno.
     public void showInfo() {
-        System.out.println("Name: " + this.name);
-        System.out.println("Age:  " + this.age);
+        System.out.println("Nombre: " + this.name);
+        System.out.println("Edad:   " + this.age);
         System.out.println();
     }
 }

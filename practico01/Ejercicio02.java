@@ -10,33 +10,33 @@ public class Ejercicio02 {
 
     public static void main(String[] args) {
 
-        // byte:  8-bit signed integer. Range: -128 to 127.
+        // byte: entero con signo de 8 bits. Rango: -128 a 127.
         byte smallNumber = 42;
 
-        // short: 16-bit signed integer. Range: -32768 to 32767.
+        // short: entero con signo de 16 bits. Rango: -32768 a 32767.
         short mediumNumber = 30000;
 
-        // int: 32-bit signed integer. Most commonly used integer type.
+        // int: entero con signo de 32 bits. Tipo entero más utilizado.
         int age = 25;
 
-        // long: 64-bit signed integer. Use 'L' suffix for large literals.
+        // long: entero con signo de 64 bits. Use el sufijo 'L' para literales grandes.
         long bigNumber = 9876543210L;
 
-        // float: 32-bit floating point. Use 'f' suffix for float literals.
-        // Less precise than double, uses less memory.
+        // float: punto flotante de 32 bits. Use el sufijo 'f' para literales float.
+        // Menos preciso que double, ocupa menos memoria.
         float temperature = 23.5f;
 
-        // double: 64-bit floating point. Default type for decimals.
+        // double: punto flotante de 64 bits. Tipo predeterminado para decimales.
         double pi = 3.141592653589793;
 
-        // boolean: holds only true or false.
+        // boolean: solo almacena true o false.
         boolean isActive = true;
 
-        // char: 16-bit Unicode character. Written with single quotes.
+        // char: carácter Unicode de 16 bits. Se escribe entre comillas simples.
         char grade = 'A';
 
-        // Print all declared variables to the console.
-        System.out.println("=== Primitive Types in Java ===");
+        // Imprime todas las variables declaradas en la consola.
+        System.out.println("=== Tipos primitivos en Java ===");
         System.out.println("byte   smallNumber    = " + smallNumber);
         System.out.println("short  mediumNumber   = " + mediumNumber);
         System.out.println("int    age            = " + age);
@@ -46,9 +46,9 @@ public class Ejercicio02 {
         System.out.println("boolean isActive      = " + isActive);
         System.out.println("char   grade          = " + grade);
 
-        // Demonstrate the size (in bits) of each primitive type.
+        // Muestra el tamaño (en bits) de cada tipo primitivo.
         System.out.println();
-        System.out.println("=== Size of each primitive type ===");
+        System.out.println("=== Tamaño de cada tipo primitivo ===");
         System.out.println("byte:   " + Byte.SIZE   + " bits");
         System.out.println("short:  " + Short.SIZE  + " bits");
         System.out.println("int:    " + Integer.SIZE + " bits");

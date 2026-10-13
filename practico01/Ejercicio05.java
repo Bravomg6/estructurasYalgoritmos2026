@@ -14,27 +14,27 @@ public class Ejercicio05 {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("=== Grade Evaluation ===");
+        System.out.println("=== Evaluación de nota ===");
 
-        // Request the numeric grade from the user.
-        System.out.print("Enter the student's grade (0-10): ");
+        // Solicita al usuario la nota numérica.
+        System.out.print("Ingrese la nota del alumno (0-10): ");
         int grade = scanner.nextInt();
 
-        // Validate that the grade is within the valid range (0 to 10).
+        // Valida que la nota esté dentro del rango válido (0 a 10).
         if (grade < 0 || grade > 10) {
-            System.out.println("Error: the grade must be between 0 and 10.");
+            System.out.println("Error: la nota debe estar entre 0 y 10.");
         } else if (grade >= 9) {
-            // Grade 9 or 10: promoted (highest distinction).
-            System.out.println("Status: PROMOTED. Excellent work!");
+            // Nota 9 o 10: promocionó (máxima distinción).
+            System.out.println("Estado: PROMOCIONÓ. ¡Excelente trabajo!");
         } else if (grade >= 7) {
-            // Grade 7 or 8: approved with good performance.
-            System.out.println("Status: APPROVED. Good job!");
+            // Nota 7 u 8: aprobó con buen desempeño.
+            System.out.println("Estado: APROBÓ. ¡Buen trabajo!");
         } else if (grade >= 5) {
-            // Grade 5 or 6: approved but needs reinforcement.
-            System.out.println("Status: APPROVED. You should reinforce some topics.");
+            // Nota 5 o 6: aprobó pero necesita refuerzo.
+            System.out.println("Estado: APROBÓ. Conviene reforzar algunos temas.");
         } else {
-            // Grade below 5: failed.
-            System.out.println("Status: FAILED. You need to retake the exam.");
+            // Nota menor a 5: desaprobó.
+            System.out.println("Estado: DESAPROBÓ. Es necesario rendir el examen nuevamente.");
         }
 
         scanner.close();

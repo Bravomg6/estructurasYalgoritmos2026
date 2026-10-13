@@ -14,20 +14,20 @@ public class Ejercicio08 {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("=== Multiplication Table Generator ===");
+        System.out.println("=== Generador de tabla de multiplicar ===");
 
-        // Ask the user for the number to generate its multiplication table.
-        System.out.print("Enter a number to see its multiplication table: ");
+        // Pide al usuario el número para generar su tabla de multiplicar.
+        System.out.print("Ingrese un número para ver su tabla de multiplicar: ");
         int number = scanner.nextInt();
 
         System.out.println();
-        System.out.println("Multiplication table for " + number + ":");
+        System.out.println("Tabla de multiplicar del número " + number + ":");
         System.out.println("-----------------------------------");
 
-        // The for loop has three parts:
-        // 1. Initialization: int i = 1 (start value of the control variable).
-        // 2. Condition: i <= 10 (the loop continues while this is true).
-        // 3. Increment: i++ (the control variable increases by 1 after each iteration).
+        // El bucle for tiene tres partes:
+        // 1. Inicialización: int i = 1 (valor inicial de la variable de control).
+        // 2. Condición: i <= 10 (el bucle continúa mientras sea verdadera).
+        // 3. Incremento: i++ (la variable de control aumenta en 1 después de cada iteración).
         for (int i = 1; i <= 10; i++) {
             int result = number * i;
             System.out.println(number + " x " + i + " = " + result);

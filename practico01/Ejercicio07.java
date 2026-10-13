@@ -14,32 +14,32 @@ public class Ejercicio07 {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("=== While Loop Counter ===");
+        System.out.println("=== Contador con bucle while ===");
 
-        // Ask the user for the limit of the counter.
-        System.out.print("Enter the upper limit for the counter: ");
+        // Pide al usuario el límite del contador.
+        System.out.print("Ingrese el límite superior del contador: ");
         int limit = scanner.nextInt();
 
-        // Validate that the limit is positive.
+        // Valida que el límite sea positivo.
         if (limit <= 0) {
-            System.out.println("Error: the limit must be a positive number.");
+            System.out.println("Error: el límite debe ser un número positivo.");
             scanner.close();
             return;
         }
 
-        // Initialize the counter variable (start value).
+        // Inicializa la variable contador (valor inicial).
         int counter = 1;
 
-        // The while loop repeats the block as long as the condition is true.
-        // IMPORTANT: the counter must be incremented inside the loop to avoid an infinite loop.
+        // El bucle while repite el bloque mientras la condición sea verdadera.
+        // IMPORTANTE: el contador debe incrementarse dentro del bucle para evitar un bucle infinito.
         while (counter <= limit) {
-            System.out.println("Counter: " + counter);
+            System.out.println("Contador: " + counter);
 
-            // Increment the counter by 1 to move toward the exit condition.
+            // Incrementa el contador en 1 para avanzar hacia la condición de salida.
             counter++;
         }
 
-        System.out.println("Counter finished. Final value: " + counter);
+        System.out.println("Contador finalizado. Valor final: " + counter);
 
         scanner.close();
     }

@@ -14,24 +14,24 @@ public class Ejercicio04 {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("=== Basic Calculator ===");
+        System.out.println("=== Calculadora básica ===");
 
-        // Read the first number.
-        System.out.print("Enter the first number: ");
+        // Lee el primer número.
+        System.out.print("Ingrese el primer número: ");
         double num1 = scanner.nextDouble();
 
-        // Read the operator as a single character.
-        System.out.print("Enter an operator (+, -, *, /, %): ");
+        // Lee el operador como un solo carácter.
+        System.out.print("Ingrese un operador (+, -, *, /, %): ");
         char operator = scanner.next().charAt(0);
 
-        // Read the second number.
-        System.out.print("Enter the second number: ");
+        // Lee el segundo número.
+        System.out.print("Ingrese el segundo número: ");
         double num2 = scanner.nextDouble();
 
         double result;
         boolean validOperation = true;
 
-        // Perform the operation based on the operator entered.
+        // Realiza la operación según el operador ingresado.
         switch (operator) {
             case '+':
                 result = num1 + num2;
@@ -43,9 +43,9 @@ public class Ejercicio04 {
                 result = num1 * num2;
                 break;
             case '/':
-                // Validate division by zero before performing the operation.
+                // Valida la división por cero antes de realizar la operación.
                 if (num2 == 0) {
-                    System.out.println("Error: division by zero is not allowed.");
+                    System.out.println("Error: no se permite la división por cero.");
                     validOperation = false;
                     result = 0;
                 } else {
@@ -53,9 +53,9 @@ public class Ejercicio04 {
                 }
                 break;
             case '%':
-                // Validate modulo by zero before performing the operation.
+                // Valida el módulo por cero antes de realizar la operación.
                 if (num2 == 0) {
-                    System.out.println("Error: modulo by zero is not allowed.");
+                    System.out.println("Error: no se permite el módulo por cero.");
                     validOperation = false;
                     result = 0;
                 } else {
@@ -63,12 +63,12 @@ public class Ejercicio04 {
                 }
                 break;
             default:
-                System.out.println("Error: invalid operator '" + operator + "'.");
+                System.out.println("Error: operador no válido '" + operator + "'.");
                 validOperation = false;
                 result = 0;
         }
 
-        // Display the result only if the operation was valid.
+        // Muestra el resultado solo si la operación fue válida.
         if (validOperation) {
             System.out.println();
             System.out.println(num1 + " " + operator + " " + num2 + " = " + result);

@@ -15,82 +15,82 @@ public class Ejercicio11 {
 
         Scanner scanner = new Scanner(System.in);
 
-        // ArrayList is a dynamic collection: it grows and shrinks automatically.
-        // Unlike arrays, we do not need to specify a fixed size.
-        // The <String> generics parameter means this list stores only Strings.
+        // ArrayList es una colección dinámica: crece y se reduce automáticamente.
+        // A diferencia de los arreglos, no es necesario indicar un tamaño fijo.
+        // El parámetro genérico <String> indica que esta lista almacena solo String.
         ArrayList<String> students = new ArrayList<>();
 
-        System.out.println("=== Student List Manager ===");
-        System.out.println("Enter student names (type 'done' to finish):");
+        System.out.println("=== Gestor de lista de alumnos ===");
+        System.out.println("Ingrese nombres de alumnos (escriba 'done' para finalizar):");
         System.out.println();
 
-        // Read names in a loop until the user types "done".
+        // Lee nombres en un bucle hasta que el usuario escriba "done".
         while (true) {
-            System.out.print("Enter a name (or 'done' to finish): ");
+            System.out.print("Ingrese un nombre (o 'done' para finalizar): ");
             String name = scanner.nextLine();
 
-            // Check if the user wants to stop entering names.
+            // Verifica si el usuario quiere dejar de ingresar nombres.
             if (name.equalsIgnoreCase("done")) {
                 break;
             }
 
-            // Validate that the name is not empty before adding it.
+            // Valida que el nombre no esté vacío antes de agregarlo.
             if (name.trim().isEmpty()) {
-                System.out.println("Error: the name cannot be empty. Try again.");
+                System.out.println("Error: el nombre no puede estar vacío. Intente de nuevo.");
                 continue;
             }
 
-            // add() inserts the new element at the end of the ArrayList.
+            // add() inserta el nuevo elemento al final del ArrayList.
             students.add(name);
-            System.out.println("Added '" + name + "'. Total students: " + students.size());
+            System.out.println("Se agregó '" + name + "'. Total de alumnos: " + students.size());
         }
 
         System.out.println();
-        System.out.println("=== Complete Student List ===");
+        System.out.println("=== Lista completa de alumnos ===");
 
-        // Check if the list is empty before trying to display it.
+        // Verifica si la lista está vacía antes de intentar mostrarla.
         if (students.isEmpty()) {
-            System.out.println("No students were registered.");
+            System.out.println("No se registró ningún alumno.");
         } else {
-            // size() returns the number of elements currently in the ArrayList.
+            // size() devuelve la cantidad de elementos que tiene el ArrayList.
             int total = students.size();
-            System.out.println("Total students registered: " + total);
+            System.out.println("Total de alumnos registrados: " + total);
             System.out.println();
 
-            // Display each student using get(index) to access elements by position.
+            // Muestra cada alumno usando get(index) para acceder a los elementos por posición.
             for (int i = 0; i < total; i++) {
-                // get(i) retrieves the element at index i (0-based).
+                // get(i) obtiene el elemento en el índice i (comenzando en 0).
                 String studentName = students.get(i);
                 System.out.println((i + 1) + ". " + studentName);
             }
 
-            // Demonstrate additional ArrayList operations.
+            // Demuestra operaciones adicionales con ArrayList.
             System.out.println();
-            System.out.println("=== Additional Operations ===");
-            System.out.println("First student: " + students.get(0));
-            System.out.println("Last student:  " + students.get(total - 1));
+            System.out.println("=== Operaciones adicionales ===");
+            System.out.println("Primer alumno: " + students.get(0));
+            System.out.println("Último alumno: " + students.get(total - 1));
 
-            // contains() checks if an element exists in the list.
-            System.out.print("Search for a name: ");
+            // contains() verifica si un elemento existe en la lista.
+            System.out.print("Buscar un nombre: ");
             String searchName = scanner.nextLine();
             if (students.contains(searchName)) {
-                System.out.println("'" + searchName + "' was found in the list.");
+                System.out.println("'" + searchName + "' se encontró en la lista.");
             } else {
-                System.out.println("'" + searchName + "' was NOT found in the list.");
+                System.out.println("'" + searchName + "' NO se encontró en la lista.");
             }
 
-            // remove() removes the first occurrence of the specified element.
-            System.out.print("Name to remove: ");
+            // remove() elimina la primera aparición del elemento indicado.
+            System.out.print("Nombre a eliminar: ");
             String removeName = scanner.nextLine();
             if (students.remove(removeName)) {
-                System.out.println("'" + removeName + "' was removed. New total: " + students.size());
+                System.out.println("'" + removeName + "' se eliminó. Nuevo total: " + students.size());
             } else {
-                System.out.println("'" + removeName + "' was not found. No changes made.");
+                System.out.println("'" + removeName + "' no se encontró. No se realizaron cambios.");
             }
 
-            // Show the updated list after removal.
+            // Muestra la lista actualizada después de la eliminación.
             System.out.println();
-            System.out.println("=== Updated List ===");
+            System.out.println("=== Lista actualizada ===");
             for (int i = 0; i < students.size(); i++) {
                 System.out.println((i + 1) + ". " + students.get(i));
             }

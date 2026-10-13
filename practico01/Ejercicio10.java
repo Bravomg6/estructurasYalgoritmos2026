@@ -14,46 +14,46 @@ public class Ejercicio10 {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("=== Grade Average Calculator ===");
+        System.out.println("=== Calculadora de promedio de notas ===");
 
-        // Ask the user how many grades they want to enter.
-        System.out.print("How many grades do you want to store? ");
+        // Pide al usuario cuántas notas desea ingresar.
+        System.out.print("¿Cuántas notas desea ingresar? ");
         int count = scanner.nextInt();
 
-        // Validate that the count is a positive number.
+        // Valida que la cantidad sea un número positivo.
         if (count <= 0) {
-            System.out.println("Error: you must enter at least one grade.");
+            System.out.println("Error: debe ingresar al menos una nota.");
             scanner.close();
             return;
         }
 
-        // Create an array of doubles with the specified size.
-        // Arrays have a fixed size once created.
+        // Crea un arreglo de tipo double con el tamaño especificado.
+        // Los arreglos tienen un tamaño fijo una vez creados.
         double[] grades = new double[count];
 
-        // Read each grade and store it in the array using its index.
-        // Array indices start at 0 and go up to (length - 1).
+        // Lee cada nota y la almacena en el arreglo usando su índice.
+        // Los índices del arreglo comienzan en 0 y llegan hasta (length - 1).
         for (int i = 0; i < grades.length; i++) {
-            System.out.print("Enter grade #" + (i + 1) + ": ");
+            System.out.print("Ingrese la nota " + (i + 1) + ": ");
             grades[i] = scanner.nextDouble();
         }
 
-        // Variable used to accumulate the sum of all grades.
+        // Variable utilizada para acumular la suma de todas las notas.
         double sum = 0;
 
-        // Traverse the array using a for loop and add each grade to the sum.
+        // Recorre el arreglo con un bucle for y suma cada nota al total.
         for (int i = 0; i < grades.length; i++) {
             sum += grades[i];
         }
 
-        // Calculate the average by dividing the total sum by the number of elements.
-        // grades.length returns the number of elements in the array.
+        // Calcula el promedio dividiendo la suma total por la cantidad de elementos.
+        // grades.length devuelve la cantidad de elementos del arreglo.
         double average = sum / grades.length;
 
-        // Display all grades and the final average.
+        // Muestra todas las notas y el promedio final.
         System.out.println();
-        System.out.println("=== Results ===");
-        System.out.print("Grades entered: ");
+        System.out.println("=== Resultados ===");
+        System.out.print("Notas ingresadas: ");
         for (int i = 0; i < grades.length; i++) {
             System.out.print(grades[i]);
             if (i < grades.length - 1) {
@@ -61,8 +61,8 @@ public class Ejercicio10 {
             }
         }
         System.out.println();
-        System.out.printf("Total sum:   %.2f%n", sum);
-        System.out.printf("Average:     %.2f%n", average);
+        System.out.printf("Suma total:  %.2f%n", sum);
+        System.out.printf("Promedio:    %.2f%n", average);
 
         scanner.close();
     }

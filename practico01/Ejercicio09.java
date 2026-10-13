@@ -14,46 +14,46 @@ public class Ejercicio09 {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("=== Calculator with Methods ===");
+        System.out.println("=== Calculadora con métodos ===");
 
-        // Read two numbers from the user.
-        System.out.print("Enter the first number: ");
+        // Lee dos números del usuario.
+        System.out.print("Ingrese el primer número: ");
         double num1 = scanner.nextDouble();
 
-        System.out.print("Enter the second number: ");
+        System.out.print("Ingrese el segundo número: ");
         double num2 = scanner.nextDouble();
 
         System.out.println();
 
-        // Call each method and display the returned result.
-        // Methods allow code reusability: once defined, they can be called
-        // multiple times with different arguments without rewriting the logic.
+        // Llama a cada método y muestra el resultado devuelto.
+        // Los métodos permiten reutilizar código: una vez definidos, pueden llamarse
+        // varias veces con argumentos diferentes sin reescribir la lógica.
         double sumResult = add(num1, num2);
         double subResult = subtract(num1, num2);
         double mulResult = multiply(num1, num2);
 
-        System.out.println("Sum:        " + num1 + " + " + num2 + " = " + sumResult);
-        System.out.println("Subtraction: " + num1 + " - " + num2 + " = " + subResult);
-        System.out.println("Multiplication: " + num1 + " * " + num2 + " = " + mulResult);
+        System.out.println("Suma:           " + num1 + " + " + num2 + " = " + sumResult);
+        System.out.println("Resta:          " + num1 + " - " + num2 + " = " + subResult);
+        System.out.println("Multiplicación: " + num1 + " * " + num2 + " = " + mulResult);
 
-        // Demonstrate reusability: call the add method again with different values.
+        // Demuestra la reutilización: llama nuevamente al método add con otros valores.
         System.out.println();
-        System.out.println("Reusing the add method: add(10, 20) = " + add(10, 20));
+        System.out.println("Reutilizando el método add: add(10, 20) = " + add(10, 20));
 
         scanner.close();
     }
 
-    // Method that receives two double parameters and returns their sum.
+    // Método que recibe dos parámetros double y devuelve su suma.
     public static double add(double a, double b) {
         return a + b;
     }
 
-    // Method that receives two double parameters and returns their difference.
+    // Método que recibe dos parámetros double y devuelve su diferencia.
     public static double subtract(double a, double b) {
         return a - b;
     }
 
-    // Method that receives two double parameters and returns their product.
+    // Método que recibe dos parámetros double y devuelve su producto.
     public static double multiply(double a, double b) {
         return a * b;
     }
