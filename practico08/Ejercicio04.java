@@ -1,11 +1,11 @@
 /*
 Prompt inicial utilizado:
-Implement a method void insertarEnPosicion(int dato, int posicion) for a singly linked list.
-The method must allow inserting at the beginning, in the middle, and at the end.
-Explain the correct order of reference updates:
+Implementa un método void insertarEnPosicion(int dato, int posicion) para una lista enlazada simple.
+El método debe permitir insertar al inicio, en el medio y al final.
+Explica el orden correcto de actualización de referencias:
   nuevo.setSiguiente(actual.getSiguiente());
   actual.setSiguiente(nuevo);
-Include test cases in the main method.
+Incluye casos de prueba en el método main.
 
 Ajustes realizados:
 Ninguno
@@ -45,21 +45,21 @@ public class Ejercicio04 {
         size++;
     }
 
-    // Insert a new node at a specific position (0-based index)
-    // Valid positions: 0 (beginning) to size (end)
+    // Insertar un nuevo nodo en una posición específica (índice base 0)
+    // Posiciones válidas: 0 (inicio) hasta size (final)
     //
-    // Correct order of reference updates:
-    //   1. nuevo.siguiente = actual.siguiente;  (link new node to the rest of the list)
-    //   2. actual.siguiente = nuevo;            (link previous node to the new node)
+    // Orden correcto de actualización de referencias:
+    //   1. nuevo.siguiente = actual.siguiente;  (vincular el nuevo nodo con el resto de la lista)
+    //   2. actual.siguiente = nuevo;            (vincular el nodo anterior con el nuevo nodo)
     //
-    // If we reversed the order, we would lose the reference to the rest of the list.
+    // Si invirtiéramos el orden, perderíamos la referencia al resto de la lista.
     public void insertarEnPosicion(int dato, int posicion) {
         if (posicion < 0 || posicion > size) {
             throw new IndexOutOfBoundsException(
-                "Invalid position: " + posicion + ". Valid range: 0 to " + size);
+                "Posición inválida: " + posicion + ". Rango válido: 0 a " + size);
         }
 
-        // Insert at the beginning
+        // Insertar al inicio
         if (posicion == 0) {
             Nodo nuevo = new Nodo(dato);
             nuevo.siguiente = head;
@@ -68,16 +68,16 @@ public class Ejercicio04 {
             return;
         }
 
-        // Traverse to the node just before the insertion point
+        // Recorrer hasta el nodo anterior al punto de inserción
         Nodo actual = head;
         for (int i = 0; i < posicion - 1; i++) {
             actual = actual.siguiente;
         }
 
-        // Insert in the middle or at the end
+        // Insertar en el medio o al final
         Nodo nuevo = new Nodo(dato);
-        nuevo.siguiente = actual.siguiente; // step 1: link new node to the rest
-        actual.siguiente = nuevo;           // step 2: link previous node to new node
+        nuevo.siguiente = actual.siguiente; // paso 1: vincular el nuevo nodo con el resto
+        actual.siguiente = nuevo;           // paso 2: vincular el nodo anterior con el nuevo nodo
         size++;
     }
 
@@ -102,46 +102,46 @@ public class Ejercicio04 {
 
         System.out.println("=== Ejercicio 4: Insertar en posicion especifica ===");
 
-        // Build initial list: 10 -> 20 -> 30 -> null
+        // Construir la lista inicial: 10 -> 20 -> 30 -> null
         lista.insertarAlFinal(10);
         lista.insertarAlFinal(20);
         lista.insertarAlFinal(30);
-        System.out.print("Initial list: ");
+        System.out.print("Lista inicial: ");
         lista.imprimir();
-        System.out.println("Size: " + lista.getSize());
+        System.out.println("Tamaño: " + lista.getSize());
 
-        // Test: insert at the beginning (position 0)
+        // Prueba: insertar al inicio (posición 0)
         lista.insertarEnPosicion(5, 0);
-        System.out.print("After insertarEnPosicion(5, 0): ");
-        lista.imprimir(); // expected: 5 -> 10 -> 20 -> 30 -> null
-        System.out.println("Size: " + lista.getSize());
+        System.out.print("Después de insertarEnPosicion(5, 0): ");
+        lista.imprimir(); // esperado: 5 -> 10 -> 20 -> 30 -> null
+        System.out.println("Tamaño: " + lista.getSize());
 
-        // Test: insert in the middle (position 2)
+        // Prueba: insertar en el medio (posición 2)
         lista.insertarEnPosicion(15, 2);
-        System.out.print("After insertarEnPosicion(15, 2): ");
-        lista.imprimir(); // expected: 5 -> 10 -> 15 -> 20 -> 30 -> null
-        System.out.println("Size: " + lista.getSize());
+        System.out.print("Después de insertarEnPosicion(15, 2): ");
+        lista.imprimir(); // esperado: 5 -> 10 -> 15 -> 20 -> 30 -> null
+        System.out.println("Tamaño: " + lista.getSize());
 
-        // Test: insert at the end (position = size)
+        // Prueba: insertar al final (posición = size)
         lista.insertarEnPosicion(35, lista.getSize());
-        System.out.print("After insertarEnPosicion(35, size): ");
-        lista.imprimir(); // expected: 5 -> 10 -> 15 -> 20 -> 30 -> 35 -> null
-        System.out.println("Size: " + lista.getSize());
+        System.out.print("Después de insertarEnPosicion(35, size): ");
+        lista.imprimir(); // esperado: 5 -> 10 -> 15 -> 20 -> 30 -> 35 -> null
+        System.out.println("Tamaño: " + lista.getSize());
 
-        // Test: invalid position (negative)
+        // Prueba: posición inválida (negativa)
         try {
             lista.insertarEnPosicion(99, -1);
-            System.out.println("ERROR: should have thrown exception");
+            System.out.println("ERROR: debió lanzar una excepción");
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("insertarEnPosicion(99, -1) correctly threw: " + e.getMessage());
+            System.out.println("insertarEnPosicion(99, -1) lanzó correctamente: " + e.getMessage());
         }
 
-        // Test: invalid position (greater than size)
+        // Prueba: posición inválida (mayor que el tamaño)
         try {
             lista.insertarEnPosicion(99, 100);
-            System.out.println("ERROR: should have thrown exception");
+            System.out.println("ERROR: debió lanzar una excepción");
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("insertarEnPosicion(99, 100) correctly threw: " + e.getMessage());
+            System.out.println("insertarEnPosicion(99, 100) lanzó correctamente: " + e.getMessage());
         }
     }
 }

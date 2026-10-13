@@ -1,8 +1,8 @@
 /*
 Prompt inicial utilizado:
-Transform the integer-based linked list implementation into a generic version: ListaEnlazada<T>, Nodo<T>.
-It must work with ListaEnlazada<Integer>, ListaEnlazada<String>, and ListaEnlazada<Alumno>.
-Include test cases in the main method demonstrating all three types.
+Transforma la implementación de lista enlazada basada en enteros en una versión genérica: ListaEnlazada<T>, Nodo<T>.
+Debe funcionar con ListaEnlazada<Integer>, ListaEnlazada<String> y ListaEnlazada<Alumno>.
+Incluye casos de prueba en el método main que demuestren los tres tipos.
 
 Ajustes realizados:
 Ninguno
@@ -10,7 +10,7 @@ Ninguno
 
 public class Ejercicio10 {
 
-    // Generic node: can hold any type T
+    // Nodo genérico: puede guardar cualquier tipo T
     private static class Nodo<T> {
         T dato;
         Nodo<T> siguiente;
@@ -21,7 +21,7 @@ public class Ejercicio10 {
         }
     }
 
-    // Generic singly linked list
+    // Lista enlazada simple genérica
     private static class ListaEnlazada<T> {
         private Nodo<T> head;
         private int size;
@@ -66,7 +66,7 @@ public class Ejercicio10 {
         public T obtener(int posicion) {
             if (posicion < 0 || posicion >= size) {
                 throw new IndexOutOfBoundsException(
-                    "Invalid position: " + posicion + ". Valid range: 0 to " + (size - 1));
+                    "Posición inválida: " + posicion + ". Rango válido: 0 a " + (size - 1));
             }
             Nodo<T> actual = head;
             for (int i = 0; i < posicion; i++) {
@@ -96,7 +96,7 @@ public class Ejercicio10 {
         }
     }
 
-    // Custom class to demonstrate the generic list with a user-defined type
+    // Clase personalizada para demostrar la lista genérica con un tipo definido por el usuario
     private static class Alumno {
         String nombre;
         int legajo;
@@ -123,45 +123,45 @@ public class Ejercicio10 {
     public static void main(String[] args) {
         System.out.println("=== Ejercicio 10: Lista enlazada generica ===");
 
-        // Test 1: ListaEnlazada<Integer>
+        // Prueba 1: ListaEnlazada<Integer>
         System.out.println("\n--- ListaEnlazada<Integer> ---");
         ListaEnlazada<Integer> listaEnteros = new ListaEnlazada<>();
         listaEnteros.insertarAlFinal(10);
         listaEnteros.insertarAlFinal(20);
         listaEnteros.insertarAlFinal(30);
         listaEnteros.insertarAlInicio(5);
-        System.out.print("Integer list: ");
-        listaEnteros.imprimir(); // expected: 5 -> 10 -> 20 -> 30 -> null
-        System.out.println("Size: " + listaEnteros.getSize());
+        System.out.print("Lista de enteros: ");
+        listaEnteros.imprimir(); // esperado: 5 -> 10 -> 20 -> 30 -> null
+        System.out.println("Tamaño: " + listaEnteros.getSize());
         System.out.println("estaVacia(): " + listaEnteros.estaVacia());
         System.out.println("buscar(20): " + listaEnteros.buscar(20));
         System.out.println("buscar(99): " + listaEnteros.buscar(99));
         System.out.println("obtener(0): " + listaEnteros.obtener(0));
         System.out.println("obtener(3): " + listaEnteros.obtener(3));
 
-        // Test 2: ListaEnlazada<String>
+        // Prueba 2: ListaEnlazada<String>
         System.out.println("\n--- ListaEnlazada<String> ---");
         ListaEnlazada<String> listaStrings = new ListaEnlazada<>();
         listaStrings.insertarAlFinal("Hello");
         listaStrings.insertarAlFinal("World");
         listaStrings.insertarAlFinal("Generic");
         listaStrings.insertarAlInicio("Say");
-        System.out.print("String list: ");
-        listaStrings.imprimir(); // expected: Say -> Hello -> World -> Generic -> null
-        System.out.println("Size: " + listaStrings.getSize());
+        System.out.print("Lista de cadenas: ");
+        listaStrings.imprimir(); // esperado: Say -> Hello -> World -> Generic -> null
+        System.out.println("Tamaño: " + listaStrings.getSize());
         System.out.println("buscar(\"World\"): " + listaStrings.buscar("World"));
         System.out.println("buscar(\"Java\"): " + listaStrings.buscar("Java"));
         System.out.println("obtener(1): " + listaStrings.obtener(1));
 
-        // Test 3: ListaEnlazada<Alumno>
+        // Prueba 3: ListaEnlazada<Alumno>
         System.out.println("\n--- ListaEnlazada<Alumno> ---");
         ListaEnlazada<Alumno> listaAlumnos = new ListaEnlazada<>();
         listaAlumnos.insertarAlFinal(new Alumno("Ana", 101));
         listaAlumnos.insertarAlFinal(new Alumno("Luis", 102));
         listaAlumnos.insertarAlFinal(new Alumno("Maria", 103));
-        System.out.print("Alumno list: ");
-        listaAlumnos.imprimir(); // expected: Ana (#101) -> Luis (#102) -> Maria (#103) -> null
-        System.out.println("Size: " + listaAlumnos.getSize());
+        System.out.print("Lista de alumnos: ");
+        listaAlumnos.imprimir(); // esperado: Ana (#101) -> Luis (#102) -> Maria (#103) -> null
+        System.out.println("Tamaño: " + listaAlumnos.getSize());
         System.out.println("buscar(Luis): " + listaAlumnos.buscar(new Alumno("Luis", 102)));
         System.out.println("buscar(Pedro): " + listaAlumnos.buscar(new Alumno("Pedro", 104)));
         System.out.println("obtener(0): " + listaAlumnos.obtener(0));

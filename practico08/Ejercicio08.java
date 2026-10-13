@@ -1,9 +1,9 @@
 /*
 Prompt inicial utilizado:
-Implement a method int contarOcurrencias(int dato) for a singly linked list.
-Example: 10 -> 20 -> 10 -> 30 -> 10 -> null, for value 10 it must return 3.
-Explain why the traversal should not stop at the first match.
-Include test cases in the main method.
+Implementa un método int contarOcurrencias(int dato) para una lista enlazada simple.
+Ejemplo: 10 -> 20 -> 10 -> 30 -> 10 -> null, para el valor 10 debe devolver 3.
+Explica por qué el recorrido no debe detenerse en la primera coincidencia.
+Incluye casos de prueba en el método main.
 
 Ajustes realizados:
 Ninguno
@@ -43,11 +43,11 @@ public class Ejercicio08 {
         size++;
     }
 
-    // Count how many times a value appears in the list
+    // Contar cuántas veces aparece un valor en la lista
     //
-    // We must NOT stop the traversal at the first match. The value may appear
-    // multiple times throughout the list, so we need to visit every node.
-    // Time complexity: O(n) — we always traverse the entire list.
+    // NO debemos detener el recorrido en la primera coincidencia. El valor puede
+    // aparecer varias veces a lo largo de la lista, así que hay que visitar cada nodo.
+    // Complejidad temporal: O(n); siempre recorremos la lista completa.
     public int contarOcurrencias(int dato) {
         int count = 0;
         Nodo actual = head;
@@ -55,7 +55,7 @@ public class Ejercicio08 {
             if (actual.dato == dato) {
                 count++;
             }
-            actual = actual.siguiente; // always advance, even after a match
+            actual = actual.siguiente; // siempre avanzar, incluso tras una coincidencia
         }
         return count;
     }
@@ -77,39 +77,39 @@ public class Ejercicio08 {
 
         System.out.println("=== Ejercicio 8: Contar ocurrencias ===");
 
-        // Build list: 10 -> 20 -> 10 -> 30 -> 10 -> null
+        // Construir la lista: 10 -> 20 -> 10 -> 30 -> 10 -> null
         lista.insertarAlFinal(10);
         lista.insertarAlFinal(20);
         lista.insertarAlFinal(10);
         lista.insertarAlFinal(30);
         lista.insertarAlFinal(10);
-        System.out.print("List: ");
+        System.out.print("Lista: ");
         lista.imprimir();
 
-        // Test: value appears 3 times
-        System.out.println("contarOcurrencias(10): " + lista.contarOcurrencias(10)); // expected: 3
+        // Prueba: el valor aparece 3 veces
+        System.out.println("contarOcurrencias(10): " + lista.contarOcurrencias(10)); // esperado: 3
 
-        // Test: value appears 1 time
-        System.out.println("contarOcurrencias(20): " + lista.contarOcurrencias(20)); // expected: 1
+        // Prueba: el valor aparece 1 vez
+        System.out.println("contarOcurrencias(20): " + lista.contarOcurrencias(20)); // esperado: 1
 
-        // Test: value appears 1 time (different position)
-        System.out.println("contarOcurrencias(30): " + lista.contarOcurrencias(30)); // expected: 1
+        // Prueba: el valor aparece 1 vez (en otra posición)
+        System.out.println("contarOcurrencias(30): " + lista.contarOcurrencias(30)); // esperado: 1
 
-        // Test: value does not appear
-        System.out.println("contarOcurrencias(99): " + lista.contarOcurrencias(99)); // expected: 0
+        // Prueba: el valor no aparece
+        System.out.println("contarOcurrencias(99): " + lista.contarOcurrencias(99)); // esperado: 0
 
-        // Test: count in empty list
+        // Prueba: contar en una lista vacía
         Ejercicio08 listaVacia = new Ejercicio08();
-        System.out.println("contarOcurrencias(10) on empty: " + listaVacia.contarOcurrencias(10)); // expected: 0
+        System.out.println("contarOcurrencias(10) en lista vacía: " + listaVacia.contarOcurrencias(10)); // esperado: 0
 
-        // Test: all elements are the same
+        // Prueba: todos los elementos son iguales
         Ejercicio08 listaUniforme = new Ejercicio08();
         listaUniforme.insertarAlFinal(5);
         listaUniforme.insertarAlFinal(5);
         listaUniforme.insertarAlFinal(5);
         listaUniforme.insertarAlFinal(5);
-        System.out.print("Uniform list: ");
+        System.out.print("Lista uniforme: ");
         listaUniforme.imprimir();
-        System.out.println("contarOcurrencias(5): " + listaUniforme.contarOcurrencias(5)); // expected: 4
+        System.out.println("contarOcurrencias(5): " + listaUniforme.contarOcurrencias(5)); // esperado: 4
     }
 }

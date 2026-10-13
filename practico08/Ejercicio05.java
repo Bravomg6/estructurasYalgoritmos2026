@@ -1,10 +1,10 @@
 /*
 Prompt inicial utilizado:
-Implement a method boolean eliminar(int dato) for a singly linked list.
-The method must remove the first occurrence of the value.
-Cases to handle: empty list, remove first node, remove middle node, remove last node, non-existent value.
-Explain that in Java we do not manually delete a node; we make it unreachable for the Garbage Collector.
-Include test cases in the main method.
+Implementa un método boolean eliminar(int dato) para una lista enlazada simple.
+El método debe eliminar la primera aparición del valor.
+Casos a tener en cuenta: lista vacía, eliminar el primer nodo, eliminar un nodo del medio, eliminar el último nodo, valor inexistente.
+Explica que en Java no borramos un nodo manualmente; lo hacemos inaccesible para el Garbage Collector.
+Incluye casos de prueba en el método main.
 
 Ajustes realizados:
 Ninguno
@@ -44,37 +44,37 @@ public class Ejercicio05 {
         size++;
     }
 
-    // Remove the first occurrence of a value
-    // Returns true if the value was found and removed, false otherwise
+    // Eliminar la primera aparición de un valor
+    // Devuelve true si el valor se encontró y se eliminó, false en caso contrario
     //
-    // In Java, we do not manually delete a node. We simply unlink it by updating
-    // the 'siguiente' reference of the previous node. Once no reference points
-    // to the removed node, the Garbage Collector will reclaim its memory.
+    // En Java no eliminamos un nodo manualmente. Simplemente lo desvinculamos
+    // actualizando la referencia 'siguiente' del nodo anterior. Cuando ninguna
+    // referencia apunta al nodo eliminado, el Garbage Collector recupera su memoria.
     public boolean eliminar(int dato) {
-        // Case 1: empty list
+        // Caso 1: lista vacía
         if (head == null) {
             return false;
         }
 
-        // Case 2: remove the first node (head)
+        // Caso 2: eliminar el primer nodo (head)
         if (head.dato == dato) {
-            head = head.siguiente; // unlink the first node
+            head = head.siguiente; // desvincular el primer nodo
             size--;
             return true;
         }
 
-        // Case 3 & 4: remove a middle or last node
+        // Casos 3 y 4: eliminar un nodo del medio o el último
         Nodo actual = head;
         while (actual.siguiente != null) {
             if (actual.siguiente.dato == dato) {
-                actual.siguiente = actual.siguiente.siguiente; // skip the node to remove
+                actual.siguiente = actual.siguiente.siguiente; // omitir el nodo a eliminar
                 size--;
                 return true;
             }
             actual = actual.siguiente;
         }
 
-        // Case 5: value not found
+        // Caso 5: valor no encontrado
         return false;
     }
 
@@ -97,67 +97,67 @@ public class Ejercicio05 {
     public static void main(String[] args) {
         System.out.println("=== Ejercicio 5: Eliminar nodo por valor ===");
 
-        // Test 1: Remove from empty list
+        // Prueba 1: eliminar de una lista vacía
         Ejercicio05 lista1 = new Ejercicio05();
-        System.out.print("Empty list: ");
+        System.out.print("Lista vacía: ");
         lista1.imprimir();
-        System.out.println("eliminar(10) on empty: " + lista1.eliminar(10)); // expected: false
+        System.out.println("eliminar(10) en lista vacía: " + lista1.eliminar(10)); // esperado: false
 
-        // Test 2: Remove first node
+        // Prueba 2: eliminar el primer nodo
         Ejercicio05 lista2 = new Ejercicio05();
         lista2.insertarAlFinal(10);
         lista2.insertarAlFinal(20);
         lista2.insertarAlFinal(30);
-        System.out.print("Before removing first: ");
+        System.out.print("Antes de eliminar el primero: ");
         lista2.imprimir();
-        System.out.println("eliminar(10): " + lista2.eliminar(10)); // expected: true
-        System.out.print("After removing first: ");
-        lista2.imprimir(); // expected: 20 -> 30 -> null
-        System.out.println("Size: " + lista2.getSize());
+        System.out.println("eliminar(10): " + lista2.eliminar(10)); // esperado: true
+        System.out.print("Después de eliminar el primero: ");
+        lista2.imprimir(); // esperado: 20 -> 30 -> null
+        System.out.println("Tamaño: " + lista2.getSize());
 
-        // Test 3: Remove middle node
+        // Prueba 3: eliminar un nodo del medio
         Ejercicio05 lista3 = new Ejercicio05();
         lista3.insertarAlFinal(10);
         lista3.insertarAlFinal(20);
         lista3.insertarAlFinal(30);
-        System.out.print("Before removing middle: ");
+        System.out.print("Antes de eliminar el del medio: ");
         lista3.imprimir();
-        System.out.println("eliminar(20): " + lista3.eliminar(20)); // expected: true
-        System.out.print("After removing middle: ");
-        lista3.imprimir(); // expected: 10 -> 30 -> null
-        System.out.println("Size: " + lista3.getSize());
+        System.out.println("eliminar(20): " + lista3.eliminar(20)); // esperado: true
+        System.out.print("Después de eliminar el del medio: ");
+        lista3.imprimir(); // esperado: 10 -> 30 -> null
+        System.out.println("Tamaño: " + lista3.getSize());
 
-        // Test 4: Remove last node
+        // Prueba 4: eliminar el último nodo
         Ejercicio05 lista4 = new Ejercicio05();
         lista4.insertarAlFinal(10);
         lista4.insertarAlFinal(20);
         lista4.insertarAlFinal(30);
-        System.out.print("Before removing last: ");
+        System.out.print("Antes de eliminar el último: ");
         lista4.imprimir();
-        System.out.println("eliminar(30): " + lista4.eliminar(30)); // expected: true
-        System.out.print("After removing last: ");
-        lista4.imprimir(); // expected: 10 -> 20 -> null
-        System.out.println("Size: " + lista4.getSize());
+        System.out.println("eliminar(30): " + lista4.eliminar(30)); // esperado: true
+        System.out.print("Después de eliminar el último: ");
+        lista4.imprimir(); // esperado: 10 -> 20 -> null
+        System.out.println("Tamaño: " + lista4.getSize());
 
-        // Test 5: Remove non-existent value
+        // Prueba 5: eliminar un valor inexistente
         Ejercicio05 lista5 = new Ejercicio05();
         lista5.insertarAlFinal(10);
         lista5.insertarAlFinal(20);
-        System.out.print("Before removing non-existent: ");
+        System.out.print("Antes de eliminar el inexistente: ");
         lista5.imprimir();
-        System.out.println("eliminar(99): " + lista5.eliminar(99)); // expected: false
-        System.out.print("After removing non-existent: ");
-        lista5.imprimir(); // expected: 10 -> 20 -> null
-        System.out.println("Size: " + lista5.getSize());
+        System.out.println("eliminar(99): " + lista5.eliminar(99)); // esperado: false
+        System.out.print("Después de eliminar el inexistente: ");
+        lista5.imprimir(); // esperado: 10 -> 20 -> null
+        System.out.println("Tamaño: " + lista5.getSize());
 
-        // Test 6: Remove only element in a single-node list
+        // Prueba 6: eliminar el único elemento de una lista de un solo nodo
         Ejercicio05 lista6 = new Ejercicio05();
         lista6.insertarAlFinal(42);
-        System.out.print("Before removing only element: ");
+        System.out.print("Antes de eliminar el único elemento: ");
         lista6.imprimir();
-        System.out.println("eliminar(42): " + lista6.eliminar(42)); // expected: true
-        System.out.print("After removing only element: ");
-        lista6.imprimir(); // expected: null
-        System.out.println("Size: " + lista6.getSize());
+        System.out.println("eliminar(42): " + lista6.eliminar(42)); // esperado: true
+        System.out.print("Después de eliminar el único elemento: ");
+        lista6.imprimir(); // esperado: null
+        System.out.println("Tamaño: " + lista6.getSize());
     }
 }

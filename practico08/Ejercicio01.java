@@ -1,9 +1,9 @@
 /*
 Prompt inicial utilizado:
-Implement a singly linked list of integers from scratch in Java without using ArrayList or LinkedList.
-The list must support: insertarAlInicio(int dato), insertarAlFinal(int dato), imprimir(), estaVacia(), getSize().
-Explain how a node is represented, what role 'head' plays, and how the size is updated.
-Include test cases in the main method.
+Implementa una lista enlazada simple de enteros desde cero en Java sin usar ArrayList ni LinkedList.
+La lista debe soportar: insertarAlInicio(int dato), insertarAlFinal(int dato), imprimir(), estaVacia(), getSize().
+Explica cómo se representa un nodo, qué papel juega 'head' y cómo se actualiza el tamaño.
+Incluye casos de prueba en el método main.
 
 Ajustes realizados:
 Ninguno
@@ -11,7 +11,7 @@ Ninguno
 
 public class Ejercicio01 {
 
-    // Node representation: each node holds data and a reference to the next node
+    // Representación de un nodo: cada nodo guarda el dato y una referencia al siguiente nodo
     private static class Nodo {
         int dato;
         Nodo siguiente;
@@ -22,38 +22,38 @@ public class Ejercicio01 {
         }
     }
 
-    private Nodo head; // head points to the first node; null means empty list
-    private int size;  // tracks the number of nodes for O(1) size queries
+    private Nodo head; // head apunta al primer nodo; null indica lista vacía
+    private int size;  // lleva la cuenta del número de nodos para consultas de tamaño en O(1)
 
     public Ejercicio01() {
         this.head = null;
         this.size = 0;
     }
 
-    // Insert at the beginning: new node becomes the new head
+    // Insertar al inicio: el nuevo nodo pasa a ser el nuevo head
     public void insertarAlInicio(int dato) {
         Nodo nuevo = new Nodo(dato);
-        nuevo.siguiente = head; // link new node to the current first node
-        head = nuevo;           // update head to point to the new node
+        nuevo.siguiente = head; // vincular el nuevo nodo con el primer nodo actual
+        head = nuevo;           // actualizar head para que apunte al nuevo nodo
         size++;
     }
 
-    // Insert at the end: traverse to the last node and link the new node
+    // Insertar al final: recorrer hasta el último nodo y vincular el nuevo nodo
     public void insertarAlFinal(int dato) {
         Nodo nuevo = new Nodo(dato);
         if (head == null) {
-            head = nuevo; // empty list: new node becomes head
+            head = nuevo; // lista vacía: el nuevo nodo pasa a ser el head
         } else {
             Nodo actual = head;
             while (actual.siguiente != null) {
-                actual = actual.siguiente; // advance to the last node
+                actual = actual.siguiente; // avanzar hasta el último nodo
             }
-            actual.siguiente = nuevo; // link last node to the new node
+            actual.siguiente = nuevo; // vincular el último nodo con el nuevo nodo
         }
         size++;
     }
 
-    // Print the list in the format: 10 -> 20 -> 30 -> null
+    // Imprimir la lista en el formato: 10 -> 20 -> 30 -> null
     public void imprimir() {
         Nodo actual = head;
         while (actual != null) {
@@ -66,12 +66,12 @@ public class Ejercicio01 {
         System.out.println(" -> null");
     }
 
-    // Returns true if the list has no nodes
+    // Devuelve true si la lista no tiene nodos
     public boolean estaVacia() {
         return head == null;
     }
 
-    // Returns the number of nodes in the list
+    // Devuelve la cantidad de nodos de la lista
     public int getSize() {
         return size;
     }
@@ -81,30 +81,30 @@ public class Ejercicio01 {
 
         System.out.println("=== Ejercicio 1: Lista enlazada simple desde cero ===");
 
-        // Test estaVacia on a new list
-        System.out.println("estaVacia() on new list: " + lista.estaVacia()); // expected: true
-        System.out.println("getSize() on new list: " + lista.getSize());     // expected: 0
+        // Probar estaVacia con una lista nueva
+        System.out.println("estaVacia() en lista nueva: " + lista.estaVacia()); // esperado: true
+        System.out.println("getSize() en lista nueva: " + lista.getSize());     // esperado: 0
 
-        // Test insertarAlFinal
+        // Probar insertarAlFinal
         lista.insertarAlFinal(10);
         lista.insertarAlFinal(20);
         lista.insertarAlFinal(30);
-        System.out.print("After insertarAlFinal(10,20,30): ");
-        lista.imprimir(); // expected: 10 -> 20 -> 30 -> null
-        System.out.println("getSize(): " + lista.getSize()); // expected: 3
-        System.out.println("estaVacia(): " + lista.estaVacia()); // expected: false
+        System.out.print("Después de insertarAlFinal(10,20,30): ");
+        lista.imprimir(); // esperado: 10 -> 20 -> 30 -> null
+        System.out.println("getSize(): " + lista.getSize()); // esperado: 3
+        System.out.println("estaVacia(): " + lista.estaVacia()); // esperado: false
 
-        // Test insertarAlInicio
+        // Probar insertarAlInicio
         lista.insertarAlInicio(5);
-        System.out.print("After insertarAlInicio(5): ");
-        lista.imprimir(); // expected: 5 -> 10 -> 20 -> 30 -> null
-        System.out.println("getSize(): " + lista.getSize()); // expected: 4
+        System.out.print("Después de insertarAlInicio(5): ");
+        lista.imprimir(); // esperado: 5 -> 10 -> 20 -> 30 -> null
+        System.out.println("getSize(): " + lista.getSize()); // esperado: 4
 
-        // Test insertarAlInicio on empty list
+        // Probar insertarAlInicio con una lista vacía
         Ejercicio01 lista2 = new Ejercicio01();
         lista2.insertarAlInicio(100);
-        System.out.print("After insertarAlInicio(100) on empty list: ");
-        lista2.imprimir(); // expected: 100 -> null
-        System.out.println("getSize(): " + lista2.getSize()); // expected: 1
+        System.out.print("Después de insertarAlInicio(100) en lista vacía: ");
+        lista2.imprimir(); // esperado: 100 -> null
+        System.out.println("getSize(): " + lista2.getSize()); // esperado: 1
     }
 }

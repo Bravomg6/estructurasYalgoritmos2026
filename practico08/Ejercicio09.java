@@ -1,9 +1,9 @@
 /*
 Prompt inicial utilizado:
-Implement a method void invertir() for a singly linked list.
-Example: 10 -> 20 -> 30 -> 40 -> null becomes 40 -> 30 -> 20 -> 10 -> null.
-Explain what auxiliary references are needed: anterior, actual, siguiente.
-Include test cases in the main method.
+Implementa un método void invertir() para una lista enlazada simple.
+Ejemplo: 10 -> 20 -> 30 -> 40 -> null pasa a ser 40 -> 30 -> 20 -> 10 -> null.
+Explica qué referencias auxiliares se necesitan: anterior, actual, siguiente.
+Incluye casos de prueba en el método main.
 
 Ajustes realizados:
 Ninguno
@@ -43,33 +43,33 @@ public class Ejercicio09 {
         size++;
     }
 
-    // Reverse the linked list in-place
+    // Invertir la lista enlazada in situ
     //
-    // Three auxiliary references are needed:
-    // - anterior (previous): starts as null, tracks the new 'next' for each node
-    // - actual (current):    the node being processed
-    // - siguiente (next):    temporarily stores the rest of the list before we break the link
+    // Se necesitan tres referencias auxiliares:
+    // - anterior:    comienza en null y registra el nuevo 'siguiente' de cada nodo
+    // - actual:      el nodo que se está procesando
+    // - siguiente:   guarda temporalmente el resto de la lista antes de romper el enlace
     //
-    // For each node:
-    //   1. siguiente = actual.siguiente  (save the rest of the list)
-    //   2. actual.siguiente = anterior   (reverse the link)
-    //   3. anterior = actual              (move anterior forward)
-    //   4. actual = siguiente            (move actual forward)
+    // Para cada nodo:
+    //   1. siguiente = actual.siguiente  (guardar el resto de la lista)
+    //   2. actual.siguiente = anterior   (invertir el enlace)
+    //   3. anterior = actual             (avanzar anterior)
+    //   4. actual = siguiente            (avanzar actual)
     //
-    // At the end, anterior points to the new head (formerly the last node).
+    // Al final, anterior apunta al nuevo head (antes era el último nodo).
     public void invertir() {
         Nodo anterior = null;
         Nodo actual = head;
         Nodo siguiente = null;
 
         while (actual != null) {
-            siguiente = actual.siguiente;  // step 1: save next node
-            actual.siguiente = anterior;  // step 2: reverse the link
-            anterior = actual;            // step 3: advance anterior
-            actual = siguiente;          // step 4: advance actual
+            siguiente = actual.siguiente;  // paso 1: guardar el siguiente nodo
+            actual.siguiente = anterior;  // paso 2: invertir el enlace
+            anterior = actual;            // paso 3: avanzar anterior
+            actual = siguiente;          // paso 4: avanzar actual
         }
 
-        head = anterior; // anterior is now the new head (last node of original list)
+        head = anterior; // anterior es ahora el nuevo head (último nodo de la lista original)
     }
 
     public void imprimir() {
@@ -91,37 +91,37 @@ public class Ejercicio09 {
     public static void main(String[] args) {
         System.out.println("=== Ejercicio 9: Invertir lista enlazada ===");
 
-        // Test 1: Reverse a list with multiple elements
+        // Prueba 1: invertir una lista con varios elementos
         Ejercicio09 lista1 = new Ejercicio09();
         lista1.insertarAlFinal(10);
         lista1.insertarAlFinal(20);
         lista1.insertarAlFinal(30);
         lista1.insertarAlFinal(40);
-        System.out.print("Before invertir: ");
-        lista1.imprimir(); // expected: 10 -> 20 -> 30 -> 40 -> null
+        System.out.print("Antes de invertir: ");
+        lista1.imprimir(); // esperado: 10 -> 20 -> 30 -> 40 -> null
         lista1.invertir();
-        System.out.print("After invertir: ");
-        lista1.imprimir(); // expected: 40 -> 30 -> 20 -> 10 -> null
-        System.out.println("Size: " + lista1.getSize());
+        System.out.print("Después de invertir: ");
+        lista1.imprimir(); // esperado: 40 -> 30 -> 20 -> 10 -> null
+        System.out.println("Tamaño: " + lista1.getSize());
 
-        // Test 2: Reverse a single-element list
+        // Prueba 2: invertir una lista de un solo elemento
         Ejercicio09 lista2 = new Ejercicio09();
         lista2.insertarAlFinal(99);
-        System.out.print("Before invertir (single): ");
-        lista2.imprimir(); // expected: 99 -> null
+        System.out.print("Antes de invertir (lista de un elemento): ");
+        lista2.imprimir(); // esperado: 99 -> null
         lista2.invertir();
-        System.out.print("After invertir (single): ");
-        lista2.imprimir(); // expected: 99 -> null
+        System.out.print("Después de invertir (lista de un elemento): ");
+        lista2.imprimir(); // esperado: 99 -> null
 
-        // Test 3: Reverse an empty list
+        // Prueba 3: invertir una lista vacía
         Ejercicio09 lista3 = new Ejercicio09();
-        System.out.print("Before invertir (empty): ");
-        lista3.imprimir(); // expected: null
+        System.out.print("Antes de invertir (lista vacía): ");
+        lista3.imprimir(); // esperado: null
         lista3.invertir();
-        System.out.print("After invertir (empty): ");
-        lista3.imprimir(); // expected: null
+        System.out.print("Después de invertir (lista vacía): ");
+        lista3.imprimir(); // esperado: null
 
-        // Test 4: Reverse twice returns original order
+        // Prueba 4: invertir dos veces devuelve el orden original
         Ejercicio09 lista4 = new Ejercicio09();
         lista4.insertarAlFinal(1);
         lista4.insertarAlFinal(2);
@@ -129,10 +129,10 @@ public class Ejercicio09 {
         System.out.print("Original: ");
         lista4.imprimir();
         lista4.invertir();
-        System.out.print("Reversed once: ");
+        System.out.print("Invertida una vez: ");
         lista4.imprimir();
         lista4.invertir();
-        System.out.print("Reversed twice (back to original): ");
-        lista4.imprimir(); // expected: 1 -> 2 -> 3 -> null
+        System.out.print("Invertida dos veces (de vuelta al original): ");
+        lista4.imprimir(); // esperado: 1 -> 2 -> 3 -> null
     }
 }

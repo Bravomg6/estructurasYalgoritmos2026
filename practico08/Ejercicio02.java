@@ -1,9 +1,9 @@
 /*
 Prompt inicial utilizado:
-Implement a method boolean buscar(int dato) for a singly linked list of integers.
-The method must traverse from head until it finds the data or reaches null.
-Explain why direct index-based access is not possible in a linked list.
-Include test cases in the main method.
+Implementa un método boolean buscar(int dato) para una lista enlazada simple de enteros.
+El método debe recorrer desde head hasta encontrar el dato o llegar a null.
+Explica por qué en una lista enlazada no es posible el acceso directo por índice.
+Incluye casos de prueba en el método main.
 
 Ajustes realizados:
 Ninguno
@@ -43,19 +43,19 @@ public class Ejercicio02 {
         size++;
     }
 
-    // Search for a value by traversing from head to null
-    // Returns true if found, false otherwise
-    // Note: No direct index access exists because nodes are not stored in
-    // contiguous memory; each node only knows its successor via 'siguiente'.
+    // Buscar un valor recorriendo desde head hasta null
+    // Devuelve true si se encuentra, false en caso contrario
+    // Nota: no existe acceso directo por índice porque los nodos no se almacenan en
+    // memoria contigua; cada nodo solo conoce a su sucesor mediante 'siguiente'.
     public boolean buscar(int dato) {
         Nodo actual = head;
         while (actual != null) {
             if (actual.dato == dato) {
-                return true; // found the value
+                return true; // se encontró el valor
             }
-            actual = actual.siguiente; // move to the next node
+            actual = actual.siguiente; // avanzar al siguiente nodo
         }
-        return false; // reached null without finding the value
+        return false; // se llegó a null sin encontrar el valor
     }
 
     public void imprimir() {
@@ -75,28 +75,28 @@ public class Ejercicio02 {
 
         System.out.println("=== Ejercicio 2: Buscar elementos ===");
 
-        // Build list: 10 -> 20 -> 30 -> 40 -> null
+        // Construir la lista: 10 -> 20 -> 30 -> 40 -> null
         lista.insertarAlFinal(10);
         lista.insertarAlFinal(20);
         lista.insertarAlFinal(30);
         lista.insertarAlFinal(40);
-        System.out.print("List: ");
+        System.out.print("Lista: ");
         lista.imprimir();
 
-        // Test: value exists in the middle
-        System.out.println("buscar(20): " + lista.buscar(20)); // expected: true
+        // Prueba: el valor existe en el medio
+        System.out.println("buscar(20): " + lista.buscar(20)); // esperado: true
 
-        // Test: value exists at the beginning
-        System.out.println("buscar(10): " + lista.buscar(10)); // expected: true
+        // Prueba: el valor existe al principio
+        System.out.println("buscar(10): " + lista.buscar(10)); // esperado: true
 
-        // Test: value exists at the end
-        System.out.println("buscar(40): " + lista.buscar(40)); // expected: true
+        // Prueba: el valor existe al final
+        System.out.println("buscar(40): " + lista.buscar(40)); // esperado: true
 
-        // Test: value does not exist
-        System.out.println("buscar(99): " + lista.buscar(99)); // expected: false
+        // Prueba: el valor no existe
+        System.out.println("buscar(99): " + lista.buscar(99)); // esperado: false
 
-        // Test: search in empty list
+        // Prueba: búsqueda en una lista vacía
         Ejercicio02 listaVacia = new Ejercicio02();
-        System.out.println("buscar(10) on empty list: " + listaVacia.buscar(10)); // expected: false
+        System.out.println("buscar(10) en lista vacía: " + listaVacia.buscar(10)); // esperado: false
     }
 }

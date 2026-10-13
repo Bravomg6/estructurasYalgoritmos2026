@@ -1,9 +1,9 @@
 /*
 Prompt inicial utilizado:
-Implement a method void modificar(int posicion, int nuevoDato) for a singly linked list.
-The method must validate the position before traversing.
-Explain the difference between modifying a node's data and modifying the reference to the next node.
-Include test cases in the main method.
+Implementa un método void modificar(int posicion, int nuevoDato) para una lista enlazada simple.
+El método debe validar la posición antes de recorrer.
+Explica la diferencia entre modificar el dato de un nodo y modificar la referencia al siguiente nodo.
+Incluye casos de prueba en el método main.
 
 Ajustes realizados:
 Ninguno
@@ -43,24 +43,24 @@ public class Ejercicio07 {
         size++;
     }
 
-    // Modify the data stored at a given position
+    // Modificar el dato almacenado en una posición dada
     //
-    // Difference between modifying data vs modifying the reference:
-    // - Modifying data (this method): we change 'nodo.dato'. The list structure
-    //   (nodes and their links) remains exactly the same.
-    // - Modifying the reference: we change 'nodo.siguiente'. This alters the
-    //   list structure by adding, removing, or reordering nodes.
+    // Diferencia entre modificar el dato y modificar la referencia:
+    // - Modificar el dato (este método): cambiamos 'nodo.dato'. La estructura de la lista
+    //   (nodos y sus enlaces) permanece exactamente igual.
+    // - Modificar la referencia: cambiamos 'nodo.siguiente'. Esto altera la
+    //   estructura de la lista al agregar, eliminar u ordenar nodos.
     public void modificar(int posicion, int nuevoDato) {
         if (posicion < 0 || posicion >= size) {
             throw new IndexOutOfBoundsException(
-                "Invalid position: " + posicion + ". Valid range: 0 to " + (size - 1));
+                "Posición inválida: " + posicion + ". Rango válido: 0 a " + (size - 1));
         }
 
         Nodo actual = head;
         for (int i = 0; i < posicion; i++) {
-            actual = actual.siguiente; // advance to the target node
+            actual = actual.siguiente; // avanzar hasta el nodo destino
         }
-        actual.dato = nuevoDato; // update only the data, not the link
+        actual.dato = nuevoDato; // actualizar solo el dato, no el enlace
     }
 
     public void imprimir() {
@@ -84,46 +84,46 @@ public class Ejercicio07 {
 
         System.out.println("=== Ejercicio 7: Modificar elemento de la lista ===");
 
-        // Build list: 10 -> 20 -> 30 -> 40 -> null
+        // Construir la lista: 10 -> 20 -> 30 -> 40 -> null
         lista.insertarAlFinal(10);
         lista.insertarAlFinal(20);
         lista.insertarAlFinal(30);
         lista.insertarAlFinal(40);
-        System.out.print("Initial list: ");
+        System.out.print("Lista inicial: ");
         lista.imprimir();
 
-        // Test: modify first element
+        // Prueba: modificar el primer elemento
         lista.modificar(0, 11);
-        System.out.print("After modificar(0, 11): ");
-        lista.imprimir(); // expected: 11 -> 20 -> 30 -> 40 -> null
+        System.out.print("Después de modificar(0, 11): ");
+        lista.imprimir(); // esperado: 11 -> 20 -> 30 -> 40 -> null
 
-        // Test: modify middle element
+        // Prueba: modificar un elemento del medio
         lista.modificar(2, 33);
-        System.out.print("After modificar(2, 33): ");
-        lista.imprimir(); // expected: 11 -> 20 -> 33 -> 40 -> null
+        System.out.print("Después de modificar(2, 33): ");
+        lista.imprimir(); // esperado: 11 -> 20 -> 33 -> 40 -> null
 
-        // Test: modify last element
+        // Prueba: modificar el último elemento
         lista.modificar(3, 44);
-        System.out.print("After modificar(3, 44): ");
-        lista.imprimir(); // expected: 11 -> 20 -> 33 -> 44 -> null
+        System.out.print("Después de modificar(3, 44): ");
+        lista.imprimir(); // esperado: 11 -> 20 -> 33 -> 44 -> null
 
-        // Test: invalid position (negative)
+        // Prueba: posición inválida (negativa)
         try {
             lista.modificar(-1, 99);
-            System.out.println("ERROR: should have thrown exception");
+            System.out.println("ERROR: debió lanzar una excepción");
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("modificar(-1, 99) correctly threw: " + e.getMessage());
+            System.out.println("modificar(-1, 99) lanzó correctamente: " + e.getMessage());
         }
 
-        // Test: invalid position (equal to size)
+        // Prueba: posición inválida (igual al tamaño)
         try {
             lista.modificar(4, 99);
-            System.out.println("ERROR: should have thrown exception");
+            System.out.println("ERROR: debió lanzar una excepción");
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("modificar(4, 99) correctly threw: " + e.getMessage());
+            System.out.println("modificar(4, 99) lanzó correctamente: " + e.getMessage());
         }
 
-        // Verify structure is unchanged after modifications (same number of nodes)
-        System.out.println("Size after all modifications: " + lista.getSize()); // expected: 4
+        // Verificar que la estructura no cambió tras las modificaciones (misma cantidad de nodos)
+        System.out.println("Tamaño después de todas las modificaciones: " + lista.getSize()); // esperado: 4
     }
 }

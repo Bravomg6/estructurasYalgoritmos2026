@@ -1,9 +1,9 @@
 /*
 Prompt inicial utilizado:
-Implement a method int obtener(int posicion) for a singly linked list of integers.
-The method must validate invalid positions (posicion < 0, posicion >= size).
-Explain that even though a position is used, the list does not have direct access like an array.
-Include test cases in the main method.
+Implementa un método int obtener(int posicion) para una lista enlazada simple de enteros.
+El método debe validar posiciones inválidas (posicion < 0, posicion >= size).
+Explica que, aunque se use una posición, la lista no tiene acceso directo como un arreglo.
+Incluye casos de prueba en el método main.
 
 Ajustes realizados:
 Ninguno
@@ -43,18 +43,18 @@ public class Ejercicio03 {
         size++;
     }
 
-    // Get the value at a given position (0-based index)
-    // Even though we use a position, the list has no direct access like an array.
-    // We must traverse from head, counting nodes until we reach the desired position.
-    // Time complexity: O(n) in the worst case.
+    // Obtener el valor en una posición dada (índice base 0)
+    // Aunque usemos una posición, la lista no tiene acceso directo como un arreglo.
+    // Debemos recorrer desde head, contando nodos hasta alcanzar la posición deseada.
+    // Complejidad temporal: O(n) en el peor caso.
     public int obtener(int posicion) {
         if (posicion < 0 || posicion >= size) {
             throw new IndexOutOfBoundsException(
-                "Invalid position: " + posicion + ". Valid range: 0 to " + (size - 1));
+                "Posición inválida: " + posicion + ". Rango válido: 0 a " + (size - 1));
         }
         Nodo actual = head;
         for (int i = 0; i < posicion; i++) {
-            actual = actual.siguiente; // advance 'posicion' times
+            actual = actual.siguiente; // avanzar 'posicion' veces
         }
         return actual.dato;
     }
@@ -80,47 +80,47 @@ public class Ejercicio03 {
 
         System.out.println("=== Ejercicio 3: Obtener elemento por posicion ===");
 
-        // Build list: 10 -> 20 -> 30 -> 40 -> 50 -> null
+        // Construir la lista: 10 -> 20 -> 30 -> 40 -> 50 -> null
         lista.insertarAlFinal(10);
         lista.insertarAlFinal(20);
         lista.insertarAlFinal(30);
         lista.insertarAlFinal(40);
         lista.insertarAlFinal(50);
-        System.out.print("List: ");
+        System.out.print("Lista: ");
         lista.imprimir();
-        System.out.println("Size: " + lista.getSize());
+        System.out.println("Tamaño: " + lista.getSize());
 
-        // Test: get first element
-        System.out.println("obtener(0): " + lista.obtener(0)); // expected: 10
+        // Prueba: obtener el primer elemento
+        System.out.println("obtener(0): " + lista.obtener(0)); // esperado: 10
 
-        // Test: get middle element
-        System.out.println("obtener(2): " + lista.obtener(2)); // expected: 30
+        // Prueba: obtener un elemento del medio
+        System.out.println("obtener(2): " + lista.obtener(2)); // esperado: 30
 
-        // Test: get last element
-        System.out.println("obtener(4): " + lista.obtener(4)); // expected: 50
+        // Prueba: obtener el último elemento
+        System.out.println("obtener(4): " + lista.obtener(4)); // esperado: 50
 
-        // Test: negative position
+        // Prueba: posición negativa
         try {
             lista.obtener(-1);
-            System.out.println("ERROR: should have thrown exception");
+            System.out.println("ERROR: debió lanzar una excepción");
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("obtener(-1) correctly threw: " + e.getMessage());
+            System.out.println("obtener(-1) lanzó correctamente: " + e.getMessage());
         }
 
-        // Test: position equal to size
+        // Prueba: posición igual al tamaño
         try {
             lista.obtener(5);
-            System.out.println("ERROR: should have thrown exception");
+            System.out.println("ERROR: debió lanzar una excepción");
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("obtener(5) correctly threw: " + e.getMessage());
+            System.out.println("obtener(5) lanzó correctamente: " + e.getMessage());
         }
 
-        // Test: position greater than size
+        // Prueba: posición mayor que el tamaño
         try {
             lista.obtener(100);
-            System.out.println("ERROR: should have thrown exception");
+            System.out.println("ERROR: debió lanzar una excepción");
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("obtener(100) correctly threw: " + e.getMessage());
+            System.out.println("obtener(100) lanzó correctamente: " + e.getMessage());
         }
     }
 }
