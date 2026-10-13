@@ -1,10 +1,10 @@
 /*
 Prompt inicial utilizado:
-Implement a recursive function that sums the digits of a positive integer.
-Get the last digit using modulo 10 (n % 10). Reduce the number using integer
-division by 10 (n / 10 removes the last digit). The base case is n = 0, returning 0.
-Combine results: lastDigit + sumDigits(n / 10). Test with 0, 7, 123, 9999, 5050.
-Expected: 0, 7, 6, 36, 10.
+Implementar una función recursiva que sume los dígitos de un entero positivo.
+Obtener el último dígito mediante el módulo 10 (n % 10). Reducir el número mediante
+división entera por 10 (n / 10 elimina el último dígito). El caso base es n = 0, devolviendo 0.
+Combinar resultados: lastDigit + sumDigits(n / 10). Probar con 0, 7, 123, 9999, 5050.
+Esperado: 0, 7, 6, 36, 10.
 
 Ajustes realizados:
 Ninguno
@@ -13,11 +13,11 @@ Ninguno
 public class Ejercicio07 {
 
     public static int sumDigits(int n) {
-        // Base case: no digits left to sum
+        // Caso base: no quedan dígitos por sumar
         if (n == 0) {
             return 0;
         }
-        // Recursive case: last digit + sum of remaining digits
+        // Caso recursivo: último dígito + suma de los dígitos restantes
         return (n % 10) + sumDigits(n / 10);
     }
 
@@ -30,8 +30,8 @@ public class Ejercicio07 {
         for (int i = 0; i < testValues.length; i++) {
             int result = sumDigits(testValues[i]);
             System.out.println("sumDigits(" + testValues[i] + ") = " + result
-                    + " (expected: " + expected[i] + ") "
-                    + (result == expected[i] ? "PASS" : "FAIL"));
+                    + " (esperado: " + expected[i] + ") "
+                    + (result == expected[i] ? "CORRECTO" : "INCORRECTO"));
         }
     }
 }

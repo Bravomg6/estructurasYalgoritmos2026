@@ -1,11 +1,11 @@
 /*
 Prompt inicial utilizado:
-Implement a recursive function that reverses a String.
-The base case is an empty string or a single character — already reversed.
-Separate the first character from the rest using substring. Reduce the problem
-by reversing the rest and appending the first character at the end.
-Reconstruction: reverse(rest) + firstChar. Test with "a", "ab", "hello", "recursion".
-Expected: "a", "ba", "olleh", "noisrucer".
+Implementar una función recursiva que invierta una cadena de caracteres (String).
+El caso base es una cadena vacía o un solo carácter — ya está invertida.
+Separar el primer carácter del resto mediante substring. Reducir el problema
+invirtiendo el resto y agregando el primer carácter al final.
+Reconstrucción: reverse(rest) + firstChar. Probar con "a", "ab", "hello", "recursion".
+Esperado: "a", "ba", "olleh", "noisrucer".
 
 Ajustes realizados:
 Ninguno
@@ -14,11 +14,11 @@ Ninguno
 public class Ejercicio08 {
 
     public static String reverse(String s) {
-        // Base case: empty string or single character is already reversed
+        // Caso base: cadena vacía o un solo carácter ya está invertida
         if (s == null || s.length() <= 1) {
             return s;
         }
-        // Recursive case: reverse the rest, then append the first character
+        // Caso recursivo: invertir el resto y luego agregar el primer carácter
         return reverse(s.substring(1)) + s.charAt(0);
     }
 
@@ -31,8 +31,8 @@ public class Ejercicio08 {
         for (int i = 0; i < testValues.length; i++) {
             String result = reverse(testValues[i]);
             System.out.println("reverse(\"" + testValues[i] + "\") = \"" + result
-                    + "\" (expected: \"" + expected[i] + "\") "
-                    + (result.equals(expected[i]) ? "PASS" : "FAIL"));
+                    + "\" (esperado: \"" + expected[i] + "\") "
+                    + (result.equals(expected[i]) ? "CORRECTO" : "INCORRECTO"));
         }
     }
 }

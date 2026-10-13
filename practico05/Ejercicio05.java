@@ -1,11 +1,11 @@
 /*
 Prompt inicial utilizado:
-Implement a recursive function that prints a countdown from n down to 0.
-This function does not need to return a value; it only prints. The base case
-is when n < 0 (stop recursion). Each call prints n and then calls itself with
-n-1, guaranteeing progress toward the base case. If n+1 were used instead,
-the function would never terminate (infinite recursion). Test with n = 5.
-Expected output: 5 4 3 2 1 0.
+Implementar una función recursiva que imprima una cuenta regresiva desde n hasta 0.
+Esta función no necesita devolver un valor; solo imprime. El caso base
+es cuando n < 0 (detener la recursión). Cada llamada imprime n y luego se llama a sí misma con
+n-1, garantizando avance hacia el caso base. Si se usara n+1 en su lugar,
+la función nunca terminaría (recursión infinita). Probar con n = 5.
+Salida esperada: 5 4 3 2 1 0.
 
 Ajustes realizados:
 Ninguno
@@ -14,13 +14,13 @@ Ninguno
 public class Ejercicio05 {
 
     public static void countdown(int n) {
-        // Base case: stop when n goes below 0
+        // Caso base: detenerse cuando n sea menor que 0
         if (n < 0) {
             return;
         }
-        // Print current value
+        // Imprimir el valor actual
         System.out.print(n + " ");
-        // Recursive call: approach base case by decrementing
+        // Llamada recursiva: acercarse al caso base decrementando
         countdown(n - 1);
     }
 

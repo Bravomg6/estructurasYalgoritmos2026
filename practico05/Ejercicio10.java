@@ -1,11 +1,11 @@
 /*
 Prompt inicial utilizado:
-Implement a recursive function that searches for a number in an array without
-using loops (no for, no while). Start the search from index 0. Advance by
-incrementing the index on each recursive call. Base case 1: if the current
-element equals the target, return its index (found). Base case 2: if the index
-reaches the array length, return -1 (not found). Test with array {3, 7, 1, 9, 4}
-searching for 9 (expected index 3), 5 (expected -1), and 3 (expected index 0).
+Implementar una función recursiva que busque un número en un arreglo sin
+usar bucles (sin for, sin while). Iniciar la búsqueda desde el índice 0. Avanzar
+incrementando el índice en cada llamada recursiva. Caso base 1: si el elemento
+actual es igual al objetivo, devolver su índice (encontrado). Caso base 2: si el índice
+alcanza la longitud del arreglo, devolver -1 (no encontrado). Probar con el arreglo {3, 7, 1, 9, 4}
+buscando el 9 (índice esperado 3), el 5 (esperado -1) y el 3 (índice esperado 0).
 
 Ajustes realizados:
 Ninguno
@@ -14,15 +14,15 @@ Ninguno
 public class Ejercicio10 {
 
     public static int search(int[] arr, int target, int index) {
-        // Base case 1: reached the end without finding the target
+        // Caso base 1: se llegó al final sin encontrar el objetivo
         if (index >= arr.length) {
             return -1;
         }
-        // Base case 2: found the target at current index
+        // Caso base 2: se encontró el objetivo en el índice actual
         if (arr[index] == target) {
             return index;
         }
-        // Recursive case: search the rest of the array
+        // Caso recursivo: buscar el resto del arreglo
         return search(arr, target, index + 1);
     }
 
@@ -31,24 +31,24 @@ public class Ejercicio10 {
 
         int[] arr = {3, 7, 1, 9, 4};
 
-        // Test 1: element exists in the middle
+        // Prueba 1: el elemento existe en el medio
         int result1 = search(arr, 9, 0);
         System.out.println("search([3,7,1,9,4], 9) = " + result1
-                + " (expected: 3) " + (result1 == 3 ? "PASS" : "FAIL"));
+                + " (esperado: 3) " + (result1 == 3 ? "CORRECTO" : "INCORRECTO"));
 
-        // Test 2: element does not exist
+        // Prueba 2: el elemento no existe
         int result2 = search(arr, 5, 0);
         System.out.println("search([3,7,1,9,4], 5) = " + result2
-                + " (expected: -1) " + (result2 == -1 ? "PASS" : "FAIL"));
+                + " (esperado: -1) " + (result2 == -1 ? "CORRECTO" : "INCORRECTO"));
 
-        // Test 3: element at the beginning
+        // Prueba 3: el elemento está al principio
         int result3 = search(arr, 3, 0);
         System.out.println("search([3,7,1,9,4], 3) = " + result3
-                + " (expected: 0) " + (result3 == 0 ? "PASS" : "FAIL"));
+                + " (esperado: 0) " + (result3 == 0 ? "CORRECTO" : "INCORRECTO"));
 
-        // Test 4: element at the end
+        // Prueba 4: el elemento está al final
         int result4 = search(arr, 4, 0);
         System.out.println("search([3,7,1,9,4], 4) = " + result4
-                + " (expected: 4) " + (result4 == 4 ? "PASS" : "FAIL"));
+                + " (esperado: 4) " + (result4 == 4 ? "CORRECTO" : "INCORRECTO"));
     }
 }
