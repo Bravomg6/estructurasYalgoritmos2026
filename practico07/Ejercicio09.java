@@ -1,8 +1,8 @@
 /*
 Prompt inicial utilizado:
-Demonstrate the space-waste problem in a simple (non-circular) queue.
-Show the internal array after several enqueue and dequeue operations,
-highlighting how free positions at the front cannot be reused.
+Demostrar el problema de desperdicio de espacio en una cola simple (no circular).
+Mostrar el arreglo interno después de varias operaciones de encolado y desencolado,
+señalando cómo las posiciones libres al frente no pueden reutilizarse.
 
 Ajustes realizados:
 Ninguno
@@ -15,39 +15,39 @@ public class Ejercicio09 {
 
         ColaSimpleDemo queue = new ColaSimpleDemo(6);
 
-        System.out.println("Step 1: Enqueue A, B, C, D");
+        System.out.println("Paso 1: Encolar A, B, C, D");
         queue.enqueue("A");
         queue.enqueue("B");
         queue.enqueue("C");
         queue.enqueue("D");
         queue.printArray();
 
-        System.out.println("\nStep 2: Dequeue twice (removes A and B)");
+        System.out.println("\nPaso 2: Desencolar dos veces (elimina A y B)");
         queue.dequeue();
         queue.dequeue();
         queue.printArray();
-        System.out.println("NOTE: Positions 0 and 1 are now free but CANNOT be reused");
-        System.out.println("      because rear is already at index 4.");
+        System.out.println("NOTA: Las posiciones 0 y 1 ahora están libres pero NO pueden reutilizarse");
+        System.out.println("      porque rear ya está en el índice 4.");
 
-        System.out.println("\nStep 3: Enqueue E, F");
+        System.out.println("\nPaso 3: Encolar E, F");
         queue.enqueue("E");
         queue.enqueue("F");
         queue.printArray();
 
-        System.out.println("\nStep 4: Try to enqueue G (should fail even though positions 0-1 are free)");
+        System.out.println("\nPaso 4: Intentar encolar G (debería fallar aunque las posiciones 0-1 estén libres)");
         try {
             queue.enqueue("G");
         } catch (IllegalStateException e) {
-            System.out.println("Expected error: " + e.getMessage());
+            System.out.println("Error esperado: " + e.getMessage());
         }
 
-        System.out.println("\n--- Problem Summary ---");
-        System.out.println("In a simple array-based queue, front and rear only move forward.");
-        System.out.println("Once rear reaches the end of the array, no more elements can be");
-        System.out.println("enqueued even if there are free slots at the beginning.");
-        System.out.println("This is called 'false overflow' — the queue reports being full");
-        System.out.println("while actual unused space exists. The solution is a CIRCULAR queue");
-        System.out.println("(see Ejercicio10) that wraps indices around using modulo (%).");
+        System.out.println("\n--- Resumen del problema ---");
+        System.out.println("En una cola simple basada en arreglos, front y rear solo avanzan.");
+        System.out.println("Una vez que rear alcanza el final del arreglo, no se pueden encolar");
+        System.out.println("más elementos aunque haya espacios libres al principio.");
+        System.out.println("Esto se llama 'falso overflow': la cola reporta estar llena");
+        System.out.println("aunque existe espacio sin usar. La solución es una cola CIRCULAR");
+        System.out.println("(ver Ejercicio10) que hace girar los índices usando el módulo (%).");
     }
 }
 
@@ -66,9 +66,9 @@ class ColaSimpleDemo {
     public void enqueue(String value) {
         if (rear >= data.length) {
             throw new IllegalStateException(
-                "Queue is full (false overflow) — rear=" + rear
-                + ", array length=" + data.length
-                + ", but front=" + front + " (wasted space at start)");
+                "La cola está llena (falso overflow) — rear=" + rear
+                + ", longitud del arreglo=" + data.length
+                + ", pero front=" + front + " (espacio desperdiciado al inicio)");
         }
         data[rear] = value;
         rear++;
@@ -76,10 +76,10 @@ class ColaSimpleDemo {
 
     public String dequeue() {
         if (isEmpty()) {
-            throw new IllegalStateException("Queue is empty");
+            throw new IllegalStateException("La cola está vacía");
         }
         String value = data[front];
-        data[front] = null; // clear reference for visualization
+        data[front] = null; // limpiar la referencia para la visualización
         front++;
         return value;
     }
@@ -89,10 +89,10 @@ class ColaSimpleDemo {
     }
 
     /**
-     * Prints the internal array showing which positions are used, free, or wasted.
+     * Imprime el arreglo interno mostrando qué posiciones están ocupadas, libres o desperdiciadas.
      */
     public void printArray() {
-        System.out.print("Array:    [");
+        System.out.print("Arreglo:  [");
         for (int i = 0; i < data.length; i++) {
             System.out.print(data[i] == null ? "_" : data[i]);
             if (i < data.length - 1) {
@@ -101,6 +101,6 @@ class ColaSimpleDemo {
         }
         System.out.println("]");
         System.out.println("          front=" + front + ", rear=" + rear
-                + ", active elements=" + (rear - front));
+                + ", elementos activos=" + (rear - front));
     }
 }

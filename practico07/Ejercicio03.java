@@ -1,9 +1,9 @@
 /*
 Prompt inicial utilizado:
-Create a program that receives a mathematical expression as a string and determines
-whether the parentheses are balanced. Valid example: (5 + 3) * (2 + 1).
-Invalid example: (5 + 3)) * (2 + 1.
-Use a stack to store opening parentheses and match them with closing ones.
+Crear un programa que reciba una expresión matemática como cadena de texto y determine
+si los paréntesis están balanceados. Ejemplo válido: (5 + 3) * (2 + 1).
+Ejemplo inválido: (5 + 3)) * (2 + 1.
+Usar una pila para almacenar los paréntesis de apertura y emparejarlos con los de cierre.
 
 Ajustes realizados:
 Ninguno
@@ -15,37 +15,37 @@ public class Ejercicio03 {
         System.out.println("=== Ejercicio 3: Parentesis Balanceados ===\n");
 
         String[] expressions = {
-            "(5 + 3) * (2 + 1)",        // valid
-            "((a + b) * c)",             // valid
-            "(5 + 3)) * (2 + 1",         // invalid: extra closing
-            "((5 + 3) * (2 + 1)",        // invalid: extra opening
-            "(a + (b * (c - d)))",        // valid
-            "()",                        // valid
-            ")(",                        // invalid: wrong order
-            "no parentheses here"        // valid (no parentheses at all)
+            "(5 + 3) * (2 + 1)",        // válido
+            "((a + b) * c)",             // válido
+            "(5 + 3)) * (2 + 1",         // inválido: cierra de más
+            "((5 + 3) * (2 + 1)",        // inválido: abre de más
+            "(a + (b * (c - d)))",        // válido
+            "()",                        // válido
+            ")(",                        // inválido: orden incorrecto
+            "no parentheses here"        // válido (sin paréntesis)
         };
 
         for (String expr : expressions) {
             boolean result = estanBalanceados(expr);
-            System.out.println("Expression: \"" + expr + "\"");
-            System.out.println("Balanced:   " + result);
+            System.out.println("Expresión: \"" + expr + "\"");
+            System.out.println("Balanceada: " + result);
             System.out.println();
         }
     }
 
     /**
-     * Checks whether all parentheses in the expression are balanced.
+     * Verifica si todos los paréntesis de la expresión están balanceados.
      *
-     * Algorithm:
-     * 1. Scan the expression character by character.
-     * 2. When an opening parenthesis '(' is found, push it onto the stack.
-     * 3. When a closing parenthesis ')' is found:
-     *    - If the stack is empty, there is no matching opener -> unbalanced.
-     *    - Otherwise, pop the top (most recent unmatched opener).
-     * 4. After scanning, if the stack is not empty, some openers were not closed.
+     * Algoritmo:
+     * 1. Recorrer la expresión carácter por carácter.
+     * 2. Cuando se encuentra un paréntesis de apertura '(', apilarlo en la pila.
+     * 3. Cuando se encuentra un paréntesis de cierre ')':
+     *    - Si la pila está vacía, no hay un paréntesis de apertura que lo corresponda -> no balanceado.
+     *    - En caso contrario, desapilar el elemento superior (el paréntesis de apertura más reciente sin cerrar).
+     * 4. Al terminar el recorrido, si la pila no está vacía, algunos paréntesis de apertura no fueron cerrados.
      *
-     * The stack works because the most recently opened parenthesis must be the
-     * first one closed (LIFO property).
+     * La pila funciona porque el paréntesis abierto más recientemente debe ser el
+     * primero en cerrarse (propiedad LIFO).
      */
     public static boolean estanBalanceados(String expression) {
         PilaGenerica<Character> stack = new PilaGenerica<>(expression.length());
@@ -57,14 +57,14 @@ public class Ejercicio03 {
                 stack.push(c);
             } else if (c == ')') {
                 if (stack.isEmpty()) {
-                    return false; // closing parenthesis without an opener
+                    return false; // paréntesis de cierre sin su apertura
                 }
                 stack.pop();
             }
-            // all other characters are ignored
+            // todos los demás caracteres se ignoran
         }
 
-        return stack.isEmpty(); // balanced only if all openers were matched
+        return stack.isEmpty(); // balanceado solo si todos los de apertura fueron emparejados
     }
 }
 
@@ -80,7 +80,7 @@ class PilaGenerica<T> {
 
     public void push(T value) {
         if (isFull()) {
-            throw new IllegalStateException("Stack is full");
+            throw new IllegalStateException("La pila está llena");
         }
         data[++top] = value;
     }
@@ -88,7 +88,7 @@ class PilaGenerica<T> {
     @SuppressWarnings("unchecked")
     public T pop() {
         if (isEmpty()) {
-            throw new IllegalStateException("Stack is empty");
+            throw new IllegalStateException("La pila está vacía");
         }
         return (T) data[top--];
     }
@@ -96,7 +96,7 @@ class PilaGenerica<T> {
     @SuppressWarnings("unchecked")
     public T peek() {
         if (isEmpty()) {
-            throw new IllegalStateException("Stack is empty");
+            throw new IllegalStateException("La pila está vacía");
         }
         return (T) data[top];
     }

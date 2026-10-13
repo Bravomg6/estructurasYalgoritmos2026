@@ -1,8 +1,8 @@
 /*
 Prompt inicial utilizado:
-Implement a fixed-size integer stack (PilaEnteros) backed by an array. It must support:
-push, pop, peek, isEmpty, isFull, and size. Explain the use of the top index, its initial value,
-and what happens when the stack is full (overflow) or empty (underflow).
+Implementar una pila de enteros de tamaño fijo (PilaEnteros) respaldada por un arreglo. Debe soportar:
+push, pop, peek, isEmpty, isFull y size. Explicar el uso del índice top, su valor inicial,
+y qué sucede cuando la pila está llena (overflow) o vacía (underflow).
 
 Ajustes realizados:
 Ninguno
@@ -15,36 +15,36 @@ public class Ejercicio01 {
 
         PilaEnteros stack = new PilaEnteros(5);
 
-        System.out.println("Initial state:");
+        System.out.println("Estado inicial:");
         System.out.println("isEmpty=" + stack.isEmpty() + ", isFull=" + stack.isFull()
                 + ", size=" + stack.size());
 
-        System.out.println("\nPushing 10, 20, 30, 40, 50...");
+        System.out.println("\nApilando 10, 20, 30, 40, 50...");
         stack.push(10);
         stack.push(20);
         stack.push(30);
         stack.push(40);
         stack.push(50);
         System.out.println("size=" + stack.size() + ", isFull=" + stack.isFull()
-                + ", top element (peek)=" + stack.peek());
+                + ", elemento superior (peek)=" + stack.peek());
 
-        System.out.println("\nPushing a 6th element (overflow test)...");
+        System.out.println("\nApilando un 6º elemento (prueba de overflow)...");
         try {
             stack.push(60);
         } catch (IllegalStateException e) {
-            System.out.println("Expected error: " + e.getMessage());
+            System.out.println("Error esperado: " + e.getMessage());
         }
 
-        System.out.println("\nPopping elements (LIFO order):");
+        System.out.println("\nDesapilando elementos (orden LIFO):");
         while (!stack.isEmpty()) {
-            System.out.println("Popped: " + stack.pop() + ", remaining size=" + stack.size());
+            System.out.println("Desapilado: " + stack.pop() + ", tamaño restante=" + stack.size());
         }
 
-        System.out.println("\nPopping from empty stack (underflow test)...");
+        System.out.println("\nDesapilando de una pila vacía (prueba de underflow)...");
         try {
             stack.pop();
         } catch (IllegalStateException e) {
-            System.out.println("Expected error: " + e.getMessage());
+            System.out.println("Error esperado: " + e.getMessage());
         }
     }
 }
@@ -55,38 +55,38 @@ class PilaEnteros {
     private int top;
 
     /**
-     * Constructor: creates a stack with a fixed capacity.
+     * Constructor: crea una pila con capacidad fija.
      *
-     * The top index starts at -1, meaning the stack is empty.
-     * top always points to the position of the most recently pushed element.
+     * El índice top inicia en -1, lo que significa que la pila está vacía.
+     * top siempre apunta a la posición del elemento apilado más recientemente.
      */
     public PilaEnteros(int capacity) {
         if (capacity <= 0) {
-            throw new IllegalArgumentException("Capacity must be positive");
+            throw new IllegalArgumentException("La capacidad debe ser positiva");
         }
         this.data = new int[capacity];
         this.top = -1;
     }
 
     /**
-     * Pushes a new element onto the top of the stack.
-     * Precondition: the stack must not be full (overflow).
+     * Apila un nuevo elemento en la parte superior de la pila.
+     * Precondición: la pila no debe estar llena (overflow).
      */
     public void push(int value) {
         if (isFull()) {
-            throw new IllegalStateException("Stack is full (overflow)");
+            throw new IllegalStateException("La pila está llena (overflow)");
         }
         top++;
         data[top] = value;
     }
 
     /**
-     * Removes and returns the top element.
-     * Precondition: the stack must not be empty (underflow).
+     * Elimina y devuelve el elemento superior.
+     * Precondición: la pila no debe estar vacía (underflow).
      */
     public int pop() {
         if (isEmpty()) {
-            throw new IllegalStateException("Stack is empty (underflow)");
+            throw new IllegalStateException("La pila está vacía (underflow)");
         }
         int value = data[top];
         top--;
@@ -94,35 +94,35 @@ class PilaEnteros {
     }
 
     /**
-     * Returns the top element without removing it.
-     * Precondition: the stack must not be empty.
+     * Devuelve el elemento superior sin eliminarlo.
+     * Precondición: la pila no debe estar vacía.
      */
     public int peek() {
         if (isEmpty()) {
-            throw new IllegalStateException("Stack is empty (underflow)");
+            throw new IllegalStateException("La pila está vacía (underflow)");
         }
         return data[top];
     }
 
     /**
-     * Returns true when the stack contains no elements.
-     * Invariant: isEmpty() == (top == -1).
+     * Devuelve true cuando la pila no contiene elementos.
+     * Invariante: isEmpty() == (top == -1).
      */
     public boolean isEmpty() {
         return top == -1;
     }
 
     /**
-     * Returns true when the stack has reached its fixed capacity.
-     * Invariant: isFull() == (top == data.length - 1).
+     * Devuelve true cuando la pila ha alcanzado su capacidad fija.
+     * Invariante: isFull() == (top == data.length - 1).
      */
     public boolean isFull() {
         return top == data.length - 1;
     }
 
     /**
-     * Returns the number of elements currently stored.
-     * Invariant: size() == top + 1.
+     * Devuelve la cantidad de elementos almacenados actualmente.
+     * Invariante: size() == top + 1.
      */
     public int size() {
         return top + 1;

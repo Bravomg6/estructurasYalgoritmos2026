@@ -1,9 +1,9 @@
 /*
 Prompt inicial utilizado:
-Create a turn-based attention system for an office. Each person who arrives
-receives a turn number. Operations: add a person, attend the next person,
-and check who is first in line.
-Explain why this uses FIFO and not LIFO.
+Crear un sistema de atención por turnos para una oficina. Cada persona que llega
+recibe un número de turno. Operaciones: agregar una persona, atender a la siguiente persona
+y consultar quién está primero en la fila.
+Explicar por qué se usa FIFO y no LIFO.
 
 Ajustes realizados:
 Ninguno
@@ -16,34 +16,34 @@ public class Ejercicio07 {
 
         SistemaTurnos system = new SistemaTurnos(10);
 
-        System.out.println("People arriving at the office:");
+        System.out.println("Personas que llegan a la oficina:");
         system.agregarPersona("Carlos");
         system.agregarPersona("Maria");
         system.agregarPersona("Juan");
         system.agregarPersona("Ana");
-        System.out.println("People waiting: " + system.size());
-        System.out.println("Next turn: " + system.consultarPrimero());
+        System.out.println("Personas en espera: " + system.size());
+        System.out.println("Siguiente turno: " + system.consultarPrimero());
 
-        System.out.println("\nAttending people in order:");
+        System.out.println("\nAtendiendo a las personas en orden:");
         while (!system.isEmpty()) {
             String attended = system.atenderSiguiente();
-            System.out.println("Attending: " + attended
-                    + " (remaining: " + system.size() + ")");
+            System.out.println("Atendiendo: " + attended
+                    + " (restantes: " + system.size() + ")");
         }
 
-        System.out.println("\nAttending when no one is waiting (underflow test)...");
+        System.out.println("\nAtendiendo cuando no hay nadie en espera (prueba de underflow)...");
         try {
             system.atenderSiguiente();
         } catch (IllegalStateException e) {
-            System.out.println("Expected error: " + e.getMessage());
+            System.out.println("Error esperado: " + e.getMessage());
         }
 
-        System.out.println("\nWhy FIFO and not LIFO?");
-        System.out.println("In an office, the first person to arrive should be the");
-        System.out.println("first one to be attended. This is fairness: first come,");
-        System.out.println("first served. A LIFO (stack) approach would serve the most");
-        System.out.println("recent arrival first, making earlier visitors wait longer");
-        System.out.println("indefinitely — that would be unfair and impractical.");
+        System.out.println("\n¿Por qué FIFO y no LIFO?");
+        System.out.println("En una oficina, la primera persona en llegar debería ser");
+        System.out.println("la primera en ser atendida. Esto es equidad: primero en llegar,");
+        System.out.println("primero en ser atendido. Un enfoque LIFO (pila) atendería primero");
+        System.out.println("a la llegada más reciente, haciendo que los visitantes anteriores");
+        System.out.println("esperen más tiempo de forma indefinida: eso sería injusto e impráctico.");
     }
 }
 
@@ -64,24 +64,24 @@ class SistemaTurnos {
     }
 
     /**
-     * Adds a person to the end of the queue and assigns a turn number.
+     * Agrega una persona al final de la cola y le asigna un número de turno.
      */
     public void agregarPersona(String name) {
         if (isFull()) {
-            throw new IllegalStateException("Waiting room is full");
+            throw new IllegalStateException("La sala de espera está llena");
         }
-        people[rear] = name + " (Turn #" + nextTurn + ")";
+        people[rear] = name + " (Turno #" + nextTurn + ")";
         nextTurn++;
         rear++;
         count++;
     }
 
     /**
-     * Removes and returns the person at the front of the queue (next to be attended).
+     * Elimina y devuelve a la persona al frente de la cola (la próxima en ser atendida).
      */
     public String atenderSiguiente() {
         if (isEmpty()) {
-            throw new IllegalStateException("No one is waiting");
+            throw new IllegalStateException("No hay nadie en espera");
         }
         String person = people[front];
         front++;
@@ -90,11 +90,11 @@ class SistemaTurnos {
     }
 
     /**
-     * Returns the name of the person who is next in line without removing them.
+     * Devuelve el nombre de la persona que sigue en la fila sin eliminarla.
      */
     public String consultarPrimero() {
         if (isEmpty()) {
-            throw new IllegalStateException("No one is waiting");
+            throw new IllegalStateException("No hay nadie en espera");
         }
         return people[front];
     }

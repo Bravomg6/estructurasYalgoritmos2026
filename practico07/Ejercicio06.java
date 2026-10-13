@@ -1,8 +1,8 @@
 /*
 Prompt inicial utilizado:
-Implement a simple integer queue (ColaEnteros) using an array.
-Operations: enqueue, dequeue, front, isEmpty, isFull, size.
-Explain the purpose of the front and rear indices.
+Implementar una cola simple de enteros (ColaEnteros) usando un arreglo.
+Operaciones: enqueue, dequeue, front, isEmpty, isFull, size.
+Explicar el propósito de los índices front y rear.
 
 Ajustes realizados:
 Ninguno
@@ -15,11 +15,11 @@ public class Ejercicio06 {
 
         ColaEnteros queue = new ColaEnteros(5);
 
-        System.out.println("Initial state:");
+        System.out.println("Estado inicial:");
         System.out.println("isEmpty=" + queue.isEmpty() + ", isFull=" + queue.isFull()
                 + ", size=" + queue.size());
 
-        System.out.println("\nEnqueue: 10, 20, 30, 40, 50");
+        System.out.println("\nEncolar: 10, 20, 30, 40, 50");
         queue.enqueue(10);
         queue.enqueue(20);
         queue.enqueue(30);
@@ -28,31 +28,31 @@ public class Ejercicio06 {
         System.out.println("size=" + queue.size() + ", isFull=" + queue.isFull()
                 + ", front=" + queue.front());
 
-        System.out.println("\nEnqueue a 6th element (overflow test)...");
+        System.out.println("\nEncolar un 6º elemento (prueba de overflow)...");
         try {
             queue.enqueue(60);
         } catch (IllegalStateException e) {
-            System.out.println("Expected error: " + e.getMessage());
+            System.out.println("Error esperado: " + e.getMessage());
         }
 
-        System.out.println("\nDequeue elements (FIFO order):");
+        System.out.println("\nDesencolar elementos (orden FIFO):");
         while (!queue.isEmpty()) {
-            System.out.println("Dequeued: " + queue.dequeue() + ", remaining size=" + queue.size());
+            System.out.println("Desencolado: " + queue.dequeue() + ", tamaño restante=" + queue.size());
         }
 
-        System.out.println("\nDequeue from empty queue (underflow test)...");
+        System.out.println("\nDesencolar de una cola vacía (prueba de underflow)...");
         try {
             queue.dequeue();
         } catch (IllegalStateException e) {
-            System.out.println("Expected error: " + e.getMessage());
+            System.out.println("Error esperado: " + e.getMessage());
         }
 
-        System.out.println("\n--- Front and Rear explanation ---");
-        System.out.println("front: index of the next element to be dequeued (oldest).");
-        System.out.println("rear:  index where the next element will be enqueued (newest).");
-        System.out.println("Both start at 0. After enqueue, rear advances.");
-        System.out.println("After dequeue, front advances. Elements between front and rear");
-        System.out.println("are the active elements in the queue.");
+        System.out.println("\n--- Explicación de front y rear ---");
+        System.out.println("front: índice del próximo elemento a desencolar (el más antiguo).");
+        System.out.println("rear:  índice donde se insertará el próximo elemento (el más nuevo).");
+        System.out.println("Ambos inician en 0. Después de encolar, rear avanza.");
+        System.out.println("Después de desencolar, front avanza. Los elementos entre front y rear");
+        System.out.println("son los elementos activos de la cola.");
     }
 }
 
@@ -64,15 +64,15 @@ class ColaEnteros {
     private int count;
 
     /**
-     * Constructor: creates a queue with fixed capacity.
+     * Constructor: crea una cola con capacidad fija.
      *
-     * front = index of the first (oldest) element.
-     * rear  = index where the next element will be placed.
-     * count = number of elements currently in the queue.
+     * front = índice del primer elemento (el más antiguo).
+     * rear  = índice donde se ubicará el próximo elemento.
+     * count = cantidad de elementos actualmente en la cola.
      */
     public ColaEnteros(int capacity) {
         if (capacity <= 0) {
-            throw new IllegalArgumentException("Capacity must be positive");
+            throw new IllegalArgumentException("La capacidad debe ser positiva");
         }
         this.data = new int[capacity];
         this.front = 0;
@@ -81,12 +81,12 @@ class ColaEnteros {
     }
 
     /**
-     * Adds an element at the rear of the queue.
-     * Precondition: the queue must not be full.
+     * Agrega un elemento al final de la cola.
+     * Precondición: la cola no debe estar llena.
      */
     public void enqueue(int value) {
         if (isFull()) {
-            throw new IllegalStateException("Queue is full (overflow)");
+            throw new IllegalStateException("La cola está llena (overflow)");
         }
         data[rear] = value;
         rear++;
@@ -94,12 +94,12 @@ class ColaEnteros {
     }
 
     /**
-     * Removes and returns the element at the front of the queue.
-     * Precondition: the queue must not be empty.
+     * Elimina y devuelve el elemento al frente de la cola.
+     * Precondición: la cola no debe estar vacía.
      */
     public int dequeue() {
         if (isEmpty()) {
-            throw new IllegalStateException("Queue is empty (underflow)");
+            throw new IllegalStateException("La cola está vacía (underflow)");
         }
         int value = data[front];
         front++;
@@ -108,34 +108,34 @@ class ColaEnteros {
     }
 
     /**
-     * Returns the element at the front without removing it.
-     * Precondition: the queue must not be empty.
+     * Devuelve el elemento al frente sin eliminarlo.
+     * Precondición: la cola no debe estar vacía.
      */
     public int front() {
         if (isEmpty()) {
-            throw new IllegalStateException("Queue is empty");
+            throw new IllegalStateException("La cola está vacía");
         }
         return data[front];
     }
 
     /**
-     * Returns true when the queue contains no elements.
-     * Invariant: isEmpty() == (count == 0).
+     * Devuelve true cuando la cola no contiene elementos.
+     * Invariante: isEmpty() == (count == 0).
      */
     public boolean isEmpty() {
         return count == 0;
     }
 
     /**
-     * Returns true when the queue has reached its fixed capacity.
-     * Invariant: isFull() == (count == data.length).
+     * Devuelve true cuando la cola ha alcanzado su capacidad fija.
+     * Invariante: isFull() == (count == data.length).
      */
     public boolean isFull() {
         return count == data.length;
     }
 
     /**
-     * Returns the number of elements currently in the queue.
+     * Devuelve la cantidad de elementos actualmente en la cola.
      */
     public int size() {
         return count;

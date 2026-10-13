@@ -1,9 +1,9 @@
 /*
 Prompt inicial utilizado:
-Simulate a tower of plates where each plate has a number or name.
-Operations: add a plate (push), remove the top plate (pop),
-and check which plate is on top (peek).
-Explain why this is solved with a stack (LIFO) and not a queue (FIFO).
+Simular una torre de platos donde cada plato tiene un número o un nombre.
+Operaciones: agregar un plato (push), retirar el plato superior (pop)
+y consultar qué plato está en la parte superior (peek).
+Explicar por qué se resuelve con una pila (LIFO) y no con una cola (FIFO).
 
 Ajustes realizados:
 Ninguno
@@ -16,31 +16,31 @@ public class Ejercicio02 {
 
         TorreDePlatos tower = new TorreDePlatos(10);
 
-        System.out.println("Adding plates to the tower:");
+        System.out.println("Agregando platos a la torre:");
         tower.agregarPlato("Plate-A");
         tower.agregarPlato("Plate-B");
         tower.agregarPlato("Plate-C");
         tower.agregarPlato("Plate-D");
-        System.out.println("Tower size: " + tower.size());
-        System.out.println("Plate on top: " + tower.consultarSuperior());
+        System.out.println("Tamaño de la torre: " + tower.size());
+        System.out.println("Plato superior: " + tower.consultarSuperior());
 
-        System.out.println("\nRemoving the top plate:");
+        System.out.println("\nRetirando el plato superior:");
         String removed = tower.retirarSuperior();
-        System.out.println("Removed: " + removed);
-        System.out.println("New plate on top: " + tower.consultarSuperior());
+        System.out.println("Retirado: " + removed);
+        System.out.println("Nuevo plato superior: " + tower.consultarSuperior());
 
-        System.out.println("\nRemoving remaining plates (LIFO order):");
+        System.out.println("\nRetirando los platos restantes (orden LIFO):");
         while (!tower.isEmpty()) {
-            System.out.println("Removed: " + tower.retirarSuperior());
+            System.out.println("Retirado: " + tower.retirarSuperior());
         }
-        System.out.println("Tower is empty: " + tower.isEmpty());
+        System.out.println("La torre está vacía: " + tower.isEmpty());
 
-        System.out.println("\nWhy LIFO and not FIFO?");
-        System.out.println("In a real plate tower, you always add and remove plates");
-        System.out.println("from the top. The first plate placed (Plate-A) is at the");
-        System.out.println("bottom and can only be reached after removing all others.");
-        System.out.println("A queue would remove the oldest plate first, which does not");
-        System.out.println("match physical reality.");
+        System.out.println("\n¿Por qué LIFO y no FIFO?");
+        System.out.println("En una torre de platos real, siempre se agregan y retiran platos");
+        System.out.println("desde la parte superior. El primer plato colocado (Plate-A) queda");
+        System.out.println("en la base y solo se puede alcanzar después de retirar todos los demás.");
+        System.out.println("Una cola retiraría primero el plato más antiguo, lo cual no");
+        System.out.println("coincide con la realidad física.");
     }
 }
 
@@ -54,26 +54,26 @@ class TorreDePlatos {
         this.top = -1;
     }
 
-    /** Adds a plate on top of the tower. */
+    /** Agrega un plato en la parte superior de la torre. */
     public void agregarPlato(String plate) {
         if (isFull()) {
-            throw new IllegalStateException("Tower is full");
+            throw new IllegalStateException("La torre está llena");
         }
         plates[++top] = plate;
     }
 
-    /** Removes and returns the plate from the top of the tower. */
+    /** Retira y devuelve el plato de la parte superior de la torre. */
     public String retirarSuperior() {
         if (isEmpty()) {
-            throw new IllegalStateException("Tower is empty");
+            throw new IllegalStateException("La torre está vacía");
         }
         return plates[top--];
     }
 
-    /** Returns the plate currently on top without removing it. */
+    /** Devuelve el plato que está actualmente en la parte superior sin eliminarlo. */
     public String consultarSuperior() {
         if (isEmpty()) {
-            throw new IllegalStateException("Tower is empty");
+            throw new IllegalStateException("La torre está vacía");
         }
         return plates[top];
     }
