@@ -1,14 +1,14 @@
 /*
 Prompt inicial utilizado:
-Implement a Java algorithm that counts how many times a target value appears
-in an integer array.
-Strategy: traverse the entire array once, maintaining a counter that increments
-each time the current element matches the target.
-Justification: the algorithm must examine every element because the target
-could appear at any position. There is no shortcut without pre-processing or
-additional data structures.
-Time complexity: O(n) — full traversal is required.
-Space complexity: O(1) — only a counter variable is needed.
+Implementar un algoritmo en Java que cuente cuántas veces aparece un valor
+objetivo en un arreglo de enteros.
+Estrategia: recorrer el arreglo completo una sola vez, manteniendo un contador
+que se incrementa cada vez que el elemento actual coincide con el objetivo.
+Justificación: el algoritmo debe examinar cada elemento porque el objetivo puede
+aparecer en cualquier posición. No existe un atajo sin preprocesamiento ni
+estructuras de datos adicionales.
+Complejidad temporal: O(n) — se requiere un recorrido completo.
+Complejidad espacial: O(1) — solo se necesita una variable contador.
 
 Ajustes realizados:
 Ninguno
@@ -19,9 +19,9 @@ import java.util.Scanner;
 public class Ejercicio05 {
 
     /**
-     * Counts the occurrences of a target value in an array.
-     * Time complexity: O(n) — every element must be checked.
-     * Space complexity: O(1) — only a counter is maintained.
+     * Cuenta las apariciones de un valor objetivo en un arreglo.
+     * Complejidad temporal: O(n) — debe verificarse cada elemento.
+     * Complejidad espacial: O(1) — solo se mantiene un contador.
      */
     public static int countOccurrences(int[] array, int target) {
         int count = 0;
@@ -38,20 +38,20 @@ public class Ejercicio05 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Enter the number of elements: ");
+        System.out.print("Ingrese la cantidad de elementos: ");
         int n = scanner.nextInt();
 
         int[] array = new int[n];
-        System.out.println("Enter " + n + " integers:");
+        System.out.println("Ingrese " + n + " enteros:");
         for (int i = 0; i < n; i++) {
             array[i] = scanner.nextInt();
         }
 
-        System.out.print("Enter the value to count: ");
+        System.out.print("Ingrese el valor a contar: ");
         int target = scanner.nextInt();
 
         int occurrences = countOccurrences(array, target);
-        System.out.println("The value " + target + " appears " + occurrences + " time(s).");
+        System.out.println("El valor " + target + " aparece " + occurrences + " veces.");
 
         scanner.close();
     }

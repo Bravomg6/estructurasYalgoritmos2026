@@ -1,13 +1,15 @@
 /*
 Prompt inicial utilizado:
-Implement a Java algorithm that finds the minimum value in an integer array.
-Strategy: perform a single linear scan, keeping a variable that stores the
-smallest value seen so far. Initialize it with the first element and update it
-whenever a smaller element is found.
-Justification: every element must be examined at least once to guarantee the
-minimum is found, so a single pass is optimal. Sorting is unnecessary because
-sorting takes O(n log n) while the minimum can be found in O(n).
-Time complexity: O(n). Space complexity: O(1).
+Implementar un algoritmo en Java que encuentre el valor mínimo en un arreglo de
+enteros.
+Estrategia: realizar un único recorrido lineal, manteniendo una variable que
+almacena el valor más pequeño visto hasta el momento. Inicializarla con el
+primer elemento y actualizarla cada vez que se encuentre un elemento menor.
+Justificación: cada elemento debe examinarse al menos una vez para garantizar
+que se encuentre el mínimo, por lo que un único recorrido es óptimo. Ordenar no
+es necesario porque ordenar tiene un costo de O(n log n) mientras que el mínimo
+puede encontrarse en O(n).
+Complejidad temporal: O(n). Complejidad espacial: O(1).
 
 Ajustes realizados:
 Ninguno
@@ -18,20 +20,20 @@ import java.util.Scanner;
 public class Ejercicio01 {
 
     /**
-     * Finds the minimum value in an integer array.
-     * Time complexity: O(n) — every element is visited exactly once.
-     * Space complexity: O(1) — only a single variable is used regardless of input size.
+     * Encuentra el valor mínimo en un arreglo de enteros.
+     * Complejidad temporal: O(n) — cada elemento se visita exactamente una vez.
+     * Complejidad espacial: O(1) — se utiliza una única variable sin importar el tamaño de la entrada.
      */
     public static int findMinimum(int[] array) {
         if (array == null || array.length == 0) {
-            throw new IllegalArgumentException("Array must not be null or empty");
+            throw new IllegalArgumentException("El arreglo no debe ser nulo ni estar vacío");
         }
 
-        int min = array[0]; // Start with the first element as the initial minimum
+        int min = array[0]; // Se inicia con el primer elemento como mínimo inicial
 
         for (int i = 1; i < array.length; i++) {
             if (array[i] < min) {
-                min = array[i]; // Update minimum when a smaller value is found
+                min = array[i]; // Se actualiza el mínimo cuando se encuentra un valor menor
             }
         }
 
@@ -41,17 +43,17 @@ public class Ejercicio01 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Enter the number of elements: ");
+        System.out.print("Ingrese la cantidad de elementos: ");
         int n = scanner.nextInt();
 
         int[] array = new int[n];
-        System.out.println("Enter " + n + " integers:");
+        System.out.println("Ingrese " + n + " enteros:");
         for (int i = 0; i < n; i++) {
             array[i] = scanner.nextInt();
         }
 
         int min = findMinimum(array);
-        System.out.println("Minimum value: " + min);
+        System.out.println("Valor mínimo: " + min);
 
         scanner.close();
     }

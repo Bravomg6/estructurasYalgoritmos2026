@@ -1,14 +1,14 @@
 /*
 Prompt inicial utilizado:
-Implement a Java algorithm that finds the largest element in a 2D integer
-matrix.
-Strategy: initialize a variable with the first element, then traverse all rows
-and columns comparing each element against the current maximum.
-Justification: every element must be examined because the maximum could be
-located at any position. No element can be skipped without risking an incorrect
-result.
-Time complexity: O(rows * cols) — full traversal required.
-Space complexity: O(1) — only the max variable is needed.
+Implementar un algoritmo en Java que encuentre el elemento más grande de una
+matriz de enteros bidimensional.
+Estrategia: inicializar una variable con el primer elemento y luego recorrer
+todas las filas y columnas comparando cada elemento con el máximo actual.
+Justificación: debe examinarse cada elemento porque el máximo puede estar en
+cualquier posición. No se puede omitir ningún elemento sin arriesgar un
+resultado incorrecto.
+Complejidad temporal: O(filas * cols) — se requiere un recorrido completo.
+Complejidad espacial: O(1) — solo se necesita la variable max.
 
 Ajustes realizados:
 Ninguno
@@ -19,16 +19,16 @@ import java.util.Scanner;
 public class Ejercicio09 {
 
     /**
-     * Finds the largest element in a 2D matrix.
-     * Time complexity: O(rows * cols) — every element must be visited.
-     * Space complexity: O(1) — only the max variable is maintained.
+     * Encuentra el elemento más grande de una matriz bidimensional.
+     * Complejidad temporal: O(filas * cols) — debe visitarse cada elemento.
+     * Complejidad espacial: O(1) — solo se mantiene la variable max.
      */
     public static int findMaxInMatrix(int[][] matrix) {
         if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
-            throw new IllegalArgumentException("Matrix must not be null or empty");
+            throw new IllegalArgumentException("La matriz no debe ser nula ni estar vacía");
         }
 
-        int max = matrix[0][0]; // Initialize with the first element
+        int max = matrix[0][0]; // Se inicializa con el primer elemento
 
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
@@ -44,13 +44,13 @@ public class Ejercicio09 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Enter the number of rows: ");
+        System.out.print("Ingrese la cantidad de filas: ");
         int rows = scanner.nextInt();
-        System.out.print("Enter the number of columns: ");
+        System.out.print("Ingrese la cantidad de columnas: ");
         int cols = scanner.nextInt();
 
         int[][] matrix = new int[rows][cols];
-        System.out.println("Enter the matrix elements row by row:");
+        System.out.println("Ingrese los elementos de la matriz fila por fila:");
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 matrix[i][j] = scanner.nextInt();
@@ -58,7 +58,7 @@ public class Ejercicio09 {
         }
 
         int max = findMaxInMatrix(matrix);
-        System.out.println("Largest element: " + max);
+        System.out.println("Elemento más grande: " + max);
 
         scanner.close();
     }

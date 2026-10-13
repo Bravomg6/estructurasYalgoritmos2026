@@ -1,17 +1,17 @@
 /*
 Prompt inicial utilizado:
-Implement the Bubble Sort algorithm in Java for sorting an integer array in
-ascending order.
-Strategy: repeatedly traverse the array, comparing adjacent elements and
-swapping them if they are in the wrong order. After each pass, the largest
-unsorted element "bubbles up" to its correct position.
-Justification: Bubble Sort is only suitable for educational purposes or very
-small datasets because its O(n^2) average and worst-case time complexity makes
-it impractical for large inputs. Algorithms like QuickSort or MergeSort are
-preferred in production.
-Time complexity: O(n^2) average and worst case, O(n) best case (already sorted
-with optimization). Space complexity: O(1).
-The program must count the number of comparisons and swaps performed.
+Implementar el algoritmo Bubble Sort en Java para ordenar un arreglo de enteros
+en orden ascendente.
+Estrategia: recorrer el arreglo repetidamente, comparando elementos adyacentes e
+intercambiándolos si están en el orden incorrecto. Después de cada pasada, el
+elemento sin ordenar más grande "burbujea" hasta su posición correcta.
+Justificación: Bubble Sort solo es adecuado con fines educativos o para
+conjuntos de datos muy pequeños, porque su complejidad temporal de O(n^2) en
+promedio y en el peor caso lo hace impráctico para entradas grandes. Algoritmos
+como QuickSort o MergeSort son preferidos en producción.
+Complejidad temporal: O(n^2) en promedio y en el peor caso, O(n) en el mejor
+caso (ya ordenado con la optimización). Complejidad espacial: O(1).
+El programa debe contar la cantidad de comparaciones e intercambios realizados.
 
 Ajustes realizados:
 Ninguno
@@ -22,10 +22,10 @@ import java.util.Scanner;
 public class Ejercicio10 {
 
     /**
-     * Sorts an array using Bubble Sort with comparison and swap counters.
-     * Time complexity: O(n^2) average/worst case, O(n) best case (optimized).
-     * Space complexity: O(1) — in-place sorting.
-     * Returns an array where index 0 = comparisons, index 1 = swaps.
+     * Ordena un arreglo usando Bubble Sort con contadores de comparaciones e intercambios.
+     * Complejidad temporal: O(n^2) en promedio/peor caso, O(n) en el mejor caso (optimizado).
+     * Complejidad espacial: O(1) — ordenamiento en el lugar.
+     * Devuelve un arreglo donde el índice 0 = comparaciones, índice 1 = intercambios.
      */
     public static long[] bubbleSort(int[] array) {
         int comparisons = 0;
@@ -33,12 +33,12 @@ public class Ejercicio10 {
         int n = array.length;
 
         for (int i = 0; i < n - 1; i++) {
-            boolean swapped = false; // Optimization: detect if array is already sorted
+            boolean swapped = false; // Optimización: detecta si el arreglo ya está ordenado
 
             for (int j = 0; j < n - 1 - i; j++) {
                 comparisons++;
                 if (array[j] > array[j + 1]) {
-                    // Swap adjacent elements
+                    // Se intercambian elementos adyacentes
                     int temp = array[j];
                     array[j] = array[j + 1];
                     array[j + 1] = temp;
@@ -47,7 +47,7 @@ public class Ejercicio10 {
                 }
             }
 
-            // If no swaps occurred in this pass, array is sorted
+            // Si no hubo intercambios en esta pasada, el arreglo está ordenado
             if (!swapped) {
                 break;
             }
@@ -59,24 +59,24 @@ public class Ejercicio10 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Enter the number of elements: ");
+        System.out.print("Ingrese la cantidad de elementos: ");
         int n = scanner.nextInt();
 
         int[] array = new int[n];
-        System.out.println("Enter " + n + " integers:");
+        System.out.println("Ingrese " + n + " enteros:");
         for (int i = 0; i < n; i++) {
             array[i] = scanner.nextInt();
         }
 
-        System.out.println("Original array: ");
+        System.out.println("Arreglo original: ");
         printArray(array);
 
         long[] stats = bubbleSort(array);
 
-        System.out.println("Sorted array: ");
+        System.out.println("Arreglo ordenado: ");
         printArray(array);
-        System.out.println("Comparisons: " + stats[0]);
-        System.out.println("Swaps: " + stats[1]);
+        System.out.println("Comparaciones: " + stats[0]);
+        System.out.println("Intercambios: " + stats[1]);
 
         scanner.close();
     }

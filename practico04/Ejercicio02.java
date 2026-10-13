@@ -1,15 +1,17 @@
 /*
 Prompt inicial utilizado:
-Implement a Java algorithm that searches for a target element in an unordered
-integer array using linear scan. The strategy is to iterate through each element
-sequentially and return the index of the first occurrence found.
-Justification: because the array is unordered, no assumptions can be made about
-element positions, so every element must be checked in the worst case. Linear
-scan is the only correct approach without pre-processing.
-Best case: O(1) — target is the first element.
-Worst case: O(n) — target is the last element or not present.
-Average case: O(n) — on average half the array is traversed.
-The program must report how many positions were traversed.
+Implementar un algoritmo en Java que busque un elemento objetivo en un arreglo
+de enteros desordenado mediante un recorrido lineal. La estrategia es iterar
+sobre cada elemento secuencialmente y devolver el índice de la primera
+aparición encontrada.
+Justificación: como el arreglo está desordenado, no se pueden hacer suposiciones
+sobre las posiciones de los elementos, por lo que en el peor caso debe
+verificarse cada elemento. El recorrido lineal es el único enfoque correcto sin
+preprocesamiento.
+Mejor caso: O(1) — el objetivo es el primer elemento.
+Peor caso: O(n) — el objetivo es el último elemento o no está presente.
+Caso promedio: O(n) — en promedio se recorre la mitad del arreglo.
+El programa debe informar cuántas posiciones se recorrieron.
 
 Ajustes realizados:
 Ninguno
@@ -20,11 +22,11 @@ import java.util.Scanner;
 public class Ejercicio02 {
 
     /**
-     * Searches for a target value in an unordered array.
-     * Best case: O(1), Worst case: O(n), Average case: O(n).
-     * Space complexity: O(1).
-     * Returns the index of the target, or -1 if not found.
-     * Also reports the number of positions traversed.
+     * Busca un valor objetivo en un arreglo desordenado.
+     * Mejor caso: O(1), peor caso: O(n), caso promedio: O(n).
+     * Complejidad espacial: O(1).
+     * Devuelve el índice del objetivo, o -1 si no se encuentra.
+     * También informa la cantidad de posiciones recorridas.
      */
     public static int linearSearch(int[] array, int target) {
         int positionsTraversed = 0;
@@ -32,35 +34,35 @@ public class Ejercicio02 {
         for (int i = 0; i < array.length; i++) {
             positionsTraversed++;
             if (array[i] == target) {
-                System.out.println("Positions traversed: " + positionsTraversed);
+                System.out.println("Posiciones recorridas: " + positionsTraversed);
                 return i;
             }
         }
 
-        System.out.println("Positions traversed: " + positionsTraversed);
+        System.out.println("Posiciones recorridas: " + positionsTraversed);
         return -1;
     }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Enter the number of elements: ");
+        System.out.print("Ingrese la cantidad de elementos: ");
         int n = scanner.nextInt();
 
         int[] array = new int[n];
-        System.out.println("Enter " + n + " integers (unordered):");
+        System.out.println("Ingrese " + n + " enteros (desordenados):");
         for (int i = 0; i < n; i++) {
             array[i] = scanner.nextInt();
         }
 
-        System.out.print("Enter the value to search: ");
+        System.out.print("Ingrese el valor a buscar: ");
         int target = scanner.nextInt();
 
         int result = linearSearch(array, target);
         if (result != -1) {
-            System.out.println("Element found at index: " + result);
+            System.out.println("Elemento encontrado en el índice: " + result);
         } else {
-            System.out.println("Element not found in the array.");
+            System.out.println("El elemento no se encuentra en el arreglo.");
         }
 
         scanner.close();

@@ -1,14 +1,17 @@
 /*
 Prompt inicial utilizado:
-Implement a Java binary search algorithm for a sorted integer array.
-Strategy: repeatedly divide the search interval in half by comparing the target
-with the middle element. If the target is smaller, search the left half; if
-larger, search the right half.
-Justification: binary search is more efficient than linear search on sorted data
-because each comparison eliminates half of the remaining elements, yielding
-O(log n) time instead of O(n).
-Time complexity: O(log n). Space complexity: O(1) for the iterative version.
-The program must show step-by-step how the variables (low, high, mid) evolve.
+Implementar un algoritmo de búsqueda binaria en Java para un arreglo de enteros
+ordenado.
+Estrategia: dividir repetidamente el intervalo de búsqueda por la mitad
+comparando el objetivo con el elemento central. Si el objetivo es menor, buscar
+en la mitad izquierda; si es mayor, buscar en la mitad derecha.
+Justificación: la búsqueda binaria es más eficiente que la búsqueda lineal sobre
+datos ordenados porque cada comparación elimina la mitad de los elementos
+restantes, lo que produce O(log n) de tiempo en lugar de O(n).
+Complejidad temporal: O(log n). Complejidad espacial: O(1) para la versión
+iterativa.
+El programa debe mostrar paso a paso cómo evolucionan las variables (low, high,
+mid).
 
 Ajustes realizados:
 Ninguno
@@ -19,10 +22,10 @@ import java.util.Scanner;
 public class Ejercicio03 {
 
     /**
-     * Performs binary search on a sorted array.
-     * Time complexity: O(log n) — search space is halved each iteration.
-     * Space complexity: O(1) — iterative implementation uses constant extra space.
-     * Returns the index of the target, or -1 if not found.
+     * Realiza una búsqueda binaria sobre un arreglo ordenado.
+     * Complejidad temporal: O(log n) — el espacio de búsqueda se reduce a la mitad en cada iteración.
+     * Complejidad espacial: O(1) — la implementación iterativa usa espacio extra constante.
+     * Devuelve el índice del objetivo, o -1 si no se encuentra.
      */
     public static int binarySearch(int[] array, int target) {
         int low = 0;
@@ -30,43 +33,43 @@ public class Ejercicio03 {
         int step = 1;
 
         while (low <= high) {
-            int mid = low + (high - low) / 2; // Avoids potential overflow
+            int mid = low + (high - low) / 2; // Evita un posible desbordamiento
 
-            System.out.println("Step " + step + ": low=" + low + ", high=" + high + ", mid=" + mid + ", array[mid]=" + array[mid]);
+            System.out.println("Paso " + step + ": low=" + low + ", high=" + high + ", mid=" + mid + ", array[mid]=" + array[mid]);
 
             if (array[mid] == target) {
-                System.out.println("Target found at index: " + mid);
+                System.out.println("Objetivo encontrado en el índice: " + mid);
                 return mid;
             } else if (array[mid] < target) {
-                low = mid + 1; // Target is in the right half
+                low = mid + 1; // El objetivo está en la mitad derecha
             } else {
-                high = mid - 1; // Target is in the left half
+                high = mid - 1; // El objetivo está en la mitad izquierda
             }
             step++;
         }
 
-        System.out.println("Target not found after " + (step - 1) + " steps.");
+        System.out.println("Objetivo no encontrado después de " + (step - 1) + " pasos.");
         return -1;
     }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Enter the number of elements: ");
+        System.out.print("Ingrese la cantidad de elementos: ");
         int n = scanner.nextInt();
 
         int[] array = new int[n];
-        System.out.println("Enter " + n + " integers in sorted (ascending) order:");
+        System.out.println("Ingrese " + n + " enteros en orden ascendente:");
         for (int i = 0; i < n; i++) {
             array[i] = scanner.nextInt();
         }
 
-        System.out.print("Enter the value to search: ");
+        System.out.print("Ingrese el valor a buscar: ");
         int target = scanner.nextInt();
 
         int result = binarySearch(array, target);
         if (result == -1) {
-            System.out.println("Result: Element not found.");
+            System.out.println("Resultado: elemento no encontrado.");
         }
 
         scanner.close();
