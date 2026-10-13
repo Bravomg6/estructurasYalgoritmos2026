@@ -16,15 +16,15 @@ public class Ejercicio05 {
 
         System.out.println("=== Grade Evaluation ===");
 
-        // Request the numeric grade from the user.
+        // Solicitar la calificación numérica al usuario.
         System.out.print("Enter the student's grade (0-10): ");
         int grade = scanner.nextInt();
 
-        // Validate that the grade is within the valid range (0 to 10).
+        // Validar que la calificación este dentro del rango válido (0 a 10).
         if (grade < 0 || grade > 10) {
             System.out.println("Error: the grade must be between 0 and 10.");
         } else if (grade >= 9) {
-            // Grade 9 or 10: promoted (highest distinction).
+            // Calificación 9 o 10: promocionado. (highest distinction).
             System.out.println("Status: PROMOTED. Excellent work!");
         } else if (grade >= 7) {
             // Grade 7 or 8: approved with good performance.
