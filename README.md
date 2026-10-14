@@ -23,7 +23,7 @@ Al igual que todos los `.docx` con las consignas de cada práctico.
 
 Cada `.java` tiene dos comentarios al principio:
 
-1. **Prompt inicial utilizado** — el texto exacto que le pasé a OpenCode.
+1. **Prompt inicial utilizado** — el texto que le pasé a OpenCode.
 2. **Ajustes realizados** — los cambios que se hicieron posteriormente, si hizo falta.
 
 Todos los archivos compilan con `javac` sin errores.
