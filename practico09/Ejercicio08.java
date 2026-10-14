@@ -1,10 +1,10 @@
 /*
 Prompt inicial utilizado:
-Implement a program that reverses a word using a linked stack. Example: "algoritmo"
-becomes "omtirogla". Explain why LIFO policy allows reversing the order: the last
-character pushed is the first one popped, naturally inverting the sequence.
-Use a Node class with char data. Do not use Java collections.
-Include test cases in main.
+Implementa un programa que invierte una palabra usando una pila enlazada. Ejemplo: "algoritmo"
+se convierte en "omtirogla". Explica por qué la política LIFO permite invertir el orden: el último
+carácter apilado es el primero que se desapila, lo que invierte naturalmente la secuencia.
+Usa una clase Node con char data. No uses colecciones de Java.
+Incluye casos de prueba en main.
 
 Ajustes realizados:
 Ninguno
@@ -37,7 +37,7 @@ public class Ejercicio08 {
 
         public char pop() {
             if (isEmpty()) {
-                throw new RuntimeException("Stack underflow");
+                throw new RuntimeException("Subdesborde de la pila");
             }
             char value = head.data;
             head = head.next;
@@ -51,7 +51,7 @@ public class Ejercicio08 {
 
     static class WordReverser {
 
-        // Reverse a word using a stack. O(n).
+        // Invierte una palabra usando una pila. O(n).
         public static String reverse(String word) {
             if (word == null || word.isEmpty()) {
                 return word;
@@ -59,12 +59,12 @@ public class Ejercicio08 {
 
             LinkedStack stack = new LinkedStack();
 
-            // Push all characters onto stack
+            // Apilar todos los caracteres
             for (int i = 0; i < word.length(); i++) {
                 stack.push(word.charAt(i));
             }
 
-            // Pop all characters - they come out in reverse order
+            // Desapilar todos los caracteres: salen en orden inverso
             StringBuilder reversed = new StringBuilder();
             while (!stack.isEmpty()) {
                 reversed.append(stack.pop());
@@ -75,9 +75,9 @@ public class Ejercicio08 {
     }
 
     public static void main(String[] args) {
-        System.out.println("=== Ejercicio 08: Reverse a Word with Stack ===\n");
+        System.out.println("=== Ejercicio 08: Invertir una palabra con una pila ===\n");
 
-        // Test cases
+        // Casos de prueba
         String[] testWords = {
             "algoritmo",
             "java",
@@ -89,28 +89,28 @@ public class Ejercicio08 {
             "estructura"
         };
 
-        System.out.println("1. Reversing words:");
+        System.out.println("1. Invirtiendo palabras:");
         for (String word : testWords) {
             String reversed = WordReverser.reverse(word);
             System.out.println("   \"" + word + "\" -> \"" + reversed + "\"");
         }
 
-        // Verify specific example
-        System.out.println("\n2. Verifying example from exercise:");
+        // Verificar el ejemplo específico
+        System.out.println("\n2. Verificando el ejemplo del ejercicio:");
         String input = "algoritmo";
         String expected = "omtirogla";
         String result = WordReverser.reverse(input);
-        System.out.println("   Input:    \"" + input + "\"");
-        System.out.println("   Expected: \"" + expected + "\"");
-        System.out.println("   Result:   \"" + result + "\"");
-        System.out.println("   Match: " + result.equals(expected));
+        System.out.println("   Entrada:   \"" + input + "\"");
+        System.out.println("   Esperado:  \"" + expected + "\"");
+        System.out.println("   Resultado: \"" + result + "\"");
+        System.out.println("   Coincide: " + result.equals(expected));
 
-        // Test edge cases
-        System.out.println("\n3. Edge cases:");
-        System.out.println("   Empty string: \"" + WordReverser.reverse("") + "\"");
-        System.out.println("   Single char:  \"" + WordReverser.reverse("x") + "\"");
-        System.out.println("   Palindrome:   \"" + WordReverser.reverse("radar") + "\"");
+        // Probar casos extremos
+        System.out.println("\n3. Casos extremos:");
+        System.out.println("   Cadena vacía:   \"" + WordReverser.reverse("") + "\"");
+        System.out.println("   Carácter único: \"" + WordReverser.reverse("x") + "\"");
+        System.out.println("   Palíndromo:     \"" + WordReverser.reverse("radar") + "\"");
 
-        System.out.println("\n=== All tests passed ===");
+        System.out.println("\n=== Todas las pruebas superadas ===");
     }
 }

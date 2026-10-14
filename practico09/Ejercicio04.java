@@ -1,10 +1,10 @@
 /*
 Prompt inicial utilizado:
-Implement a generic queue using a singly linked list in Java. The queue must support
-any type: Integer, String, or custom objects. Operations: enqueue, dequeue, front,
-isEmpty, contains, print. Test with a queue of person names (String) and a queue
-of Cliente objects. Use a Node<T> class with T data and Node<T> next.
-Do not use Java collections for the main structure. Include test cases in main.
+Implementa una cola genérica usando una lista enlazada simple en Java. La cola debe soportar
+cualquier tipo: Integer, String u objetos personalizados. Operaciones: enqueue, dequeue, front,
+isEmpty, contains, print. Prueba con una cola de nombres de personas (String) y una cola
+de objetos Cliente. Usa una clase Node<T> con T data y Node<T> next.
+No uses colecciones de Java para la estructura principal. Incluye casos de prueba en main.
 
 Ajustes realizados:
 Ninguno
@@ -23,8 +23,8 @@ public class Ejercicio04 {
     }
 
     static class GenericQueue<T> {
-        private Node<T> head; // front
-        private Node<T> tail; // rear
+        private Node<T> head; // frente
+        private Node<T> tail; // final
         private int size;
 
         public GenericQueue() {
@@ -47,7 +47,7 @@ public class Ejercicio04 {
 
         public T dequeue() {
             if (isEmpty()) {
-                throw new RuntimeException("Queue underflow: cannot dequeue from empty queue");
+                throw new RuntimeException("Subdesborde de la cola: no se puede desencolar una cola vacía");
             }
             T value = head.data;
             head = head.next;
@@ -60,7 +60,7 @@ public class Ejercicio04 {
 
         public T front() {
             if (isEmpty()) {
-                throw new RuntimeException("Queue is empty: no front element");
+                throw new RuntimeException("La cola está vacía: no hay elemento en el frente");
             }
             return head.data;
         }
@@ -86,10 +86,10 @@ public class Ejercicio04 {
 
         public void print() {
             if (isEmpty()) {
-                System.out.println("Queue is empty");
+                System.out.println("La cola está vacía");
                 return;
             }
-            System.out.print("Queue (front -> rear): ");
+            System.out.print("Cola (frente -> final): ");
             Node<T> current = head;
             while (current != null) {
                 System.out.print(current.data);
@@ -128,33 +128,33 @@ public class Ejercicio04 {
     }
 
     public static void main(String[] args) {
-        System.out.println("=== Ejercicio 04: Generic Queue ===\n");
+        System.out.println("=== Ejercicio 04: Cola genérica ===\n");
 
-        // Test with String (person names)
-        System.out.println("--- Queue of Person Names ---");
+        // Probar con String (nombres de personas)
+        System.out.println("--- Cola de nombres de personas ---");
         GenericQueue<String> nameQueue = new GenericQueue<>();
         nameQueue.enqueue("Maria");
         nameQueue.enqueue("Juan");
         nameQueue.enqueue("Ana");
         nameQueue.enqueue("Carlos");
         nameQueue.print();
-        System.out.println("Front: " + nameQueue.front());
-        System.out.println("Contains 'Ana': " + nameQueue.contains("Ana"));
-        System.out.println("Dequeued: " + nameQueue.dequeue());
+        System.out.println("Frente: " + nameQueue.front());
+        System.out.println("Contiene 'Ana': " + nameQueue.contains("Ana"));
+        System.out.println("Desencolado: " + nameQueue.dequeue());
         nameQueue.print();
 
-        // Test with Cliente objects
-        System.out.println("\n--- Queue of Cliente Objects ---");
+        // Probar con objetos Cliente
+        System.out.println("\n--- Cola de objetos Cliente ---");
         GenericQueue<Cliente> clientQueue = new GenericQueue<>();
         clientQueue.enqueue(new Cliente("Pedro", 1, "Apertura de cuenta"));
         clientQueue.enqueue(new Cliente("Laura", 2, "Prestamo"));
         clientQueue.enqueue(new Cliente("Diego", 3, "Tarjeta de credito"));
         clientQueue.print();
-        System.out.println("Front: " + clientQueue.front());
-        System.out.println("Contains Laura: " + clientQueue.contains(new Cliente("Laura", 2, "Prestamo")));
-        System.out.println("Dequeued: " + clientQueue.dequeue());
+        System.out.println("Frente: " + clientQueue.front());
+        System.out.println("Contiene a Laura: " + clientQueue.contains(new Cliente("Laura", 2, "Prestamo")));
+        System.out.println("Desencolado: " + clientQueue.dequeue());
         clientQueue.print();
 
-        System.out.println("\n=== All tests passed ===");
+        System.out.println("\n=== Todas las pruebas superadas ===");
     }
 }

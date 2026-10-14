@@ -1,12 +1,12 @@
 /*
 Prompt inicial utilizado:
-Implement a print queue using a singly linked list. Each print job has:
-file name (nombre del archivo), page count (cantidad de paginas), and user
-(usuario que lo envio). Operations: add job (agregar trabajos), print next
-(imprimir el proximo), peek next file (consultar el proximo archivo),
-show all pending (mostrar todos los pendientes).
-Use a Node class with PrintJob data. Do not use Java collections.
-Include test cases in main.
+Implementa una cola de impresión usando una lista enlazada simple. Cada trabajo de impresión tiene:
+nombre del archivo (file name), cantidad de páginas (page count) y usuario
+que lo envió (user). Operaciones: agregar trabajos (add job), imprimir el próximo (print next),
+consultar el próximo archivo (peek next file),
+mostrar todos los pendientes (show all pending).
+Usa una clase Node con datos de PrintJob. No uses colecciones de Java.
+Incluye casos de prueba en main.
 
 Ajustes realizados:
 Ninguno
@@ -27,7 +27,7 @@ public class Ejercicio09 {
 
         @Override
         public String toString() {
-            return fileName + " (" + pageCount + " pages) - Sent by: " + user;
+            return fileName + " (" + pageCount + " páginas) - Enviado por: " + user;
         }
     }
 
@@ -42,8 +42,8 @@ public class Ejercicio09 {
     }
 
     static class PrintQueue {
-        private Node head; // front of queue
-        private Node tail; // rear of queue
+        private Node head; // frente de la cola
+        private Node tail; // final de la cola
         private int size;
 
         public PrintQueue() {
@@ -52,7 +52,7 @@ public class Ejercicio09 {
             this.size = 0;
         }
 
-        // Add job: enqueue at tail. O(1).
+        // Agregar trabajo: encolar al final. O(1).
         public void addJob(String fileName, int pageCount, String user) {
             PrintJob job = new PrintJob(fileName, pageCount, user);
             Node newNode = new Node(job);
@@ -64,13 +64,13 @@ public class Ejercicio09 {
                 tail = newNode;
             }
             size++;
-            System.out.println("Added: " + job);
+            System.out.println("Agregado: " + job);
         }
 
-        // Print next: dequeue from head. O(1).
+        // Imprimir el próximo: desencolar desde el head. O(1).
         public PrintJob printNext() {
             if (isEmpty()) {
-                throw new RuntimeException("No print jobs in queue");
+                throw new RuntimeException("No hay trabajos de impresión en la cola");
             }
             PrintJob job = head.data;
             head = head.next;
@@ -78,14 +78,14 @@ public class Ejercicio09 {
                 tail = null;
             }
             size--;
-            System.out.println("Printing: " + job);
+            System.out.println("Imprimiendo: " + job);
             return job;
         }
 
-        // Peek next file: return front without removing. O(1).
+        // Consultar el próximo archivo: devuelve el frente sin eliminarlo. O(1).
         public PrintJob peekNext() {
             if (isEmpty()) {
-                throw new RuntimeException("No print jobs in queue");
+                throw new RuntimeException("No hay trabajos de impresión en la cola");
             }
             return head.data;
         }
@@ -98,13 +98,13 @@ public class Ejercicio09 {
             return size;
         }
 
-        // Show all pending jobs: front to rear. O(n).
+        // Mostrar todos los trabajos pendientes: del frente al final. O(n).
         public void showAllPending() {
             if (isEmpty()) {
-                System.out.println("No pending print jobs");
+                System.out.println("No hay trabajos de impresión pendientes");
                 return;
             }
-            System.out.println("Pending print jobs (" + size + " total):");
+            System.out.println("Trabajos de impresión pendientes (" + size + " en total):");
             Node current = head;
             int position = 1;
             while (current != null) {
@@ -116,54 +116,54 @@ public class Ejercicio09 {
     }
 
     public static void main(String[] args) {
-        System.out.println("=== Ejercicio 09: Print Queue ===\n");
+        System.out.println("=== Ejercicio 09: Cola de impresión ===\n");
 
         PrintQueue queue = new PrintQueue();
 
-        // Test adding jobs
-        System.out.println("1. Adding print jobs:");
+        // Probar la agregación de trabajos
+        System.out.println("1. Agregando trabajos de impresión:");
         queue.addJob("report.pdf", 10, "Alice");
         queue.addJob("invoice.docx", 2, "Bob");
         queue.addJob("presentation.pptx", 25, "Charlie");
         queue.addJob("photo.jpg", 1, "Diana");
         System.out.println();
 
-        // Test show all pending
-        System.out.println("2. All pending jobs:");
+        // Probar mostrar todos los pendientes
+        System.out.println("2. Todos los trabajos pendientes:");
         queue.showAllPending();
         System.out.println();
 
-        // Test peek next
-        System.out.println("3. Next job to print: " + queue.peekNext());
+        // Probar consultar el próximo
+        System.out.println("3. Próximo trabajo a imprimir: " + queue.peekNext());
         System.out.println();
 
-        // Test print next
-        System.out.println("4. Printing jobs:");
+        // Probar imprimir el próximo
+        System.out.println("4. Imprimiendo trabajos:");
         queue.printNext();
         queue.printNext();
         System.out.println();
 
-        // Test remaining jobs
-        System.out.println("5. Remaining jobs:");
+        // Probar los trabajos restantes
+        System.out.println("5. Trabajos restantes:");
         queue.showAllPending();
         System.out.println();
 
-        // Test print remaining
-        System.out.println("6. Printing remaining:");
+        // Probar imprimir los que quedan
+        System.out.println("6. Imprimiendo los restantes:");
         while (!queue.isEmpty()) {
             queue.printNext();
         }
         System.out.println();
 
-        // Test empty queue
-        System.out.println("7. Testing empty queue:");
+        // Probar la cola vacía
+        System.out.println("7. Probando la cola vacía:");
         queue.showAllPending();
         try {
             queue.printNext();
         } catch (RuntimeException e) {
-            System.out.println("   Caught expected error: " + e.getMessage());
+            System.out.println("   Error esperado: " + e.getMessage());
         }
 
-        System.out.println("\n=== All tests passed ===");
+        System.out.println("\n=== Todas las pruebas superadas ===");
     }
 }

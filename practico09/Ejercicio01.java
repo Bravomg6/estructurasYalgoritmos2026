@@ -1,11 +1,11 @@
 /*
 Prompt inicial utilizado:
-Implement a stack of integers using a singly linked list. The stack must support:
-push (apilar), pop (desapilar), peek (consultar tope), isEmpty (verificar si esta vacia),
-contains (buscar si contiene un valor), and print (imprimir contenido).
-Explain why the head of the linked list represents the top of the stack and why
-push and pop operations are O(1). Use a Node class with int data and Node next.
-Do not use Java collections for the main structure. Include test cases in main.
+Implementa una pila de enteros usando una lista enlazada simple. La pila debe soportar:
+push (apilar), pop (desapilar), peek (consultar tope), isEmpty (verificar si está vacía),
+contains (buscar si contiene un valor) y print (imprimir contenido).
+Explica por qué el head de la lista enlazada representa el tope de la pila y por qué
+las operaciones push y pop son O(1). Usa una clase Node con int data y Node next.
+No uses colecciones de Java para la estructura principal. Incluye casos de prueba en main.
 
 Ajustes realizados:
 Ninguno
@@ -24,7 +24,7 @@ public class Ejercicio01 {
     }
 
     static class LinkedStack {
-        private Node head; // head represents the top of the stack
+        private Node head; // head representa el tope de la pila
         private int size;
 
         public LinkedStack() {
@@ -32,7 +32,7 @@ public class Ejercicio01 {
             this.size = 0;
         }
 
-        // Push: insert at the beginning. O(1) because we only update head reference.
+        // Push: se inserta al comienzo. O(1) porque solo se actualiza la referencia head.
         public void push(int value) {
             Node newNode = new Node(value);
             newNode.next = head;
@@ -40,10 +40,10 @@ public class Ejercicio01 {
             size++;
         }
 
-        // Pop: remove from the beginning. O(1) because we only update head reference.
+        // Pop: se elimina del comienzo. O(1) porque solo se actualiza la referencia head.
         public int pop() {
             if (isEmpty()) {
-                throw new RuntimeException("Stack is underflow: cannot pop from empty stack");
+                throw new RuntimeException("Subdesborde de la pila: no se puede hacer pop en una pila vacía");
             }
             int value = head.data;
             head = head.next;
@@ -51,10 +51,10 @@ public class Ejercicio01 {
             return value;
         }
 
-        // Peek: return top element without removing. O(1).
+        // Peek: devuelve el elemento del tope sin eliminarlo. O(1).
         public int peek() {
             if (isEmpty()) {
-                throw new RuntimeException("Stack is empty: no top element");
+                throw new RuntimeException("La pila está vacía: no hay elemento en el tope");
             }
             return head.data;
         }
@@ -67,7 +67,7 @@ public class Ejercicio01 {
             return size;
         }
 
-        // Search: traverse the list to find a value. O(n).
+        // Búsqueda: recorre la lista para encontrar un valor. O(n).
         public boolean contains(int value) {
             Node current = head;
             while (current != null) {
@@ -79,13 +79,13 @@ public class Ejercicio01 {
             return false;
         }
 
-        // Print: traverse from top to bottom. O(n).
+        // Impresión: recorre desde el tope hasta el fondo. O(n).
         public void print() {
             if (isEmpty()) {
-                System.out.println("Stack is empty");
+                System.out.println("La pila está vacía");
                 return;
             }
-            System.out.print("Stack (top -> bottom): ");
+            System.out.print("Pila (tope -> fondo): ");
             Node current = head;
             while (current != null) {
                 System.out.print(current.data);
@@ -99,53 +99,53 @@ public class Ejercicio01 {
     }
 
     public static void main(String[] args) {
-        System.out.println("=== Ejercicio 01: Linked Stack of Integers ===\n");
+        System.out.println("=== Ejercicio 01: Pila enlazada de enteros ===\n");
 
         LinkedStack stack = new LinkedStack();
 
-        // Test isEmpty on new stack
-        System.out.println("1. New stack isEmpty: " + stack.isEmpty());
+        // Probar isEmpty en una pila nueva
+        System.out.println("1. isEmpty en pila nueva: " + stack.isEmpty());
 
-        // Test push
-        System.out.println("\n2. Pushing: 10, 20, 30, 40, 50");
+        // Probar push
+        System.out.println("\n2. Apilando: 10, 20, 30, 40, 50");
         stack.push(10);
         stack.push(20);
         stack.push(30);
         stack.push(40);
         stack.push(50);
         stack.print();
-        System.out.println("   Size: " + stack.size());
+        System.out.println("   Tamaño: " + stack.size());
 
-        // Test peek
-        System.out.println("\n3. Peek (top): " + stack.peek());
+        // Probar peek
+        System.out.println("\n3. Peek (tope): " + stack.peek());
 
-        // Test contains
-        System.out.println("\n4. Contains 30: " + stack.contains(30));
-        System.out.println("   Contains 99: " + stack.contains(99));
+        // Probar contains
+        System.out.println("\n4. Contiene 30: " + stack.contains(30));
+        System.out.println("   Contiene 99: " + stack.contains(99));
 
-        // Test pop
-        System.out.println("\n5. Popping two elements:");
-        System.out.println("   Popped: " + stack.pop());
-        System.out.println("   Popped: " + stack.pop());
+        // Probar pop
+        System.out.println("\n5. Desapilando dos elementos:");
+        System.out.println("   Desapilado: " + stack.pop());
+        System.out.println("   Desapilado: " + stack.pop());
         stack.print();
-        System.out.println("   New top: " + stack.peek());
-        System.out.println("   Size: " + stack.size());
+        System.out.println("   Nuevo tope: " + stack.peek());
+        System.out.println("   Tamaño: " + stack.size());
 
-        // Test pop until empty
-        System.out.println("\n6. Popping remaining elements:");
+        // Probar pop hasta vaciar la pila
+        System.out.println("\n6. Desapilando los elementos restantes:");
         while (!stack.isEmpty()) {
-            System.out.println("   Popped: " + stack.pop());
+            System.out.println("   Desapilado: " + stack.pop());
         }
-        System.out.println("   isEmpty after draining: " + stack.isEmpty());
+        System.out.println("   isEmpty después de vaciar: " + stack.isEmpty());
 
-        // Test underflow
-        System.out.println("\n7. Testing underflow:");
+        // Probar subdesborde
+        System.out.println("\n7. Probando subdesborde:");
         try {
             stack.pop();
         } catch (RuntimeException e) {
-            System.out.println("   Caught expected error: " + e.getMessage());
+            System.out.println("   Error esperado: " + e.getMessage());
         }
 
-        System.out.println("\n=== All tests passed ===");
+        System.out.println("\n=== Todas las pruebas superadas ===");
     }
 }

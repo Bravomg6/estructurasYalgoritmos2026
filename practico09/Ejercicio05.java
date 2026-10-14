@@ -1,11 +1,11 @@
 /*
 Prompt inicial utilizado:
-Implement a simple browser history system using a linked stack. Operations:
-visit page (visitar pagina), go back (volver a la anterior), get current page
-(consultar pagina actual), print history (imprimir historial).
-Explain why a stack represents "go back" behavior: LIFO means the last visited
-page is the first one returned to. Use a Node class with String data.
-Do not use Java collections. Include test cases in main.
+Implementa un sistema simple de historial de navegación usando una pila enlazada. Operaciones:
+visitar página (visit page), volver a la anterior (go back), consultar página actual
+(get current page), imprimir historial (print history).
+Explica por qué una pila representa el comportamiento de "volver atrás": LIFO significa que la
+última página visitada es la primera a la que se regresa. Usa una clase Node con String data.
+No uses colecciones de Java. Incluye casos de prueba en main.
 
 Ajustes realizados:
 Ninguno
@@ -24,7 +24,7 @@ public class Ejercicio05 {
     }
 
     static class BrowserHistory {
-        private Node head; // top of stack = current page
+        private Node head; // tope de la pila = página actual
         private int size;
 
         public BrowserHistory() {
@@ -32,31 +32,31 @@ public class Ejercicio05 {
             this.size = 0;
         }
 
-        // Visit a page: push onto stack. O(1).
+        // Visitar una página: apilar. O(1).
         public void visit(String url) {
             Node newNode = new Node(url);
             newNode.next = head;
             head = newNode;
             size++;
-            System.out.println("Visited: " + url);
+            System.out.println("Visitada: " + url);
         }
 
-        // Go back: pop from stack. O(1).
+        // Volver atrás: desapilar. O(1).
         public String goBack() {
             if (isEmpty()) {
-                throw new RuntimeException("No history to go back to");
+                throw new RuntimeException("No hay historial para volver atrás");
             }
             String currentUrl = head.data;
             head = head.next;
             size--;
-            System.out.println("Went back from: " + currentUrl);
+            System.out.println("Se volvió atrás desde: " + currentUrl);
             return currentUrl;
         }
 
-        // Get current page: peek. O(1).
+        // Obtener la página actual: peek. O(1).
         public String getCurrentPage() {
             if (isEmpty()) {
-                return "No page loaded";
+                return "No hay página cargada";
             }
             return head.data;
         }
@@ -69,13 +69,13 @@ public class Ejercicio05 {
             return size;
         }
 
-        // Print history: most recent first. O(n).
+        // Imprimir el historial: primero la página más reciente. O(n).
         public void printHistory() {
             if (isEmpty()) {
-                System.out.println("History is empty");
+                System.out.println("El historial está vacío");
                 return;
             }
-            System.out.println("Browser History (most recent first):");
+            System.out.println("Historial del navegador (lo más reciente primero):");
             Node current = head;
             int index = 1;
             while (current != null) {
@@ -87,46 +87,46 @@ public class Ejercicio05 {
     }
 
     public static void main(String[] args) {
-        System.out.println("=== Ejercicio 05: Browser History with Stack ===\n");
+        System.out.println("=== Ejercicio 05: Historial de navegación con pila ===\n");
 
         BrowserHistory history = new BrowserHistory();
 
-        // Test visiting pages
-        System.out.println("1. Visiting pages:");
+        // Probar la visita de páginas
+        System.out.println("1. Visitando páginas:");
         history.visit("https://www.google.com");
         history.visit("https://www.github.com");
         history.visit("https://www.stackoverflow.com");
         history.visit("https://docs.oracle.com");
         System.out.println();
 
-        // Test current page
-        System.out.println("2. Current page: " + history.getCurrentPage());
+        // Probar la página actual
+        System.out.println("2. Página actual: " + history.getCurrentPage());
         System.out.println();
 
-        // Test print history
-        System.out.println("3. Full history:");
+        // Probar la impresión del historial
+        System.out.println("3. Historial completo:");
         history.printHistory();
         System.out.println();
 
-        // Test go back
-        System.out.println("4. Going back twice:");
+        // Probar volver atrás
+        System.out.println("4. Volviendo atrás dos veces:");
         history.goBack();
-        System.out.println("   Current page: " + history.getCurrentPage());
+        System.out.println("   Página actual: " + history.getCurrentPage());
         history.goBack();
-        System.out.println("   Current page: " + history.getCurrentPage());
+        System.out.println("   Página actual: " + history.getCurrentPage());
         System.out.println();
 
-        // Test history after going back
-        System.out.println("5. History after going back:");
+        // Probar el historial después de volver atrás
+        System.out.println("5. Historial después de volver atrás:");
         history.printHistory();
         System.out.println();
 
-        // Test visiting a new page after going back
-        System.out.println("6. Visiting new page after going back:");
+        // Probar visitar una página nueva después de volver atrás
+        System.out.println("6. Visitando una página nueva después de volver atrás:");
         history.visit("https://www.wikipedia.org");
-        System.out.println("   Current page: " + history.getCurrentPage());
+        System.out.println("   Página actual: " + history.getCurrentPage());
         history.printHistory();
 
-        System.out.println("\n=== All tests passed ===");
+        System.out.println("\n=== Todas las pruebas superadas ===");
     }
 }

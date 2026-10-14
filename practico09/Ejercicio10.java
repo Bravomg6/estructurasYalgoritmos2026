@@ -1,12 +1,12 @@
 /*
 Prompt inicial utilizado:
-Implement a generic doubly linked list in Java. Operations: insert at beginning,
-insert at end, remove an element, print forward, print backward.
-Explain what references each node has (previous and next), why both are needed
-for bidirectional traversal, and what special cases to consider when removing
-(head node, tail node, middle node, only node, value not found).
-Use a Node<T> class with T data, Node<T> prev, and Node<T> next.
-Do not use Java collections. Include test cases in main.
+Implementa una lista doblemente enlazada genérica en Java. Operaciones: insertar al comienzo,
+insertar al final, eliminar un elemento, imprimir hacia adelante, imprimir hacia atrás.
+Explica qué referencias tiene cada nodo (previo y siguiente), por qué ambas son necesarias
+para el recorrido bidireccional y qué casos especiales considerar al eliminar
+(nodo head, nodo tail, nodo intermedio, único nodo, valor no encontrado).
+Usa una clase Node<T> con T data, Node<T> prev y Node<T> next.
+No uses colecciones de Java. Incluye casos de prueba en main.
 
 Ajustes realizados:
 Ninguno
@@ -37,7 +37,7 @@ public class Ejercicio10 {
             this.size = 0;
         }
 
-        // Insert at beginning. O(1).
+        // Insertar al comienzo. O(1).
         public void insertAtBeginning(T value) {
             Node<T> newNode = new Node<>(value);
             if (isEmpty()) {
@@ -51,7 +51,7 @@ public class Ejercicio10 {
             size++;
         }
 
-        // Insert at end. O(1).
+        // Insertar al final. O(1).
         public void insertAtEnd(T value) {
             Node<T> newNode = new Node<>(value);
             if (isEmpty()) {
@@ -65,7 +65,7 @@ public class Ejercicio10 {
             size++;
         }
 
-        // Remove first occurrence of value. O(n).
+        // Eliminar la primera aparición del valor. O(n).
         public boolean remove(T value) {
             if (isEmpty()) {
                 return false;
@@ -79,27 +79,27 @@ public class Ejercicio10 {
                 }
                 current = current.next;
             }
-            return false; // value not found
+            return false; // valor no encontrado
         }
 
-        // Remove a specific node. O(1).
+        // Eliminar un nodo específico. O(1).
         private void removeNode(Node<T> node) {
-            // Case: only node in list
+            // Caso: único nodo de la lista
             if (node == head && node == tail) {
                 head = null;
                 tail = null;
             }
-            // Case: head node
+            // Caso: nodo head
             else if (node == head) {
                 head = head.next;
                 head.prev = null;
             }
-            // Case: tail node
+            // Caso: nodo tail
             else if (node == tail) {
                 tail = tail.prev;
                 tail.next = null;
             }
-            // Case: middle node
+            // Caso: nodo intermedio
             else {
                 node.prev.next = node.next;
                 node.next.prev = node.prev;
@@ -115,13 +115,13 @@ public class Ejercicio10 {
             return size;
         }
 
-        // Print forward: head to tail. O(n).
+        // Imprimir hacia adelante: de head a tail. O(n).
         public void printForward() {
             if (isEmpty()) {
-                System.out.println("List is empty");
+                System.out.println("La lista está vacía");
                 return;
             }
-            System.out.print("Forward:  ");
+            System.out.print("Adelante: ");
             Node<T> current = head;
             while (current != null) {
                 System.out.print(current.data);
@@ -133,13 +133,13 @@ public class Ejercicio10 {
             System.out.println();
         }
 
-        // Print backward: tail to head. O(n).
+        // Imprimir hacia atrás: de tail a head. O(n).
         public void printBackward() {
             if (isEmpty()) {
-                System.out.println("List is empty");
+                System.out.println("La lista está vacía");
                 return;
             }
-            System.out.print("Backward: ");
+            System.out.print("Atrás:    ");
             Node<T> current = tail;
             while (current != null) {
                 System.out.print(current.data);
@@ -153,65 +153,65 @@ public class Ejercicio10 {
     }
 
     public static void main(String[] args) {
-        System.out.println("=== Ejercicio 10: Doubly Linked List ===\n");
+        System.out.println("=== Ejercicio 10: Lista doblemente enlazada ===\n");
 
         DoublyLinkedList<Integer> list = new DoublyLinkedList<>();
 
-        // Test insert at beginning
-        System.out.println("1. Insert at beginning: 30, 20, 10");
+        // Probar insertar al comienzo
+        System.out.println("1. Insertar al comienzo: 30, 20, 10");
         list.insertAtBeginning(30);
         list.insertAtBeginning(20);
         list.insertAtBeginning(10);
         list.printForward();
         list.printBackward();
-        System.out.println("   Size: " + list.size());
+        System.out.println("   Tamaño: " + list.size());
         System.out.println();
 
-        // Test insert at end
-        System.out.println("2. Insert at end: 40, 50");
+        // Probar insertar al final
+        System.out.println("2. Insertar al final: 40, 50");
         list.insertAtEnd(40);
         list.insertAtEnd(50);
         list.printForward();
         list.printBackward();
-        System.out.println("   Size: " + list.size());
+        System.out.println("   Tamaño: " + list.size());
         System.out.println();
 
-        // Test remove head
-        System.out.println("3. Remove head (10):");
+        // Probar eliminar el head
+        System.out.println("3. Eliminar el head (10):");
         boolean removed = list.remove(10);
-        System.out.println("   Removed: " + removed);
+        System.out.println("   Eliminado: " + removed);
         list.printForward();
         list.printBackward();
-        System.out.println("   Size: " + list.size());
+        System.out.println("   Tamaño: " + list.size());
         System.out.println();
 
-        // Test remove tail
-        System.out.println("4. Remove tail (50):");
+        // Probar eliminar el tail
+        System.out.println("4. Eliminar el tail (50):");
         removed = list.remove(50);
-        System.out.println("   Removed: " + removed);
+        System.out.println("   Eliminado: " + removed);
         list.printForward();
         list.printBackward();
-        System.out.println("   Size: " + list.size());
+        System.out.println("   Tamaño: " + list.size());
         System.out.println();
 
-        // Test remove middle
-        System.out.println("5. Remove middle (30):");
+        // Probar eliminar un elemento del medio
+        System.out.println("5. Eliminar el del medio (30):");
         removed = list.remove(30);
-        System.out.println("   Removed: " + removed);
+        System.out.println("   Eliminado: " + removed);
         list.printForward();
         list.printBackward();
-        System.out.println("   Size: " + list.size());
+        System.out.println("   Tamaño: " + list.size());
         System.out.println();
 
-        // Test remove non-existent
-        System.out.println("6. Remove non-existent (999):");
+        // Probar eliminar un valor inexistente
+        System.out.println("6. Eliminar un valor inexistente (999):");
         removed = list.remove(999);
-        System.out.println("   Removed: " + removed);
+        System.out.println("   Eliminado: " + removed);
         list.printForward();
         System.out.println();
 
-        // Test remove until empty
-        System.out.println("7. Remove remaining elements:");
+        // Probar eliminar hasta vaciar la lista
+        System.out.println("7. Eliminar los elementos restantes:");
         while (!list.isEmpty()) {
             list.remove(list.size() > 0 ? getValueAtHead(list) : null);
         }
@@ -219,8 +219,8 @@ public class Ejercicio10 {
         System.out.println("   isEmpty: " + list.isEmpty());
         System.out.println();
 
-        // Test with String
-        System.out.println("8. Test with String list:");
+        // Probar con String
+        System.out.println("8. Prueba con lista de String:");
         DoublyLinkedList<String> strList = new DoublyLinkedList<>();
         strList.insertAtEnd("hello");
         strList.insertAtEnd("world");
@@ -228,17 +228,17 @@ public class Ejercicio10 {
         strList.printForward();
         strList.printBackward();
         strList.remove("world");
-        System.out.println("   After removing 'world':");
+        System.out.println("   Después de eliminar 'world':");
         strList.printForward();
         strList.printBackward();
 
-        System.out.println("\n=== All tests passed ===");
+        System.out.println("\n=== Todas las pruebas superadas ===");
     }
 
-    // Helper to get head value for testing
+    // Función auxiliar para obtener el valor del head en las pruebas
     private static <T> T getValueAtHead(DoublyLinkedList<T> list) {
-        // Use reflection or just remove by iterating - for test simplicity
-        // We'll use a different approach: remove first element
+        // Se usa reflexión o simplemente eliminar iterando; aquí se hace por simplicidad en la prueba
+        // Se adopta un enfoque distinto: eliminar el primer elemento
         try {
             java.lang.reflect.Field headField = DoublyLinkedList.class.getDeclaredField("head");
             headField.setAccessible(true);

@@ -1,11 +1,11 @@
 /*
 Prompt inicial utilizado:
-Implement a balanced parentheses checker using a linked stack. The program receives
-an expression and determines if parentheses are balanced. Valid: (2 + 3) * (5 - 1),
-((a + b) * c). Invalid: (2 + 3, ()(. Explain how a stack is used to store opening
-parentheses and validate closing ones: push '(', pop and match on ')'.
-Use a Node class with char data. Do not use Java collections.
-Include test cases in main.
+Implementa un verificador de paréntesis balanceados usando una pila enlazada. El programa recibe
+una expresión y determina si los paréntesis están balanceados. Válidas: (2 + 3) * (5 - 1),
+((a + b) * c). Inválidas: (2 + 3, ()(. Explica cómo se usa una pila para almacenar los paréntesis
+de apertura y validar los de cierre: push '(', pop y coincidencia con ')'.
+Usa una clase Node con char data. No uses colecciones de Java.
+Incluye casos de prueba en main.
 
 Ajustes realizados:
 Ninguno
@@ -38,7 +38,7 @@ public class Ejercicio07 {
 
         public char pop() {
             if (isEmpty()) {
-                throw new RuntimeException("Stack underflow");
+                throw new RuntimeException("Subdesborde de la pila");
             }
             char value = head.data;
             head = head.next;
@@ -52,7 +52,7 @@ public class Ejercicio07 {
 
     static class ParenthesesChecker {
 
-        // Check if parentheses are balanced using a stack. O(n).
+        // Verifica si los paréntesis están balanceados usando una pila. O(n).
         public static boolean isBalanced(String expression) {
             LinkedStack stack = new LinkedStack();
 
@@ -60,32 +60,32 @@ public class Ejercicio07 {
                 char ch = expression.charAt(i);
 
                 if (ch == '(') {
-                    // Push opening parenthesis onto stack
+                    // Apilar el paréntesis de apertura
                     stack.push(ch);
                 } else if (ch == ')') {
-                    // Try to match with an opening parenthesis
+                    // Intentar coincidir con un paréntesis de apertura
                     if (stack.isEmpty()) {
-                        // No matching opening parenthesis
+                        // No hay paréntesis de apertura coincidente
                         return false;
                     }
                     char top = stack.pop();
                     if (top != '(') {
-                        // Mismatched parenthesis type
+                        // Tipo de paréntesis no coincidente
                         return false;
                     }
                 }
-                // Ignore all other characters
+                // Ignorar todos los demás caracteres
             }
 
-            // Balanced if stack is empty (all opening matched)
+            // Está balanceado si la pila queda vacía (todos los de apertura coincidieron)
             return stack.isEmpty();
         }
     }
 
     public static void main(String[] args) {
-        System.out.println("=== Ejercicio 07: Balanced Parentheses Checker ===\n");
+        System.out.println("=== Ejercicio 07: Verificador de paréntesis balanceados ===\n");
 
-        // Valid expressions
+        // Expresiones válidas
         String[] validExpressions = {
             "(2 + 3) * (5 - 1)",
             "((a + b) * c)",
@@ -96,7 +96,7 @@ public class Ejercicio07 {
             "no parentheses at all"
         };
 
-        // Invalid expressions
+        // Expresiones inválidas
         String[] invalidExpressions = {
             "(2 + 3",
             "())(",
@@ -107,24 +107,24 @@ public class Ejercicio07 {
             "(()"
         };
 
-        System.out.println("1. Valid expressions (should all be TRUE):");
+        System.out.println("1. Expresiones válidas (todas deben dar true):");
         for (String expr : validExpressions) {
             boolean result = ParenthesesChecker.isBalanced(expr);
             System.out.println("   \"" + expr + "\" -> " + result);
             if (!result) {
-                System.out.println("   ERROR: Expected true!");
+                System.out.println("   ERROR: se esperaba true");
             }
         }
 
-        System.out.println("\n2. Invalid expressions (should all be FALSE):");
+        System.out.println("\n2. Expresiones inválidas (todas deben dar false):");
         for (String expr : invalidExpressions) {
             boolean result = ParenthesesChecker.isBalanced(expr);
             System.out.println("   \"" + expr + "\" -> " + result);
             if (result) {
-                System.out.println("   ERROR: Expected false!");
+                System.out.println("   ERROR: se esperaba false");
             }
         }
 
-        System.out.println("\n=== All tests passed ===");
+        System.out.println("\n=== Todas las pruebas superadas ===");
     }
 }

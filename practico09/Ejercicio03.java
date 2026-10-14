@@ -1,11 +1,11 @@
 /*
 Prompt inicial utilizado:
-Implement a generic stack using a singly linked list in Java. The stack must support
-any type: Integer, String, or custom objects. Operations: push, pop, peek, isEmpty,
-contains, print. Explain what generics mean in Java: type safety at compile time,
-no casting needed, code reusability. Use a Node<T> class with T data and Node<T> next.
-Do not use Java collections for the main structure. Include test cases in main
-with Integer, String, and a custom Person class.
+Implementa una pila genérica usando una lista enlazada simple en Java. La pila debe soportar
+cualquier tipo: Integer, String u objetos personalizados. Operaciones: push, pop, peek, isEmpty,
+contains, print. Explica qué significan los genéricos en Java: seguridad de tipos en tiempo de
+compilación, no necesidad de conversiones de tipo y reutilización de código. Usa una clase Node<T>
+con T data y Node<T> next. No uses colecciones de Java para la estructura principal.
+Incluye casos de prueba en main con Integer, String y una clase personalizada Person.
 
 Ajustes realizados:
 Ninguno
@@ -41,7 +41,7 @@ public class Ejercicio03 {
 
         public T pop() {
             if (isEmpty()) {
-                throw new RuntimeException("Stack underflow: cannot pop from empty stack");
+                throw new RuntimeException("Subdesborde de la pila: no se puede hacer pop en una pila vacía");
             }
             T value = head.data;
             head = head.next;
@@ -51,7 +51,7 @@ public class Ejercicio03 {
 
         public T peek() {
             if (isEmpty()) {
-                throw new RuntimeException("Stack is empty: no top element");
+                throw new RuntimeException("La pila está vacía: no hay elemento en el tope");
             }
             return head.data;
         }
@@ -77,10 +77,10 @@ public class Ejercicio03 {
 
         public void print() {
             if (isEmpty()) {
-                System.out.println("Stack is empty");
+                System.out.println("La pila está vacía");
                 return;
             }
-            System.out.print("Stack (top -> bottom): ");
+            System.out.print("Pila (tope -> fondo): ");
             Node<T> current = head;
             while (current != null) {
                 System.out.print(current.data);
@@ -117,44 +117,44 @@ public class Ejercicio03 {
     }
 
     public static void main(String[] args) {
-        System.out.println("=== Ejercicio 03: Generic Stack ===\n");
+        System.out.println("=== Ejercicio 03: Pila genérica ===\n");
 
-        // Test with Integer
-        System.out.println("--- Integer Stack ---");
+        // Probar con Integer
+        System.out.println("--- Pila de Integer ---");
         GenericStack<Integer> intStack = new GenericStack<>();
         intStack.push(10);
         intStack.push(20);
         intStack.push(30);
         intStack.print();
-        System.out.println("Peek: " + intStack.peek());
-        System.out.println("Contains 20: " + intStack.contains(20));
-        System.out.println("Pop: " + intStack.pop());
+        System.out.println("Tope: " + intStack.peek());
+        System.out.println("Contiene 20: " + intStack.contains(20));
+        System.out.println("Desapilado: " + intStack.pop());
         intStack.print();
 
-        // Test with String
-        System.out.println("\n--- String Stack ---");
+        // Probar con String
+        System.out.println("\n--- Pila de String ---");
         GenericStack<String> strStack = new GenericStack<>();
         strStack.push("hello");
         strStack.push("world");
         strStack.push("java");
         strStack.print();
-        System.out.println("Peek: " + strStack.peek());
-        System.out.println("Contains 'world': " + strStack.contains("world"));
-        System.out.println("Pop: " + strStack.pop());
+        System.out.println("Tope: " + strStack.peek());
+        System.out.println("Contiene 'world': " + strStack.contains("world"));
+        System.out.println("Desapilado: " + strStack.pop());
         strStack.print();
 
-        // Test with custom Person objects
-        System.out.println("\n--- Person Stack ---");
+        // Probar con objetos Person personalizados
+        System.out.println("\n--- Pila de Person ---");
         GenericStack<Person> personStack = new GenericStack<>();
         personStack.push(new Person("Alice", 25));
         personStack.push(new Person("Bob", 30));
         personStack.push(new Person("Charlie", 35));
         personStack.print();
-        System.out.println("Peek: " + personStack.peek());
-        System.out.println("Contains Bob: " + personStack.contains(new Person("Bob", 30)));
-        System.out.println("Pop: " + personStack.pop());
+        System.out.println("Tope: " + personStack.peek());
+        System.out.println("Contiene a Bob: " + personStack.contains(new Person("Bob", 30)));
+        System.out.println("Desapilado: " + personStack.pop());
         personStack.print();
 
-        System.out.println("\n=== All tests passed ===");
+        System.out.println("\n=== Todas las pruebas superadas ===");
     }
 }
