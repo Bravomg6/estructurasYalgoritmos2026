@@ -1,6 +1,6 @@
 # estructurasYalgoritmos2026
 
-Trabajo práctico de Estructuras de Datos y Algoritmos 2026.
+Trabajo práctico de Estructuras de Datos y Algoritmos - Guadalupe Bravo -
 
 ## Cómo se hicieron los ejercicios
 
