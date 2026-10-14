@@ -1,6 +1,6 @@
 # estructurasYalgoritmos2026
 
-Trabajo práctico de Estructuras de Datos y Algoritmos 2026.
+Trabajo práctico de Estructuras de Datos y Algoritmos - Guadalupe Bravo -
 
 ## Cómo se hicieron los ejercicios
 
@@ -23,7 +23,7 @@ El práctico 03 no tiene carpeta porque era de Git y GitHub, sin ejercicios de J
 
 Cada `.java` tiene dos comentarios al principio:
 
-1. **Prompt inicial utilizado** — el texto exacto que le pasé a OpenCode.
+1. **Prompt inicial utilizado** — el texto que le pasé a OpenCode.
 2. **Ajustes realizados** — los cambios que se hicieron posteriormente, si hizo falta.
 
 Todos los archivos compilan con `javac` sin errores.
