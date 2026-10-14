@@ -17,7 +17,7 @@ Por cada ejercicio armé un prompt con lo que pide la consigna y se lo pasé a O
 - `practico09` — Pilas y colas con listas enlazadas
 
 
-Al igual que todos los `.docx` con las consignas de cada práctico.
+El práctico 03 no tiene carpeta porque era de Git y GitHub, sin ejercicios de Java. También están los `.docx` con las consignas de cada práctico.
 
 ## Cómo está organizado cada archivo
 
